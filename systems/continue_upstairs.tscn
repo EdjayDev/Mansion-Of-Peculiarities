@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bk8fghql15yir"]
+
+[ext_resource type="Script" uid="uid://kxrgdc1b7npl" path="res://systems/continue_upstairs.gd" id="1_v4em8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6j832"]
+size = Vector2(80, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7agh"]
+size = Vector2(80, 20)
+
+[node name="Continue_Upstairs" type="Node2D" unique_id=2121558637]
+script = ExtResource("1_v4em8")
+
+[node name="Area2d" type="Area2D" parent="." unique_id=1504322983]
+position = Vector2(0, -10)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2d" unique_id=863729081]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_6j832")
+debug_color = Color(0, 0.80078125, 0.40664673, 0.41960785)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=828925187]
+position = Vector2(0, -30)
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=481287200]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_v7agh")

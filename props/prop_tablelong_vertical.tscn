@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://c5if4q2xux4n0"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_swbgv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rewbj"]
+radius = 19.0
+height = 172.37195
+
+[node name="prop_tablelong_vertical" type="Node2D" unique_id=208826729]
+
+[node name="Sprite2D-top" type="Sprite2D" parent="." unique_id=1838528635]
+position = Vector2(0, -81.5)
+scale = Vector2(1, 1.0000014)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 208, 39, 9)
+
+[node name="Sprite2D-bottom" type="Sprite2D" parent="." unique_id=424811496]
+position = Vector2(0, 84.5)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(22, 228, 37, 15)
+
+[node name="Middle-Table-Sprite" type="Node2D" parent="." unique_id=177159907]
+position = Vector2(0, 91)
+scale = Vector2(1, 1.0000001)
+
+[node name="Sprite2D-middle-1" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=825808503]
+position = Vector2(0, -19.5)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-2" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=1542461485]
+position = Vector2(0, -30.499992)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-3" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=667366731]
+position = Vector2(0, -41.499992)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-4" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=2079066794]
+position = Vector2(0, -52.5)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-5" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=1224093569]
+position = Vector2(0, -63.5)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-6" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=959641674]
+position = Vector2(0, -74.499985)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-7" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=156018648]
+position = Vector2(0, -85.49999)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-8" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=35255715]
+position = Vector2(0, -96.499985)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-9" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=1262156317]
+position = Vector2(0, -107.49999)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-10" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=220685236]
+position = Vector2(0, -118.499985)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-11" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=204715078]
+position = Vector2(0, -129.49998)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-12" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=962963279]
+position = Vector2(0, -129.49998)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-13" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=1656572794]
+position = Vector2(0, -140.49998)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-14" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=755877575]
+position = Vector2(0, -151.49997)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="Sprite2D-middle-15" type="Sprite2D" parent="Middle-Table-Sprite" unique_id=550895604]
+position = Vector2(0, -162.49998)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_swbgv")
+region_enabled = true
+region_rect = Rect2(21, 217, 39, 11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=28665830]
+position = Vector2(0, -17)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1335249322]
+position = Vector2(0, 17)
+shape = SubResource("CapsuleShape2D_rewbj")

@@ -1,0 +1,148 @@
+[gd_scene load_steps=15 format=3 uid="uid://cearovqy3lv7k"]
+
+[ext_resource type="Script" uid="uid://bmbf7efkuwoh7" path="res://systems/inventory_ui.gd" id="1_skupx"]
+[ext_resource type="FontFile" uid="uid://74tco6mcmmut" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="2_u5opd"]
+
+[sub_resource type="FontVariation" id="FontVariation_l2tpd"]
+base_font = ExtResource("2_u5opd")
+variation_opentype = {
+1869640570: 14,
+2003265652: 900
+}
+
+[sub_resource type="Theme" id="Theme_slrbu"]
+default_font = SubResource("FontVariation_l2tpd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5opd"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_skupx"]
+bg_color = Color(0.28125, 0.12084961, 0.12084961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2tpd"]
+content_margin_left = 10.0
+content_margin_top = 15.0
+content_margin_right = 10.0
+content_margin_bottom = 15.0
+bg_color = Color(0.1640625, 0.07241821, 0.07671404, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w51js"]
+content_margin_left = 5.0
+content_margin_top = 10.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slrbu"]
+bg_color = Color(0.15234375, 0.052368164, 0.052368164, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwbt6"]
+bg_color = Color(0.09765625, 0.030136108, 0.030136108, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_u5opd"]
+base_font = ExtResource("2_u5opd")
+variation_opentype = {
+1869640570: 14,
+2003265652: 700
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b533c"]
+content_margin_left = 5.0
+content_margin_top = 10.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
+bg_color = Color(0.09765625, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvapb"]
+content_margin_left = 5.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.34375, 0.006713867, 0.006713867, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ln3q4"]
+content_margin_left = 5.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.46875, 0, 0, 1)
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_skupx")
+
+[node name="Inventory_Panel" type="Panel" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 26.0
+offset_right = 229.0
+offset_bottom = -26.0
+grow_vertical = 2
+theme = SubResource("Theme_slrbu")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u5opd")
+
+[node name="Inventory_UI_HeaderPanel" type="Panel" parent="Inventory_Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_skupx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Inventory_Panel/Inventory_UI_HeaderPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 22
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Inventory_Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 72.0
+offset_right = -12.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2tpd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory_Panel/PanelContainer"]
+layout_mode = 2
+
+[node name="template_button" type="Button" parent="Inventory_Panel/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_w51js")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_slrbu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fwbt6")
+action_mode = 0
+text = "Button"
+
+[node name="Item_Action_Container" type="VBoxContainer" parent="."]
+offset_left = 244.0
+offset_top = 118.0
+offset_right = 244.0
+offset_bottom = 118.0
+
+[node name="template_item_actions" type="Button" parent="Item_Action_Container"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_u5opd")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_b533c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wvapb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ln3q4")
+text = "Button"

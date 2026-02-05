@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://c32kl132hi4oc"]
+
+[ext_resource type="Script" uid="uid://b3ovmbvchihww" path="res://systems/systems_enemy/shadow_swarm.gd" id="1_tahxh"]
+
+[sub_resource type="Gradient" id="Gradient_fcj4x"]
+offsets = PackedFloat32Array(0.77729255, 0.9170306, 1)
+colors = PackedColorArray(0.05882353, 0.003921569, 0.003921569, 1, 0.078431375, 0.007843138, 0.011764706, 0.61746407, 0.078431375, 0.007843138, 0.011764706, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7t0e3"]
+gradient = SubResource("Gradient_fcj4x")
+width = 256
+
+[sub_resource type="Animation" id="Animation_bylbt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 3.612)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ShadowArea2D/shadow_collision:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tahxh"]
+resource_name = "dark_spread_down"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 3.612), Vector2(1, 19.932001)]
+}
+
+[sub_resource type="Animation" id="Animation_fcj4x"]
+resource_name = "dark_spread_right"
+length = 60.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 59.933334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 3.612), Vector2(7.6, 3.612)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ShadowArea2D/shadow_collision:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 60),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(14.280002, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bylbt"]
+_data = {
+&"RESET": SubResource("Animation_bylbt"),
+&"dark_spread_down": SubResource("Animation_tahxh"),
+&"dark_spread_right": SubResource("Animation_fcj4x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lcr5"]
+size = Vector2(208.62044, 64.0919)
+
+[node name="Dark_Swarm" type="Node2D" unique_id=957464448]
+script = ExtResource("1_tahxh")
+
+[node name="Dark_Swarm" type="TextureRect" parent="." unique_id=2061939647]
+z_index = 1
+offset_left = -122.0
+offset_top = -114.99999
+offset_right = 134.0
+offset_bottom = -50.999992
+rotation = 6.2831855
+scale = Vector2(1, 3.612)
+texture = SubResource("GradientTexture2D_7t0e3")
+metadata/_edit_use_anchors_ = true
+
+[node name="Dark_AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1249008317]
+root_node = NodePath("../Dark_Swarm")
+libraries/ = SubResource("AnimationLibrary_bylbt")
+
+[node name="ShadowArea2D" type="Area2D" parent="." unique_id=1692827122]
+position = Vector2(0, 7.6293945e-06)
+scale = Vector2(1, 3.612)
+
+[node name="shadow_collision" type="CollisionShape2D" parent="ShadowArea2D" unique_id=256238141]
+position = Vector2(-18.310219, -2.1122355e-06)
+shape = SubResource("RectangleShape2D_4lcr5")

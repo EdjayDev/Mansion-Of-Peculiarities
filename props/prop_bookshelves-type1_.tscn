@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dlour4o0o7gee"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xtiyc"]
+load_path = "res://.godot/imported/base_interiors1.png-e7105eaaf3a8af023bba8359ee3e9b7f.ctex"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e4lfx"]
+diffuse_texture = SubResource("CompressedTexture2D_xtiyc")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(24, 17.198671)
+
+[node name="prop_bookshelves-type1_" type="Node2D" unique_id=1272782782]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=960755692]
+position = Vector2(0, -21)
+texture = SubResource("CanvasTexture_e4lfx")
+region_enabled = true
+region_rect = Rect2(179, 97, 26, 44)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=861327719]
+position = Vector2(0, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=10875453]
+position = Vector2(0, 0.999979)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=685641765]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1571501546]
+position = Vector2(0, -11.000021)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+debug_color = Color(0, 0, 0, 0.41960785)

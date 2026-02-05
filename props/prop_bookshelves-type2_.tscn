@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://d3ih2pt60pbdt"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_i1d5g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fg5ls"]
+diffuse_texture = ExtResource("1_i1d5g")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(42, 23.887081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1d5g"]
+size = Vector2(42, 25)
+
+[node name="prop_bookshelves-type2_" type="Node2D" unique_id=1979782609]
+
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="." unique_id=1714967162]
+position = Vector2(0, -24.999998)
+texture = SubResource("CanvasTexture_fg5ls")
+region_enabled = true
+region_rect = Rect2(81, 101, 46, 52)
+
+[node name="Sprite2D-Books" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1180433561]
+position = Vector2(-10, -11.500002)
+scale = Vector2(1.0000001, 1)
+texture = ExtResource("1_i1d5g")
+region_enabled = true
+region_rect = Rect2(182, 105, 20, 9)
+
+[node name="Sprite2D-Books3" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1716672015]
+position = Vector2(10, 6.499998)
+texture = ExtResource("1_i1d5g")
+region_enabled = true
+region_rect = Rect2(182, 105, 20, 9)
+
+[node name="Sprite2D-Books2" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=311901074]
+position = Vector2(-10, 6.500001)
+scale = Vector2(0.99999994, 1.0000002)
+texture = ExtResource("1_i1d5g")
+region_enabled = true
+region_rect = Rect2(182, 120, 20, 9)
+
+[node name="Sprite2D-Books4" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=546537723]
+position = Vector2(9.999999, -11.500004)
+scale = Vector2(0.9999998, 1)
+texture = ExtResource("1_i1d5g")
+region_enabled = true
+region_rect = Rect2(182, 120, 20, 9)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=232560522]
+position = Vector2(0, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1732811285]
+position = Vector2(0, -3.5000105)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1938613574]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=454066351]
+position = Vector2(0, -15.5)
+shape = SubResource("RectangleShape2D_i1d5g")
+debug_color = Color(0, 0, 0, 0.41960785)

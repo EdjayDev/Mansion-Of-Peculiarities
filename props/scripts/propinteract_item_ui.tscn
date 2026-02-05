@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jf6by2vn3ay3"]
+
+[ext_resource type="Script" uid="uid://kvbakuir3g84" path="res://props/scripts/propinteract_item_ui.gd" id="1_86kls"]
+
+[node name="PropinteractItemUI" type="Node2D" unique_id=1804027898]
+script = ExtResource("1_86kls")
+
+[node name="Control" type="Control" parent="." unique_id=1509034322]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 94.0
+offset_bottom = 31.0
+
+[node name="Button" type="Button" parent="Control" unique_id=1019704578]
+visible = false
+layout_mode = 0
+offset_right = 94.0
+offset_bottom = 31.0
+text = "Take"

@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://0ypoy8tjpj7b"]
+
+[ext_resource type="Script" uid="uid://boakt2of6a6yu" path="res://npc/scripts/npc_ember.gd" id="1_o1het"]
+[ext_resource type="Texture2D" uid="uid://3kdfqrqhawcp" path="res://npc/sprites/Sprite8.png" id="2_atbfh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46fq8"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_mujk7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_tjmiu"]
+resource_name = "idle_down"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_0com4"]
+resource_name = "idle_left"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ik7mx"]
+resource_name = "idle_right"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_l2wpd"]
+resource_name = "idle_up"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_yxvno"]
+resource_name = "walk_down"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_41hph"]
+resource_name = "walk_left"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31, 32, 33]
+}
+
+[sub_resource type="Animation" id="Animation_al4va"]
+resource_name = "walk_right"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [34, 35, 36, 37, 38, 39]
+}
+
+[sub_resource type="Animation" id="Animation_ttuo7"]
+resource_name = "walk_up"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mujk7"]
+_data = {
+&"RESET": SubResource("Animation_mujk7"),
+&"idle_down": SubResource("Animation_tjmiu"),
+&"idle_left": SubResource("Animation_0com4"),
+&"idle_right": SubResource("Animation_ik7mx"),
+&"idle_up": SubResource("Animation_l2wpd"),
+&"walk_down": SubResource("Animation_yxvno"),
+&"walk_left": SubResource("Animation_41hph"),
+&"walk_right": SubResource("Animation_al4va"),
+&"walk_up": SubResource("Animation_ttuo7")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2wpd"]
+radius = 6.0
+
+[node name="NPC_Ember" type="CharacterBody2D" unique_id=134707892]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_o1het")
+npc_name_ = "Ember"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401132179]
+position = Vector2(0, -17)
+texture = ExtResource("2_atbfh")
+hframes = 8
+vframes = 8
+
+[node name="Sprite2D-DialogueSprite" type="Sprite2D" parent="." unique_id=1062716661]
+visible = false
+position = Vector2(0, -12.5)
+texture = ExtResource("2_atbfh")
+region_enabled = true
+region_rect = Rect2(16, 5, 16, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=269721513]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_46fq8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=836441133]
+libraries/ = SubResource("AnimationLibrary_mujk7")
+autoplay = &"idle_down"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1154558775]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=627793625]
+modulate = Color(0.863281, 0.0910492, 0.0910492, 1)
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_l2wpd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1697567330]
+path_postprocessing = 1
+simplify_path = true
+debug_enabled = true

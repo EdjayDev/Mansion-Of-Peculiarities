@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpu47uhwo0ou1"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_0g5nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(6, 4.77741)
+
+[node name="prop_decor-flower1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_0g5nl")
+region_enabled = true
+region_rect = Rect2(113, 378, 14, 15)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -3)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")

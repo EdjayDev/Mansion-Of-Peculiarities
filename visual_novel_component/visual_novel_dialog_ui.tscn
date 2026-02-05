@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://b8q5ahdve5e6r"]
+
+[ext_resource type="FontFile" uid="uid://74tco6mcmmut" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="1_o1aic"]
+[ext_resource type="Texture2D" uid="uid://cguku5dwobmpx" path="res://npc/sprites/Sprite5.png" id="2_o1aic"]
+
+[sub_resource type="FontVariation" id="FontVariation_io5vp"]
+base_font = ExtResource("1_o1aic")
+variation_opentype = {
+1869640570: 14,
+2003265652: 800
+}
+
+[sub_resource type="Theme" id="Theme_0bupm"]
+default_font = SubResource("FontVariation_io5vp")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6n71h"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.17254902, 0.039215688, 0.039215688, 1)
+shadow_size = 14
+
+[sub_resource type="FontVariation" id="FontVariation_o1aic"]
+base_font = ExtResource("1_o1aic")
+
+[node name="VN_Component_DialogUI" type="Control" unique_id=2133615095]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0bupm")
+
+[node name="Dialog" type="Control" parent="." unique_id=795928591]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -203.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Speaker" type="PanelContainer" parent="Dialog" unique_id=848657082]
+z_index = 1
+layout_mode = 1
+offset_left = 224.0
+offset_top = -37.0
+offset_right = 488.0
+offset_bottom = 19.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6n71h")
+
+[node name="TextureRect" type="TextureRect" parent="Dialog/Speaker" unique_id=266111903]
+visible = false
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="Dialog/Speaker" unique_id=926271076]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Dialog/Speaker" unique_id=1921774731]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Name"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Dialog" unique_id=891662679]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="Dialog" unique_id=814855676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.171875, 0.038269043, 0.038269043, 1)
+
+[node name="speaker_sprite" type="Sprite2D" parent="Dialog" unique_id=171930576]
+position = Vector2(112.00001, 87)
+scale = Vector2(12, 11.999998)
+texture = ExtResource("2_o1aic")
+region_enabled = true
+region_rect = Rect2(16, 7, 16, 22)
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialog" unique_id=1173307525]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 225.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialog/MarginContainer" unique_id=962898144]
+clip_contents = false
+layout_mode = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_o1aic")
+theme_override_font_sizes/normal_font_size = 16
+text = "Template Text"

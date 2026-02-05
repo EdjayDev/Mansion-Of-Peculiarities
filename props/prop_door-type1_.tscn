@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://d37uv7gagv7cv"]
+
+[ext_resource type="Script" uid="uid://vx1mdtd8fai5" path="res://props/prop_door_type_1_.gd" id="1_67nfd"]
+[ext_resource type="Texture2D" uid="uid://cudqk5aos1jqy" path="res://props/sprites/base_interiors1_animation.png" id="1_lexhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(32, 28.664522)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lexhw"]
+size = Vector2(21, 25.798069)
+
+[sub_resource type="Animation" id="Animation_67nfd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_lexhw"]
+resource_name = "door_open"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 11, 20, 29]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_67nfd"]
+_data = {
+&"RESET": SubResource("Animation_67nfd"),
+&"door_open": SubResource("Animation_lexhw")
+}
+
+[node name="prop_door_type1_" type="Node2D" unique_id=1272782782]
+script = ExtResource("1_67nfd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=861327719]
+position = Vector2(0, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=10875453]
+position = Vector2(0, -5)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=685641765]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1571501546]
+position = Vector2(-0.5, -16.5)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_lexhw")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=960755692]
+position = Vector2(0, -16)
+texture = ExtResource("1_lexhw")
+hframes = 9
+vframes = 6
+frame = 2
+region_rect = Rect2(179, 97, 26, 44)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1220654314]
+libraries/ = SubResource("AnimationLibrary_67nfd")

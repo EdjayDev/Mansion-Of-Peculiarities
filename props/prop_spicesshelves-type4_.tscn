@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://domx43kc3af8b"]
+
+[ext_resource type="Texture2D" uid="uid://boi4wqaanise6" path="res://props/sprites/base_interiors2.png" id="1_k3cue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(25, 13.376778)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytpwc"]
+size = Vector2(25, 14)
+
+[node name="prop_spicesshelves-type4_" type="Node2D" unique_id=2123560258]
+
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="." unique_id=1617917122]
+position = Vector2(-0.5000013, -21.5)
+scale = Vector2(1.0000001, 1)
+texture = ExtResource("1_k3cue")
+region_enabled = true
+region_rect = Rect2(162, 10, 29, 45)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1584181354]
+position = Vector2(0, -14)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=764437144]
+position = Vector2(-0.5, 3)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=118111545]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1612829015]
+position = Vector2(-0.5, -11)
+shape = SubResource("RectangleShape2D_ytpwc")
+debug_color = Color(0, 0, 0, 0.41960785)

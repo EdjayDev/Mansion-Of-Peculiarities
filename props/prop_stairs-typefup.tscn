@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwqyjmqu7tifm"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_yrnhn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(2.9921875, 58.061428)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrnhn"]
+size = Vector2(3.0234375, 58)
+
+[node name="prop_stairs-typefup" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 30)
+texture = ExtResource("1_yrnhn")
+region_enabled = true
+region_rect = Rect2(18, 25, 43, 59)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+position = Vector2(0, 29)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-18.996094, -29.538527)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="CollisionShape2D_right" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(19.011719, -29.492188)
+shape = SubResource("RectangleShape2D_yrnhn")

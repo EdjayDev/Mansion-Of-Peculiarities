@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp8808mog12eb"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_avtie"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(16, 16.243227)
+
+[node name="prop_crate_type1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.9802322e-08, -11.000001)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("1_avtie")
+offset = Vector2(0.5, -0.5)
+region_enabled = true
+region_rect = Rect2(102, 18, 19, 27)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -9)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")

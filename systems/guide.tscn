@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlmit2sopjvdl"]
+
+[ext_resource type="FontFile" uid="uid://74tco6mcmmut" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="1_jm0wa"]
+[ext_resource type="Script" uid="uid://c42tg3mqjbcvv" path="res://systems/guide.gd" id="1_lujw1"]
+
+[sub_resource type="FontVariation" id="FontVariation_lujw1"]
+base_font = ExtResource("1_jm0wa")
+variation_opentype = {
+1869640570: 32,
+2003265652: 800
+}
+
+[node name="Guide" type="CanvasLayer"]
+script = ExtResource("1_lujw1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.75
+offset_top = -31.5
+offset_right = 50.75
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = SubResource("FontVariation_lujw1")
+bbcode_enabled = true
+text = "E - [color=bisque]Inventory[/color]
+Q - [color=bisque]Interact[/color]
+Shift - [color=bisque]Sprint[/color]"

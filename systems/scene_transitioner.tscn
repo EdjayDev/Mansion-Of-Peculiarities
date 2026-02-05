@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://drmc63r48ot5l"]
+
+[ext_resource type="Script" uid="uid://cief67gur5vv7" path="res://systems/scene_transitioner.gd" id="1_d0k6y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07wj3"]
+size = Vector2(46, 12)
+
+[node name="SceneTransitioner" type="Node2D" unique_id=491892144]
+script = ExtResource("1_d0k6y")
+load_level = "res://game_scenes/level_second.tscn"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1468941629]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1522594042]
+shape = SubResource("RectangleShape2D_07wj3")

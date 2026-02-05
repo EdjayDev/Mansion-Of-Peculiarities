@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://ho8jiscduenw"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_ntyn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7mba"]
+size = Vector2(10, 9.55484)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntyn4"]
+size = Vector2(10, 10)
+
+[node name="prop_platedvege-type1" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -7.499999)
+scale = Vector2(1, 1.0000001)
+texture = ExtResource("1_ntyn4")
+region_enabled = true
+region_rect = Rect2(56, 375, 16, 17)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, -7)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, -1)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_e7mba")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ntyn4")
+debug_color = Color(0, 0, 0, 0.41960785)

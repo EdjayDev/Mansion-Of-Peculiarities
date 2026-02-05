@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt3l1fy4jh47a"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_cvwrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(42, 23.887081)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1d5g"]
+size = Vector2(42, 25)
+
+[node name="prop_bookshelves-type5_" type="Node2D"]
+
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="."]
+position = Vector2(0, -24.999998)
+texture = ExtResource("1_cvwrh")
+region_enabled = true
+region_rect = Rect2(81, 101, 46, 52)
+
+[node name="Sprite2D-Books" type="Sprite2D" parent="Sprite2D-Shelf"]
+position = Vector2(7.5000005, -11.500004)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_cvwrh")
+region_enabled = true
+region_rect = Rect2(182, 105, 11, 9)
+
+[node name="Sprite2D-Books2" type="Sprite2D" parent="Sprite2D-Shelf"]
+position = Vector2(10, 6.499997)
+texture = ExtResource("1_cvwrh")
+region_enabled = true
+region_rect = Rect2(182, 105, 20, 9)
+
+[node name="Sprite2D-Books3" type="Sprite2D" parent="Sprite2D-Shelf"]
+position = Vector2(-10, 6.499997)
+scale = Vector2(1, 1.0000002)
+texture = ExtResource("1_cvwrh")
+region_enabled = true
+region_rect = Rect2(182, 120, 20, 9)
+
+[node name="Sprite2D-Books4" type="Sprite2D" parent="Sprite2D-Shelf"]
+position = Vector2(-16.5, -11.000002)
+texture = ExtResource("1_cvwrh")
+region_enabled = true
+region_rect = Rect2(195, 121, 7, 8)
+
+[node name="Sprite2D-Books5" type="Sprite2D" parent="Sprite2D-Shelf"]
+position = Vector2(-5, -11.500001)
+scale = Vector2(1, 0.9999998)
+texture = ExtResource("1_cvwrh")
+region_enabled = true
+region_rect = Rect2(182, 105, 14, 9)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -3.5000105)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -15.5)
+shape = SubResource("RectangleShape2D_i1d5g")
+debug_color = Color(0, 0, 0, 0.41960785)

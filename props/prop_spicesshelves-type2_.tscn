@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://b52v02bhxsthn"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_s11ku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(42.25, 20.0651)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytpwc"]
+size = Vector2(43, 22)
+
+[node name="prop_spiceshelves-type2_" type="Node2D" unique_id=2029943772]
+
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="." unique_id=1045331256]
+position = Vector2(0, -25)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(81, 101, 46, 52)
+
+[node name="Sprite2D-RedSpices" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1422950151]
+position = Vector2(13, -7)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="Sprite2D-RedSpices2" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1600753254]
+position = Vector2(2, -7)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="Sprite2D-RedSpices3" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1815804927]
+position = Vector2(-13, -7)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="Sprite2D-RedSpices4" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=480232272]
+position = Vector2(-13, 11)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="Sprite2D-RedSpices5" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=545870896]
+position = Vector2(-2, 11)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="Sprite2D-RedSpices6" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=234265236]
+position = Vector2(13, 11)
+texture = ExtResource("1_s11ku")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1447856759]
+position = Vector2(0, -14)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=494493271]
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=146704903]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1203124101]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_ytpwc")
+debug_color = Color(0, 0, 0, 0.41960785)

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dib02rwu0opaq"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_oapa5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(44, 23.8871)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytpwc"]
+size = Vector2(42, 22.75)
+
+[node name="prop_spicesshelves-type7_" type="Node2D" unique_id=115486931]
+
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="." unique_id=63659303]
+position = Vector2(0, -25)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(81, 101, 46, 52)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1735347303]
+position = Vector2(-11, 9.5)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(87, 377, 16, 17)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=712383148]
+position = Vector2(3, 11)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(132, 386, 10, 11)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1860208983]
+position = Vector2(14, -7)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(131, 369, 12, 14)
+
+[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1798553431]
+position = Vector2(14, 10.499999)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(162, 377, 11, 15)
+
+[node name="Sprite2D6" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1521329336]
+position = Vector2(-2, -8.5)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(56, 375, 16, 17)
+
+[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1557336370]
+position = Vector2(18, -4)
+texture = ExtResource("1_oapa5")
+region_enabled = true
+region_rect = Rect2(147, 218, 22, 31)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=118185134]
+position = Vector2(0, -14)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1190725396]
+position = Vector2(0, -1.500001)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2045493498]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2015370825]
+position = Vector2(0, -14.375)
+shape = SubResource("RectangleShape2D_ytpwc")
+debug_color = Color(0, 0, 0, 0.41960785)

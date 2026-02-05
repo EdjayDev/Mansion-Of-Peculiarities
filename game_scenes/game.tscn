@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ceow7wr54ok86"]
+
+[ext_resource type="Script" uid="uid://dfx7573la1r4e" path="res://game_scenes/game.gd" id="1_ck3pl"]
+[ext_resource type="AudioStream" uid="uid://t8i14wfewsgy" path="res://systems/sounds/sound_ambient-room.mp3" id="2_3hcdn"]
+[ext_resource type="PackedScene" uid="uid://rmu7dlxybaky" path="res://visual_novel_component/vn_component_manager.tscn" id="2_hju2f"]
+[ext_resource type="PackedScene" uid="uid://bq6apcviwprka" path="res://systems/screen_effect_ui.tscn" id="3_3jbpx"]
+[ext_resource type="Script" uid="uid://cwlusjyacmsor" path="res://systems/scene_manager.gd" id="3_ck3pl"]
+[ext_resource type="PackedScene" uid="uid://cearovqy3lv7k" path="res://systems/inventory_ui.tscn" id="4_i1vrp"]
+[ext_resource type="PackedScene" uid="uid://dlmit2sopjvdl" path="res://systems/guide.tscn" id="5_ahkyb"]
+[ext_resource type="PackedScene" uid="uid://pp2rctohjhyd" path="res://systems/ingame_menu_ui.tscn" id="6_8j0ir"]
+[ext_resource type="PackedScene" uid="uid://bchfdfm4fkouv" path="res://systems/game_over.tscn" id="6_p3pik"]
+[ext_resource type="PackedScene" uid="uid://cls0tw4vvvuyp" path="res://player/player.tscn" id="8_ctjle"]
+[ext_resource type="PackedScene" uid="uid://bfayks44dp6ns" path="res://game_scenes/_world_environment.tscn" id="11_7kora"]
+
+[node name="Game" type="Node2D" unique_id=1642123604]
+script = ExtResource("1_ck3pl")
+bg_music = ExtResource("2_3hcdn")
+
+[node name="Scene_Manager" type="Node2D" parent="." unique_id=399445585]
+unique_name_in_owner = true
+script = ExtResource("3_ck3pl")
+
+[node name="SceneUI_CanvasLayer" type="CanvasLayer" parent="." unique_id=285876335]
+layer = 2
+
+[node name="VN_Component_Manager" parent="SceneUI_CanvasLayer" unique_id=824060568 instance=ExtResource("2_hju2f")]
+unique_name_in_owner = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ScreenEffect_UI" parent="SceneUI_CanvasLayer" unique_id=962787129 instance=ExtResource("3_3jbpx")]
+unique_name_in_owner = true
+z_index = -1
+metadata/_edit_use_anchors_ = true
+
+[node name="Game_Over" parent="SceneUI_CanvasLayer" unique_id=335784931 instance=ExtResource("6_p3pik")]
+unique_name_in_owner = true
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryUI" parent="." unique_id=648873656 instance=ExtResource("4_i1vrp")]
+unique_name_in_owner = true
+
+[node name="Guide" parent="." unique_id=53178557 instance=ExtResource("5_ahkyb")]
+unique_name_in_owner = true
+layer = 2
+
+[node name="InGameMenu" parent="." unique_id=106220315 instance=ExtResource("6_8j0ir")]
+unique_name_in_owner = true
+layer = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=958591913]
+unique_name_in_owner = true
+
+[node name="Player" parent="." unique_id=1227195293 instance=ExtResource("8_ctjle")]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" parent="." unique_id=482453055 instance=ExtResource("11_7kora")]

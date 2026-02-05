@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cnb2ttnoys54c"]
+
+[ext_resource type="Texture2D" uid="uid://boi4wqaanise6" path="res://props/sprites/base_interiors2.png" id="1_o1yoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(25, 16.243229)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_om2ul"]
+size = Vector2(16, 7.1661296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytpwc"]
+size = Vector2(25, 16.5)
+
+[node name="prop_spicescrates-type2_" type="Node2D" unique_id=138318308]
+
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="." unique_id=12332287]
+position = Vector2(0, -20.500002)
+texture = ExtResource("1_o1yoc")
+region_enabled = true
+region_rect = Rect2(162, 275, 30, 43)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1680215863]
+position = Vector2(0, -11)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1529010111]
+position = Vector2(-0.5, -1)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1946766051]
+position = Vector2(-5, -13.75)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_om2ul")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1168752757]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1372488517]
+position = Vector2(-0.5, -12.25)
+shape = SubResource("RectangleShape2D_ytpwc")
+debug_color = Color(0, 0, 0, 0.41960785)

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bufs536uwrac7"]
+
+[ext_resource type="Script" uid="uid://cpt2a5krnik32" path="res://props/scripts/propinteract_item.gd" id="1_agq6a"]
+
+[node name="PropInteractItem_Component" type="Node2D" unique_id=383616533]
+script = ExtResource("1_agq6a")

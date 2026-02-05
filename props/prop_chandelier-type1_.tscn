@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://cys8pmwhdccpy"]
+
+[ext_resource type="Texture2D" uid="uid://b2jrn7vet6h3g" path="res://props/sprites/chandelier_frames.png" id="1_ksasg"]
+[ext_resource type="Script" uid="uid://dtc2f0u8l4st5" path="res://props/scripts/prop_light.gd" id="1_mkg3s"]
+
+[sub_resource type="Gradient" id="Gradient_1k06y"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.15238096, 0.32380953, 1)
+colors = PackedColorArray(0.9921875, 0.7938893, 0.5619812, 1, 0.9966352, 0.6603438, 0.28543288, 1, 0.984375, 0.58381176, 0.115356445, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m7540"]
+gradient = SubResource("Gradient_1k06y")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1k06y"]
+size = Vector2(34, 22)
+
+[sub_resource type="Animation" id="Animation_ksasg"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D-Shadow:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.66]
+}
+
+[sub_resource type="Animation" id="Animation_q1fh1"]
+resource_name = "idle_fading"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D-Shadow:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 4, 5, 6, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/PointLight2D:energy")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.66, 0.4, 0.25, 0.1, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1k06y"]
+resource_name = "idle_light"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D-Shadow:frame")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_mkg3s"]
+resource_name = "idle_unlit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D-Shadow:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D/PointLight2D:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m7540"]
+_data = {
+&"RESET": SubResource("Animation_ksasg"),
+&"idle_fading": SubResource("Animation_q1fh1"),
+&"idle_light": SubResource("Animation_1k06y"),
+&"idle_unlit": SubResource("Animation_mkg3s")
+}
+
+[node name="prop_light_chandelier-type1_" type="Node2D" unique_id=1673685087]
+z_index = 1
+script = ExtResource("1_mkg3s")
+
+[node name="Sprite2D-Shadow" type="Sprite2D" parent="." unique_id=8819774]
+modulate = Color(0, 0, 0, 0.45000002)
+z_index = 1
+position = Vector2(0, 32)
+scale = Vector2(1.1, 0.44)
+texture = ExtResource("1_ksasg")
+hframes = 4
+vframes = 2
+region_rect = Rect2(207, 1, 36, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=886083174]
+position = Vector2(0, -24)
+texture = ExtResource("1_ksasg")
+hframes = 4
+vframes = 2
+region_rect = Rect2(207, 1, 36, 48)
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D" unique_id=968969660]
+position = Vector2(0, 56)
+energy = 0.66
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+shadow_filter_smooth = 1.0
+texture = SubResource("GradientTexture2D_m7540")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2069989725]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=310580881]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_1k06y")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=183680904]
+libraries/ = SubResource("AnimationLibrary_m7540")
+autoplay = &"idle_light"

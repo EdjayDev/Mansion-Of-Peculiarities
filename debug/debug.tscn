@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck4hcnx1majda"]
+
+[ext_resource type="Script" uid="uid://vhtqwv2chhjc" path="res://debug/debug.gd" id="1_ifkhq"]
+[ext_resource type="PackedScene" uid="uid://cls0tw4vvvuyp" path="res://player/player.tscn" id="2_ifkhq"]
+[ext_resource type="PackedScene" uid="uid://0gymvt6vwfwk" path="res://npc/Enemy_EyeWatcher.tscn" id="3_25h3d"]
+
+[node name="Debug" type="Node2D"]
+script = ExtResource("1_ifkhq")
+
+[node name="Player" parent="." instance=ExtResource("2_ifkhq")]
+position = Vector2(-460, -160)
+
+[node name="Enemy_EyeWatcher" parent="." instance=ExtResource("3_25h3d")]

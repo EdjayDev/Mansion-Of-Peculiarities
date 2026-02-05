@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://pp2rctohjhyd"]
+
+[ext_resource type="Script" uid="uid://dcsw6kk3g80xv" path="res://systems/ingamemenu_ui.gd" id="1_r5q61"]
+[ext_resource type="FontFile" uid="uid://74tco6mcmmut" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="2_lfs02"]
+[ext_resource type="PackedScene" uid="uid://coxkk35x4355w" path="res://systems/savesystem_ui.tscn" id="2_prthm"]
+
+[sub_resource type="FontVariation" id="FontVariation_2gl0w"]
+base_font = ExtResource("2_lfs02")
+variation_opentype = {
+1869640570: 14,
+2003265652: 700
+}
+
+[sub_resource type="Theme" id="Theme_qkv10"]
+default_font = SubResource("FontVariation_2gl0w")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prthm"]
+bg_color = Color(0.18039216, 0.13725491, 0.09803922, 0.59607846)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gl0w"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6liry"]
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lfs02"]
+bg_color = Color(0.3254902, 0.2784314, 0.21568628, 1)
+
+[node name="InGameMenu" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_r5q61")
+
+[node name="GameMenu_Panel" type="Panel" parent="."]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_qkv10")
+theme_override_styles/panel = SubResource("StyleBoxFlat_prthm")
+
+[node name="GameMenu_UI_HeaderPanel" type="Panel" parent="GameMenu_Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2gl0w")
+
+[node name="label_Title" type="Label" parent="GameMenu_Panel/GameMenu_UI_HeaderPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -33.5
+offset_right = 66.5
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+label_settings = SubResource("LabelSettings_6liry")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu_Panel"]
+z_index = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -358.0
+offset_top = -77.0
+offset_right = 358.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="btn_Load" type="Button" parent="GameMenu_Panel/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lfs02")
+text = "Load
+"
+
+[node name="SaveSystem_UI" parent="GameMenu_Panel/VBoxContainer/btn_Load" instance=ExtResource("2_prthm")]
+unique_name_in_owner = true
+visible = false
+
+[node name="btn_Options" type="Button" parent="GameMenu_Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lfs02")
+text = "Options
+"
+
+[node name="btn_Quit" type="Button" parent="GameMenu_Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lfs02")
+text = "Quit to Main Menu"

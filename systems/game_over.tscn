@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://bchfdfm4fkouv"]
+
+[ext_resource type="Script" uid="uid://cwnhkvft26kr7" path="res://systems/game_over.gd" id="1_hv343"]
+[ext_resource type="FontFile" uid="uid://bseco4tvek2js" path="res://systems/fonts/CormorantGaramond-VariableFont_wght.ttf" id="2_qvk0g"]
+[ext_resource type="AudioStream" uid="uid://dkogj3rpxkdul" path="res://systems/sounds/sound_game_over.mp3" id="3_qvk0g"]
+
+[sub_resource type="Animation" id="Animation_c6k5d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5411765, 0.05882353, 0.05882353, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlowContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text_flavortext:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.5411765, 0.05882353, 0.05882353, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qvk0g"]
+resource_name = "show_text"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5411765, 0.05882353, 0.05882353, 0), Color(0.5411765, 0.05882353, 0.05882353, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlowContainer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text_flavortext:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5411765, 0.05882353, 0.05882353, 0), Color(0.91015625, 0.91015625, 0.91015625, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cayv3"]
+_data = {
+&"RESET": SubResource("Animation_c6k5d"),
+&"show_text": SubResource("Animation_qvk0g")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_wgraf"]
+base_font = ExtResource("2_qvk0g")
+variation_opentype = {
+2003265652: 700
+}
+variation_embolden = 0.33
+
+[sub_resource type="Theme" id="Theme_hfnlf"]
+default_font = SubResource("FontVariation_wgraf")
+default_font_size = 150
+
+[sub_resource type="FontVariation" id="FontVariation_n3rff"]
+base_font = ExtResource("2_qvk0g")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="Theme" id="Theme_056ih"]
+default_font = SubResource("FontVariation_n3rff")
+default_font_size = 18
+
+[sub_resource type="FontVariation" id="FontVariation_cayv3"]
+base_font = ExtResource("2_qvk0g")
+variation_opentype = {
+1869640570: 14,
+2003265652: 700
+}
+
+[sub_resource type="Theme" id="Theme_vlujd"]
+default_font = SubResource("FontVariation_cayv3")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvk0g"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayv3"]
+bg_color = Color(0.25, 0.056640625, 0.056640625, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_cim1o"]
+base_font = ExtResource("2_qvk0g")
+variation_opentype = {
+1869640570: 14,
+2003265652: 700
+}
+
+[sub_resource type="Theme" id="Theme_3qtnk"]
+default_font = SubResource("FontVariation_cim1o")
+default_font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6k5d"]
+bg_color = Color(0.08627451, 0, 0, 0)
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlujd"]
+bg_color = Color(0.2509804, 0.05490196, 0.05490196, 1)
+
+[node name="Game_Over" type="Control" unique_id=19339122]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hv343")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=940117720]
+libraries/ = SubResource("AnimationLibrary_cayv3")
+
+[node name="text_GameOver" type="RichTextLabel" parent="." unique_id=1677417197]
+modulate = Color(0.5411765, 0.05882353, 0.05882353, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hfnlf")
+theme_override_colors/default_color = Color(0.89453125, 0.8526001, 0.8526001, 1)
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="text_flavortext" type="RichTextLabel" parent="." unique_id=1592116754]
+modulate = Color(0.5411765, 0.05882353, 0.05882353, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 469.0
+grow_horizontal = 2
+theme = SubResource("Theme_056ih")
+theme_override_colors/default_color = Color(0.89453125, 0.8526001, 0.8526001, 1)
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FlowContainer" type="FlowContainer" parent="." unique_id=988108909]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 139.0
+offset_right = 256.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 64
+
+[node name="button_retry" type="Button" parent="FlowContainer" unique_id=1091796963]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme = SubResource("Theme_vlujd")
+theme_override_colors/font_color = Color(0.1484375, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_qvk0g")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cayv3")
+text = "RETRY"
+
+[node name="button_quit" type="Button" parent="FlowContainer" unique_id=2096228274]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_3qtnk")
+theme_override_colors/font_color = Color(0.1484375, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_c6k5d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vlujd")
+text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=474698321]
+stream = ExtResource("3_qvk0g")
+volume_db = -2.0
+pitch_scale = 1.25

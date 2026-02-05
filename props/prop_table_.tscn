@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bk76uyboowhol"]
+
+[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_odxb4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_odxb4"]
+size = Vector2(37.5, 20.065165)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m2rgw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_tyopc"]
+diffuse_texture = ExtResource("1_odxb4")
+
+[node name="prop_table_" type="Node2D" unique_id=702167317]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=1945335958]
+position = Vector2(-0.5, -15.5)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=847561390]
+position = Vector2(0.5, 0.5)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_odxb4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=875265104]
+material = SubResource("CanvasItemMaterial_m2rgw")
+position = Vector2(0, -16.5)
+texture = SubResource("CanvasTexture_tyopc")
+region_enabled = true
+region_rect = Rect2(21, 208, 39, 35)

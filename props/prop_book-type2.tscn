@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ob8jj0y1pp53"]
+
+[ext_resource type="Texture2D" uid="uid://bdoapfbayq81m" path="res://props/sprites/dark_objects.png" id="1_j471v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(7, 11.465797)
+
+[node name="prop_book-type2" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -7)
+texture = ExtResource("1_j471v")
+region_enabled = true
+region_rect = Rect2(196, 211, 9, 13)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -12)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4.9999948)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -7.0000052)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+debug_color = Color(0, 0, 0, 0.41960785)
