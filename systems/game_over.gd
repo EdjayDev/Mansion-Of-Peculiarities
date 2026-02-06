@@ -20,22 +20,27 @@ func _ready() -> void:
 	button_retry.pressed.connect(game_retry)
 	button_quit.pressed.connect(game_quit)
 	
-func game_over_screen(text : String = "GAME OVER", flavor_text : String = "", player : Player = null)->void:
+func game_over_screen(text : String = "GAME OVER", flavor_text : String = "", player : Player = null, mode : String = "default")->void:
 	SessionState.input_locked = true
 	await game.screen_effect_ui.set_effect("fade_out", 1)
-	if player:
-		player.global_position = SessionState.temp_player_position
-	game_over_audio.volume_db = 1.0
-	game_over_audio.pitch_scale = 1.25
-	game_over_audio.play()
 	text_game_over.text = text
 	text_flavortext.text = flavor_text
+	if player and mode != "cinematic":
+		player.global_position = SessionState.temp_player_position
 	
-	animation_player.play("show_text", -1, 0.5)
-	get_tree().paused = true
-	await animation_player.animation_changed
-	pass
-
+		game_over_audio.volume_db = 1.0
+		game_over_audio.pitch_scale = 1.25
+		game_over_audio.play()
+		animation_player.play("show_text", -1, 0.5)
+		get_tree().paused = true
+		await animation_player.animation_finished
+		
+	text_game_over.theme.default_font_size = 64
+	animation_player.play("show_cinematic_text", -1, 0.5)
+	#get_tree().paused = true
+	await animation_player.animation_finished
+	game_quit()
+	
 func reset_game_over()->void:
 	animation_player.play("RESET")
 	game_over_audio.stop()

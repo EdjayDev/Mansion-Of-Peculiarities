@@ -76,6 +76,7 @@ func _ready() -> void:
 	var saveui = get_tree().get_first_node_in_group("save_ui")
 	if saveui:
 		saveui.request_load_game.connect(_on_request_load_game)
+		
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interact"):
 		pass
@@ -254,8 +255,8 @@ func cancel_all_cutscene_movements():
 	for character in get_tree().get_nodes_in_group("npc") + [player]:
 		character.cancel_cutscene_movement = true
 
-func set_game_over(text : String = "GAME OVER", flavor_text : String = "")->void:
-	game_over.game_over_screen(text, flavor_text, player)
+func set_game_over(text : String = "GAME OVER", flavor_text : String = "", mode : String = "default")->void:
+	game_over.game_over_screen(text, flavor_text, player, "cinematic")
 	guide.visible = false
 
 	bg_music_player.volume_db = randf_range(-30.0, -20.0)

@@ -43,6 +43,34 @@ tracks/2/keys = {
 "values": [Color(0.5411765, 0.05882353, 0.05882353, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_n3rff"]
+resource_name = "show_cinematic_text"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text_GameOver:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.5546875, 0.5546875, 0.5546875, 0), Color(0.8828125, 1, 0.9807739, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("text_flavortext:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.796875, 0.796875, 0.796875, 0), Color(0.9156647, 0.97265625, 0.9576585, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_qvk0g"]
 resource_name = "show_text"
 length = 2.0
@@ -53,7 +81,7 @@ tracks/0/path = NodePath("text_GameOver:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.5333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.5411765, 0.05882353, 0.05882353, 0), Color(0.5411765, 0.05882353, 0.05882353, 1)]
@@ -86,6 +114,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cayv3"]
 _data = {
 &"RESET": SubResource("Animation_c6k5d"),
+&"show_cinematic_text": SubResource("Animation_n3rff"),
 &"show_text": SubResource("Animation_qvk0g")
 }
 

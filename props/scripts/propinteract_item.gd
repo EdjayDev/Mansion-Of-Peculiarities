@@ -11,12 +11,10 @@ const sound_interact_default = preload("uid://cmdr63ctw15h7")
 const sound_interact_book = preload("uid://d1usegrl8kyo1")
 const sound_interact_lock = preload("uid://c5msbsg5r7bmb")
 
-
 var player_nearby = false
 
 signal interaction_allowed
 var interaction_successful = false
-
 
 @export_category("Dialogue")
 @export var prop_interact_dialogue = []

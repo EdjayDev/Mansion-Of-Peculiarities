@@ -9,7 +9,8 @@ var current_scene_index := 0
 var scene_order: Array = []
 var scene_data: Dictionary = {}
 var possible_endings: Dictionary = {}
-var is_running := false
+var is_running : bool = false
+var on_ending : bool = false
 
 var titleCard = ""
 var titleText = ""
@@ -55,9 +56,11 @@ func run_cutscene_flow() -> void:
 		current_scene_index += 1
 
 	# Cutscene finished -> emit next scene
+	if on_ending:
+		print("ON ENDING ", on_ending)
+		return
 	if not is_running or current_scene_index >= scene_order.size():
 		cutscene_finished.emit(get_next_scene())
-
 
 # -------------------------
 # SCENE LOADING
@@ -121,13 +124,14 @@ func apply_conditions(chosen: Variant) -> void:
 		"go_mansion", "enter_mansion":
 			print("Continue story...")
 
-
 func run_ending(key: String) -> void:
 	is_running = false
+	on_ending = true
 	var ending = possible_endings.get(key, {})
 	var end_narr = ending.get("narration", [])
 	vn_component_manager.get_narration(end_narr)
 	await vn_component_manager.narration_finished
+	game.set_game_over("Congratulations, curiousity didn't kill the cat", "", "cinematic")
 	print("Ending reached:", key)
 
 
