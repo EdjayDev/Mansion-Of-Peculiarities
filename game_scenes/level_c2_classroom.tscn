@@ -12,6 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://dwu5rjw77nrqa" path="res://props/prop_bookshelves-type4_.tscn" id="7_l0jmt"]
 [ext_resource type="PackedScene" uid="uid://dlour4o0o7gee" path="res://props/prop_bookshelves-type1_.tscn" id="8_0tsiq"]
 
+[sub_resource type="Gradient" id="Gradient_0tsiq"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2rv37"]
+gradient = SubResource("Gradient_0tsiq")
+width = 256
+height = 256
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.2)
+metadata/_snap_enabled = true
+
 [sub_resource type="Gradient" id="Gradient_orpn7"]
 offsets = PackedFloat32Array(0.0034965035, 1)
 
@@ -93,17 +108,25 @@ position = Vector2(56, -459)
 
 [node name="GlobalLight" type="DirectionalLight2D" parent="Lights" unique_id=315658210]
 z_index = 1
-color = Color(0.051086426, 0.27164993, 0.7265625, 1)
-energy = 0.33
+color = Color(0.90234375, 0.65775466, 0.36657715, 1)
+energy = 0.4
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 3
 
+[node name="AmbientLight" type="PointLight2D" parent="Lights" unique_id=2093563878]
+position = Vector2(0, -386)
+scale = Vector2(0.77734375, 0.76171875)
+color = Color(0.98039216, 0.91268384, 0.64705884, 1)
+energy = 0.25
+texture = SubResource("GradientTexture2D_2rv37")
+texture_scale = 2.0
+
 [node name="ambient_light_1" type="PointLight2D" parent="Lights" unique_id=1311895787]
-position = Vector2(-79.02403, -405.88193)
+position = Vector2(-79.15417, -405.88193)
 rotation = 3.1415925
-scale = Vector2(2.427864, 0.88860416)
+scale = Vector2(2.4319308, 0.88860416)
 color = Color(0.91796875, 0.9421828, 1, 1)
 energy = 0.75
 shadow_enabled = true
@@ -111,9 +134,9 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_vf67o")
 
 [node name="ambient_light_2" type="PointLight2D" parent="Lights" unique_id=1618487656]
-position = Vector2(-79, -297.38553)
+position = Vector2(-79.15416, -297.38553)
 rotation = 3.1415925
-scale = Vector2(2.4271135, 0.93258035)
+scale = Vector2(2.431931, 0.93258035)
 color = Color(0.91796875, 0.9421828, 1, 1)
 energy = 0.75
 shadow_enabled = true
@@ -121,7 +144,7 @@ shadow_filter = 1
 texture = SubResource("GradientTexture2D_vf67o")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lights" unique_id=613661788]
-color = Color(0.5342865, 0.67417073, 0.91796875, 1)
+color = Color(0.047058824, 0.047058824, 0.06666667, 1)
 
 [node name="SceneTransitioner_To2fPlayground" parent="." unique_id=410900003 instance=ExtResource("3_7tcs1")]
 position = Vector2(3.9435122e-13, -237)

@@ -11,10 +11,10 @@ class_name Level_2f
 @onready var intro_luke_2: Marker2D = $Intro_PathMarkers/intro_luke2
 
 @onready var outro_exit: Marker2D = $Intro_PathMarkers/outro_exit
-@onready var shadow: npc_luke = $Y_Sort/shadow
+@onready var shadow: enemy_shadow = $Y_Sort/Enemy_Shadow
 @onready var shadow_mark: Marker2D = $Intro_PathMarkers/shadow_mark
 
-@onready var dark_overlay_animationplayer: AnimationPlayer = $dark_overlay/dark_overlay_animationplayer
+@onready var dark_swarm: Shadow_Swarm = $Dark_Swarm
 
 @onready var new_path_runaway: Node2D = $NewPath_Runaway
 @onready var remove_path: Node2D = $NewPath_Runaway/Remove_Path
@@ -75,7 +75,7 @@ func intro_cutscene() -> void:
 		player.face_target(shadow)
 		ember.face_target(shadow)
 		luke.face_target(shadow)
-		dark_overlay_animationplayer.play("dark_pool")
+		dark_swarm.dark_swarm()
 		var difficulty = await game.vn_component_manager.get_choices(choices)
 		match difficulty:
 			"easy":

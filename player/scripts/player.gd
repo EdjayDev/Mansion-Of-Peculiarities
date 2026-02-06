@@ -79,6 +79,9 @@ func _process(_delta):
 	visible = true
 	camera_2d.position_smoothing_enabled = true
 	if SessionState.input_locked:
+		interaction_area.process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		interaction_area.process_mode = Node.PROCESS_MODE_INHERIT
 		return
 	
 

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://d37uv7gagv7cv"]
 
-[ext_resource type="Script" uid="uid://vx1mdtd8fai5" path="res://props/prop_door_type_1_.gd" id="1_67nfd"]
 [ext_resource type="Texture2D" uid="uid://cudqk5aos1jqy" path="res://props/sprites/base_interiors1_animation.png" id="1_lexhw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
@@ -26,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_lexhw"]
 resource_name = "door_open"
-length = 0.6
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,7 +33,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"times": PackedFloat32Array(0, 0.6, 1.2, 1.7666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [2, 11, 20, 29]
@@ -47,7 +46,6 @@ _data = {
 }
 
 [node name="prop_door_type1_" type="Node2D" unique_id=1272782782]
-script = ExtResource("1_67nfd")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=861327719]
 position = Vector2(0, -12)

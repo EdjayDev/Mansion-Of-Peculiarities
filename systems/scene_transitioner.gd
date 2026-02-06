@@ -46,6 +46,7 @@ func start_forced_transition():
 
 # ---------------------------------------------------------------------
 func _start_transition() -> void:
+	auto_trigger = true
 	var game = get_tree().get_root().get_node_or_null("Game") as Game
 	if is_transitioning:
 		return

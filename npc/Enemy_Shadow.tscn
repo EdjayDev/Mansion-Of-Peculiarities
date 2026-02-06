@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yysbu2rfobc6"]
+[gd_scene format=3 uid="uid://yysbu2rfobc6"]
 
 [ext_resource type="Script" uid="uid://cq8dmlqsg5p4w" path="res://npc/scripts/enemy_shadow.gd" id="1_dxxor"]
 [ext_resource type="Texture2D" uid="uid://d3li8euy72j27" path="res://npc/sprites/Sprite7.png" id="1_si32s"]
@@ -172,13 +172,13 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8t6eb"]
 radius = 6.0
 
-[node name="Enemy_Shadow" type="CharacterBody2D"]
+[node name="Enemy_Shadow" type="CharacterBody2D" unique_id=1856426523]
 collision_layer = 2
-collision_mask = 16
+collision_mask = 0
 script = ExtResource("1_dxxor")
 npc_name_ = "Shadow"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1635690122]
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -26)
 scale = Vector2(1.5, 1.5)
@@ -186,7 +186,7 @@ texture = ExtResource("1_si32s")
 hframes = 8
 vframes = 8
 
-[node name="Sprite2D-DialogueSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D-DialogueSprite" type="Sprite2D" parent="." unique_id=1594034867]
 visible = false
 modulate = Color(0, 0, 0, 1)
 position = Vector2(0, -28.5)
@@ -194,25 +194,23 @@ texture = ExtResource("1_si32s")
 region_enabled = true
 region_rect = Rect2(15, 5, 17, 21)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=977120966]
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_dxxor")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mujk7")
-}
-autoplay = "idle_down"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=117262495]
+libraries/ = SubResource("AnimationLibrary_mujk7")
+autoplay = &"idle_down"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=103045528]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=595968350]
 modulate = Color(0.863281, 0.0910492, 0.0910492, 1)
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_8t6eb")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1299778346]
 path_postprocessing = 1
 simplify_path = true
 debug_enabled = true

@@ -7,12 +7,12 @@
 interpolation_mode = 2
 interpolation_color_space = 2
 offsets = PackedFloat32Array(0, 0.15238096, 0.32380953, 1)
-colors = PackedColorArray(0.9921875, 0.7938893, 0.5619812, 1, 0.9966352, 0.6603438, 0.28543288, 1, 0.984375, 0.58381176, 0.115356445, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.9921875, 0.7938893, 0.5619812, 1, 0.984375, 0.75083065, 0.48065186, 1, 0.984375, 0.68843335, 0.34606934, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_m7540"]
 gradient = SubResource("Gradient_1k06y")
-width = 256
-height = 256
+width = 128
+height = 128
 use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -202,9 +202,9 @@ position = Vector2(0, 56)
 energy = 0.66
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
-shadow_filter = 2
 shadow_filter_smooth = 1.0
 texture = SubResource("GradientTexture2D_m7540")
+texture_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2069989725]
 

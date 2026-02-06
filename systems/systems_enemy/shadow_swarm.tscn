@@ -4,7 +4,7 @@
 
 [sub_resource type="Gradient" id="Gradient_fcj4x"]
 offsets = PackedFloat32Array(0.77729255, 0.9170306, 1)
-colors = PackedColorArray(0.05882353, 0.003921569, 0.003921569, 1, 0.078431375, 0.007843138, 0.011764706, 0.61746407, 0.078431375, 0.007843138, 0.011764706, 0)
+colors = PackedColorArray(0.18431373, 0.16078432, 0.16078432, 1, 0.18431373, 0.16078432, 0.16078432, 0.60784316, 0.18431373, 0.16078432, 0.16078432, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7t0e3"]
 gradient = SubResource("Gradient_fcj4x")
@@ -92,9 +92,11 @@ _data = {
 size = Vector2(208.62044, 64.0919)
 
 [node name="Dark_Swarm" type="Node2D" unique_id=957464448]
+light_mask = 0
 script = ExtResource("1_tahxh")
 
 [node name="Dark_Swarm" type="TextureRect" parent="." unique_id=2061939647]
+light_mask = 0
 z_index = 1
 offset_left = -122.0
 offset_top = -114.99999

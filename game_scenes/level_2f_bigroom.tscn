@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_ccivc"]
 [ext_resource type="Texture2D" uid="uid://cix8ymjrov35j" path="res://tilemap/sprites/base_wallsfloors.png" id="2_yvejv"]
 [ext_resource type="PackedScene" uid="uid://cys8pmwhdccpy" path="res://props/prop_chandelier-type1_.tscn" id="4_1b4t7"]
-[ext_resource type="PackedScene" uid="uid://cls0tw4vvvuyp" path="res://player/player.tscn" id="5_fcj4x"]
 [ext_resource type="PackedScene" uid="uid://yysbu2rfobc6" path="res://npc/Enemy_Shadow.tscn" id="7_bylbt"]
 [ext_resource type="PackedScene" uid="uid://drmc63r48ot5l" path="res://systems/scene_transitioner.tscn" id="10_xdp8u"]
 [ext_resource type="PackedScene" uid="uid://c32kl132hi4oc" path="res://systems/systems_enemy/shadow_swarm.tscn" id="12_lylqo"]
@@ -150,9 +149,6 @@ tile_map_data = PackedByteArray("AADx//r/AQABAAIAAADw//r/AQABAAIAAADv//r/AQABAAI
 
 [node name="outerabove1_tilelayer" parent="outerabove_tilelayer" unique_id=548980105 instance=ExtResource("2_ccivc")]
 position = Vector2(-1.52588e-05, 3.8147e-06)
-
-[node name="Player" parent="outerabove_tilelayer" unique_id=2105237732 instance=ExtResource("5_fcj4x")]
-position = Vector2(-7.9999847, 115.99999)
 
 [node name="Y_Sort" type="Node2D" parent="." unique_id=642851679]
 y_sort_enabled = true

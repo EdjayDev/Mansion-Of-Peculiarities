@@ -22,6 +22,7 @@ const MUSIC_SUSPENSE_ESCAPE := preload("res://systems/sounds/sound_suspense_esca
 @onready var game_over : Game_Over = %Game_Over as Game_Over
 
 @onready var bg_music_player: AudioStreamPlayer2D = %AudioStreamPlayer2D
+@onready var bg_audio_effects: AudioStreamPlayer2D = %AudioEffects
 var bg_music_pitchscale_range = randf_range(0.9, 1.25)
 var bg_music_volumedb_range = randf_range(-2.0, 1.0)
 

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://d3vwplobwqja5" path="res://game_scenes/level_2f_playground.gd" id="1_afll3"]
 [ext_resource type="Texture2D" uid="uid://cix8ymjrov35j" path="res://tilemap/sprites/base_wallsfloors.png" id="2_3r3ct"]
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_rm8gy"]
-[ext_resource type="Script" uid="uid://cpt2a5krnik32" path="res://props/scripts/propinteract_item.gd" id="5_lu5bo"]
 [ext_resource type="PackedScene" uid="uid://c4rcys52aeqt2" path="res://props/prop_doorsilver-type1_.tscn" id="7_3fl0d"]
 [ext_resource type="PackedScene" uid="uid://bpalfv6ej0ikf" path="res://systems/save_desk.tscn" id="7_lu5bo"]
 [ext_resource type="PackedScene" uid="uid://ob8jj0y1pp53" path="res://props/prop_book-type2.tscn" id="7_st7rl"]
@@ -119,6 +118,21 @@ texture = ExtResource("2_3r3ct")
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_rm8gy")
 
+[sub_resource type="Gradient" id="Gradient_rm8gy"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_afll3"]
+gradient = SubResource("Gradient_rm8gy")
+width = 512
+height = 512
+use_hdr = true
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.90000004, 0.1)
+metadata/_snap_enabled = true
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fl0d"]
 size = Vector2(45.62705, 5.405652)
 
@@ -165,9 +179,18 @@ y_sort_enabled = true
 [node name="prop_book_guide" parent="Y_Sort/Props" unique_id=1346223216 instance=ExtResource("7_st7rl")]
 position = Vector2(4, -126)
 rotation = 0.5235988
-script = ExtResource("5_lu5bo")
+
+[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_book_guide" unique_id=383616533 instance=ExtResource("11_afll3")]
+position = Vector2(-2.861023e-06, -4.7683716e-06)
+rotation = -0.5235988
+prop_interact_dialogue = ["“OPEN SAYS ME – the silver door opens for {amount} keys”", "You received {amount} Door Key"]
+prop_swap_interact_dialogue = ["“OPEN SAYS ME – the silver door opens for {amount} keys”"]
+difficulty_based = true
 itemid_to_add = "item_doorkey"
 item_to_add = "Door Key"
+interaction_options = ["use", "leave"]
+interact_successful_sound = "book"
+can_interact_multiple_times = true
 
 [node name="save_desk" parent="Y_Sort/Props" unique_id=266235748 instance=ExtResource("7_lu5bo")]
 position = Vector2(72, -16)
@@ -184,22 +207,30 @@ load_level = "res://game_scenes/level_c2_entrance.tscn"
 spawn_marker_name = "Player_fromPlayGround"
 companion_spawn_marker = ["Companion_fromPlayGround"]
 
-[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_doorsilver-type1_" unique_id=383616533 instance=ExtResource("11_afll3")]
-interaction_options = ["use", "leave"]
+[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_doorsilver-type1_" unique_id=111200531 instance=ExtResource("11_afll3")]
+position = Vector2(-2.861023e-06, -4.7683716e-06)
+rotation = -0.5235988
+stop_adding_item = false
+animation_name = Array[String](["door_open"])
+animate_prop = true
+interaction_options = []
+can_interact_multiple_times = true
 required_item_id = "item_silverkey"
-required_item_dialogue = Array[String](["A heavy lock seals the gate."])
+required_item_dialogue = Array[String](["A heavy silver gate seals the entry."])
+prop_required_data = "silverdoor_playground_unlocked"
 
 [node name="prop_door_type1_" parent="Y_Sort/Props" unique_id=1272782782 instance=ExtResource("10_rm8gy")]
 position = Vector2(-128, -144)
-script = null
 
 [node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_" unique_id=114102818 instance=ExtResource("11_afll3")]
 position = Vector2(128, 144)
-prop_interact_dialogue = ["Door Unlocked!"]
-interaction_options = [{}, "take"]
+animation_name = Array[String](["door_open"])
+animate_prop = true
+interaction_options = []
+play_interact_audio = true
+interact_failed_sound = "lock"
 can_interact_multiple_times = true
 required_item_id = "item_doorkey"
-required_item_dialogue = Array[String](["The door is locked."])
 
 [node name="SceneTransitioner_ToLibrary" parent="Y_Sort/Props/prop_door_type1_" unique_id=1769144659 instance=ExtResource("10_fnn53")]
 position = Vector2(0, -5)
@@ -211,7 +242,6 @@ companion_spawn_marker = ["Companion_fromPlayGround"]
 
 [node name="prop_door_type1_2" parent="Y_Sort/Props" unique_id=2084220917 instance=ExtResource("10_rm8gy")]
 position = Vector2(128, -176)
-script = null
 
 [node name="SceneTransitioner_ToKitchen" parent="Y_Sort/Props/prop_door_type1_2" unique_id=28863244 instance=ExtResource("10_fnn53")]
 position = Vector2(0, -4)
@@ -223,17 +253,16 @@ companion_spawn_marker = ["Companion_fromPlayGround"]
 
 [node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_2" unique_id=629421114 instance=ExtResource("11_afll3")]
 position = Vector2(-128, 176)
-prop_interact_dialogue = ["Door Unlocked!"]
-itemid_to_add = "item_test"
-item_to_add = "[Item] Test"
+animation_name = Array[String](["door_open"])
+animate_prop = true
 interaction_options = []
+play_interact_audio = true
+interact_failed_sound = "lock"
 can_interact_multiple_times = true
 required_item_id = "item_doorkey"
-required_item_dialogue = Array[String](["The door is locked."])
 
 [node name="prop_door_type1_3" parent="Y_Sort/Props" unique_id=266789141 instance=ExtResource("10_rm8gy")]
 position = Vector2(208, -80)
-script = null
 
 [node name="SceneTransitioner_ToConservatory" parent="Y_Sort/Props/prop_door_type1_3" unique_id=1652266602 instance=ExtResource("10_fnn53")]
 position = Vector2(0, -4)
@@ -245,13 +274,13 @@ companion_spawn_marker = ["Companion_fromPlayGround"]
 
 [node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_3" unique_id=1140948832 instance=ExtResource("11_afll3")]
 position = Vector2(-208, 80)
-prop_interact_dialogue = ["Door Unlocked!"]
-itemid_to_add = "item_test"
-item_to_add = "[Item] Test"
+animation_name = Array[String](["door_open"])
+animate_prop = true
 interaction_options = []
+play_interact_audio = true
+interact_failed_sound = "lock"
 can_interact_multiple_times = true
 required_item_id = "item_doorkey"
-required_item_dialogue = Array[String](["The door is locked."])
 
 [node name="prop_light_candle-type1_" parent="Y_Sort/Props" unique_id=177282797 instance=ExtResource("11_rm8gy")]
 position = Vector2(-5, -134)
@@ -260,14 +289,26 @@ position = Vector2(-5, -134)
 
 [node name="GlobalLight" type="DirectionalLight2D" parent="Lights" unique_id=654060519]
 z_index = 1
-energy = 0.01
+color = Color(0, 0.08456054, 0.54296875, 1)
+energy = 0.03
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lights" unique_id=1306764424]
-color = Color(0.18469238, 0.23575436, 0.6953125, 1)
+color = Color(0, 0.015625004, 0.078125, 1)
+
+[node name="AmbientLight" type="PointLight2D" parent="Lights" unique_id=324756314]
+position = Vector2(-5, -134)
+color = Color(0.18310547, 0.26112416, 0.78125, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 2
+shadow_filter_smooth = 1.0
+texture = SubResource("GradientTexture2D_afll3")
+texture_scale = 0.75
 
 [node name="SceneTransitioner_ToSecondFloor" parent="." unique_id=518416637 instance=ExtResource("10_fnn53")]
 position = Vector2(0, 21)

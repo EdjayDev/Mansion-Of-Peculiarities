@@ -287,14 +287,6 @@ limit_enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D" unique_id=964215787]
-z_index = -2
-offset_left = -228.0
-offset_top = -144.0
-offset_right = 229.0
-offset_bottom = 135.0
-color = Color(0.18431373, 0.16078432, 0.16078432, 1)
-
 [node name="PlayerStateMachine" type="Node" parent="." unique_id=1144032892]
 script = ExtResource("3_qjkh3")
 
@@ -314,7 +306,6 @@ energy = 0.33
 texture = SubResource("GradientTexture2D_rgyib")
 
 [node name="LightMain" type="PointLight2D" parent="." unique_id=1721456157]
-visible = false
 light_mask = 3
 visibility_layer = 3
 z_index = 1

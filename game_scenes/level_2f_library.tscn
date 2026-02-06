@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cgkvsk7cr6epj" path="res://props/prop_chair-typefleft.tscn" id="18_50l5t"]
 [ext_resource type="PackedScene" uid="uid://c5ndr8yq03rx0" path="res://props/prop_candle-type2_.tscn" id="20_orut1"]
 [ext_resource type="PackedScene" uid="uid://0gymvt6vwfwk" path="res://npc/Enemy_EyeWatcher.tscn" id="21_orut1"]
+[ext_resource type="PackedScene" uid="uid://bfayks44dp6ns" path="res://game_scenes/_world_environment.tscn" id="22_4xcd8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_srs4d"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -134,10 +135,6 @@ sources/0 = SubResource("TileSetAtlasSource_odr00")
 cull_mode = 2
 polygon = PackedVector2Array(5, -1, 30, -2, 30, -10, 164, -10, 164, 35, 5, 35)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_h43da"]
-cull_mode = 2
-polygon = PackedVector2Array(3, -10, 317, -10, 317, 37, 3, 37)
-
 [node name="Level_2f_Library" type="Node2D" unique_id=1827394855]
 script = ExtResource("1_4j2js")
 metadata/_edit_vertical_guides_ = [2378.0]
@@ -186,14 +183,35 @@ ghost_drop_dialogue = Array[String](["\" By the light of 3 wax candle\""])
 
 [node name="_Props_Container" parent="Y_Sort" unique_id=361056891 instance=ExtResource("6_4xcd8")]
 
-[node name="prop_bookshelves-type4_11" parent="Y_Sort/_Props_Container" unique_id=357763303 instance=ExtResource("4_a0rcd")]
-position = Vector2(124, -386)
+[node name="prop_light_candle-type1" parent="Y_Sort/_Props_Container" unique_id=1345597440 instance=ExtResource("20_orut1")]
+position = Vector2(258, -1064)
 
-[node name="prop_bookshelves-type3_2" parent="Y_Sort/_Props_Container" unique_id=2135431588 instance=ExtResource("4_v6lm2")]
-position = Vector2(169, -386)
+[node name="prop_light_candle-type3" parent="Y_Sort/_Props_Container" unique_id=1462399837 instance=ExtResource("20_orut1")]
+position = Vector2(299, -1041)
 
-[node name="prop_bookshelves-type3_5" parent="Y_Sort/_Props_Container" unique_id=422979881 instance=ExtResource("4_v6lm2")]
-position = Vector2(169, -475)
+[node name="prop_light_candle-type4" parent="Y_Sort/_Props_Container" unique_id=889310634 instance=ExtResource("20_orut1")]
+position = Vector2(-123, -1068)
+
+[node name="prop_light_candle-type5" parent="Y_Sort/_Props_Container" unique_id=1930513712 instance=ExtResource("20_orut1")]
+position = Vector2(-154, -1064)
+
+[node name="prop_light_candle-type6" parent="Y_Sort/_Props_Container" unique_id=769599485 instance=ExtResource("20_orut1")]
+position = Vector2(-424, -1064)
+
+[node name="prop_light_candle-type7" parent="Y_Sort/_Props_Container" unique_id=1516439587 instance=ExtResource("20_orut1")]
+position = Vector2(-250, -993)
+
+[node name="prop_light_candle-type8" parent="Y_Sort/_Props_Container" unique_id=1921813965 instance=ExtResource("20_orut1")]
+position = Vector2(289, -1071)
+
+[node name="prop_light_candle-type9" parent="Y_Sort/_Props_Container" unique_id=1141005304 instance=ExtResource("20_orut1")]
+position = Vector2(-35, -956)
+
+[node name="prop_light_candle-type10" parent="Y_Sort/_Props_Container" unique_id=1998672312 instance=ExtResource("20_orut1")]
+position = Vector2(262, -868)
+
+[node name="prop_light_candle-type11" parent="Y_Sort/_Props_Container" unique_id=26741347 instance=ExtResource("20_orut1")]
+position = Vector2(-335, -877)
 
 [node name="prop_light_chandelier-type1_3" parent="Y_Sort/_Props_Container" unique_id=1673685087 instance=ExtResource("11_ngles")]
 position = Vector2(0, -118)
@@ -233,6 +251,15 @@ position = Vector2(205, -353)
 scale = Vector2(2, 2)
 light_energy = 0.5
 light_states = "idle_unlit"
+
+[node name="prop_bookshelves-type4_11" parent="Y_Sort/_Props_Container" unique_id=357763303 instance=ExtResource("4_a0rcd")]
+position = Vector2(124, -386)
+
+[node name="prop_bookshelves-type3_2" parent="Y_Sort/_Props_Container" unique_id=2135431588 instance=ExtResource("4_v6lm2")]
+position = Vector2(169, -386)
+
+[node name="prop_bookshelves-type3_5" parent="Y_Sort/_Props_Container" unique_id=422979881 instance=ExtResource("4_v6lm2")]
+position = Vector2(169, -475)
 
 [node name="prop_bookshelves-type4_" parent="Y_Sort/_Props_Container" unique_id=538247411 instance=ExtResource("4_a0rcd")]
 position = Vector2(-78, -231)
@@ -839,52 +866,26 @@ position = Vector2(-431, -231)
 [node name="prop_bookshelves-type1_11" parent="Y_Sort/_Props_Container" unique_id=764368746 instance=ExtResource("15_4ebhu")]
 position = Vector2(-431, -153)
 
-[node name="prop_light_candle-type1" parent="Y_Sort/_Props_Container" unique_id=1345597440 instance=ExtResource("20_orut1")]
-position = Vector2(258, -1064)
-
-[node name="prop_light_candle-type3" parent="Y_Sort/_Props_Container" unique_id=1462399837 instance=ExtResource("20_orut1")]
-position = Vector2(299, -1041)
-
-[node name="prop_light_candle-type4" parent="Y_Sort/_Props_Container" unique_id=889310634 instance=ExtResource("20_orut1")]
-position = Vector2(-123, -1068)
-
-[node name="prop_light_candle-type5" parent="Y_Sort/_Props_Container" unique_id=1930513712 instance=ExtResource("20_orut1")]
-position = Vector2(-154, -1064)
-
-[node name="prop_light_candle-type6" parent="Y_Sort/_Props_Container" unique_id=769599485 instance=ExtResource("20_orut1")]
-position = Vector2(-424, -1064)
-
-[node name="prop_light_candle-type7" parent="Y_Sort/_Props_Container" unique_id=1516439587 instance=ExtResource("20_orut1")]
-position = Vector2(-250, -993)
-
-[node name="prop_light_candle-type8" parent="Y_Sort/_Props_Container" unique_id=1921813965 instance=ExtResource("20_orut1")]
-position = Vector2(289, -1071)
-
-[node name="prop_light_candle-type9" parent="Y_Sort/_Props_Container" unique_id=1141005304 instance=ExtResource("20_orut1")]
-position = Vector2(-35, -956)
-
 [node name="Lights" type="Node2D" parent="." unique_id=2104445162]
 
 [node name="GlobalLight" type="DirectionalLight2D" parent="Lights" unique_id=1027124174]
 z_index = 1
-energy = 0.03
+color = Color(0.11364746, 0.2460804, 0.765625, 1)
+energy = 0.1
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lights" unique_id=1765960787]
-color = Color(0.009338379, 0.10661316, 0.3984375, 1)
+color = Color(0.047058824, 0.047058824, 0.06666667, 1)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Lights" unique_id=953868751]
 z_index = -1
 position = Vector2(52, -193)
 occluder = SubResource("OccluderPolygon2D_4xcd8")
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Lights" unique_id=219026187]
-z_index = -1
-position = Vector2(54, -271)
-occluder = SubResource("OccluderPolygon2D_h43da")
+[node name="WorldEnvironment" parent="Lights" unique_id=482453055 instance=ExtResource("22_4xcd8")]
 
 [node name="Intro_Markers" type="Node2D" parent="." unique_id=27916722]
 position = Vector2(9.536743e-07, 4.999999)
@@ -924,9 +925,3 @@ position = Vector2(0, -41)
 
 [node name="Companion_fromPlayGround" type="Marker2D" parent="." unique_id=1491486146]
 position = Vector2(0, -9)
-
-[node name="prop_light_candle-type1" parent="." unique_id=1998672312 instance=ExtResource("20_orut1")]
-position = Vector2(262, -868)
-
-[node name="prop_light_candle-type2" parent="." unique_id=26741347 instance=ExtResource("20_orut1")]
-position = Vector2(-335, -877)
