@@ -60,8 +60,15 @@ var prologue_data = {
 }
 
 var prologue_possible_endings = {
-	"Ending_Leave": {"narration": ["You decided not to go."]},
-	"Ending_LeaveMansionDoorway": {"narration": ["Fear crept into your mind."]}
+	"leave_mansion": {
+		"narration": ["You decided not to go."],
+		"gameover_text": "Congratulations, Curiosity didn't kill the cat"
+		},
+	"dontgo_mansion": {
+		"narration": ["The group decided to go back."],
+		"gameover_text": "Did fear creep inside your mind?"
+		
+	}
 }
 
 

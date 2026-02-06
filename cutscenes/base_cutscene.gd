@@ -106,7 +106,7 @@ func apply_conditions(chosen: Variant) -> void:
 	if chosen == null:
 		push_warning("apply_conditions received null")
 		return
-
+	
 	if typeof(chosen) == TYPE_ARRAY:
 		print("Player selected items: ", chosen)
 		# Handle inventory items here if needed
@@ -115,23 +115,22 @@ func apply_conditions(chosen: Variant) -> void:
 	if typeof(chosen) != TYPE_STRING:
 		push_warning("Unexpected choice type: " + str(typeof(chosen)))
 		return
-
-	match chosen:
-		"leave_mansion":
-			await run_ending("Ending_Leave")
-		"dontgo_mansion":
-			await run_ending("Ending_LeaveMansionDoorway")
-		"go_mansion", "enter_mansion":
-			print("Continue story...")
+		
+	print("Chosen: ", chosen)
+	print("Current Possible endings: ", possible_endings)
+	if possible_endings.has(chosen):
+		await run_ending(chosen)
+		pass
 
 func run_ending(key: String) -> void:
 	is_running = false
 	on_ending = true
 	var ending = possible_endings.get(key, {})
 	var end_narr = ending.get("narration", [])
+	var gameover_text = ending.get("gameover_text", "")
 	vn_component_manager.get_narration(end_narr)
 	await vn_component_manager.narration_finished
-	game.set_game_over("Congratulations, curiousity didn't kill the cat", "", "cinematic")
+	game.set_game_over(gameover_text)
 	print("Ending reached:", key)
 
 
