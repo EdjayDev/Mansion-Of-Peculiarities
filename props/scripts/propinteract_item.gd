@@ -14,13 +14,12 @@ const sound_interact_lock = preload("uid://c5msbsg5r7bmb")
 var player_nearby = false
 
 signal interaction_allowed
-var interaction_successful = false
+var check_requirement_completed : bool = false
+var interaction_choices_successful : bool = false
 
 @export_category("Dialogue")
-@export var prop_interact_dialogue = []
+@export var prop_interact_dialogue : Array = []
 @export var prop_swap_interact_dialogue = []
-@export var prop_interact_successful_dialogue = []
-@export var prop_interact_uncessful_dialogue = []
 @export_category("Inventory")
 @export var stop_adding_item : bool = true
 @export var difficulty_based : bool = false
@@ -32,7 +31,22 @@ var interaction_successful = false
 @export var animation_name : Array[String] = []
 @export var animate_prop : bool = false
 var animate_player : AnimationPlayer = null
-@export var interaction_options = ["take", "leave"]
+@export var interaction_options : Array[Dictionary] = []
+#interaction_options example:
+	#{
+		#"choice": "Do something",
+		#"choice_id": "do_something",
+		#"actions": [
+			#{"name": "play_prop_narration", "set_value": ["default narration"]},
+			#{"name": "_set_inventory_settings", "set_value": [true, false, 0, "item_default", "DEFAULT ITEM", 1]}
+		#]
+	#}
+	#{
+		#"choice": "Do nothing",
+		#"choice_id": "leave",
+		#"actions": []
+	#}
+
 @export var remove_after : bool = false
 @export_category("Prop Interaction Audio")
 @export var play_interact_audio : bool = false
@@ -40,6 +54,8 @@ var animate_player : AnimationPlayer = null
 @export_enum("default", "book", "lock") var interact_failed_sound : String = "default"
 @export_category("Conditions")
 @export var debug : bool = false
+@export var entry_transitioner_unlocked : bool = true
+@export var interaction_option_dependent : bool = false
 @export var unlock_flag : String = ""
 @export var can_interact : bool = true
 @export var can_interact_multiple_times: bool = false
@@ -112,7 +128,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func interact() -> void:
 	SessionState.input_locked = true
-	interaction_successful = false
+	check_requirement_completed = false
 	if !can_interact:
 		is_interacting = false 
 		return
@@ -121,36 +137,23 @@ func interact() -> void:
 	await play_prop_narration()
 	
 	check_prop_requirements()
-	if !interaction_options.is_empty():
-		pass
-	if play_interact_audio:
-		play_prop_audio()
-		
-	if itemid_to_add != "" and item_to_add != "":
-		InventoryManager.add_item(itemid_to_add, item_to_add, itemamount_to_add, interaction_options)
-	if stop_adding_item:
-		itemid_to_add = ""
-		item_to_add = ""
+	await handle_interaction_options()
+	play_prop_audio()
+	apply_inventory_settings()
 	
 	if remove_after:
 		queue_free()
-		
-	if animate_prop and interaction_successful:
-		SessionState.input_locked = true
-		animate_player.play(animation_name[0], -1, 1)
-		await animate_player.animation_finished
-		
-	
-	if interaction_successful:
-		interaction_allowed.emit()
-	interact_done = true
-	is_interacting = false  
-	SessionState.input_locked = false
 
-func play_prop_narration() -> void:
+	if can_complete_interaction():
+		await complete_interaction()
+
+
+func play_prop_narration(custom_narration : Array = []) -> void:
+	if not custom_narration.is_empty():
+		prop_interact_dialogue = custom_narration
 	if prop_interact_dialogue.is_empty():
 		return
-
+	
 	var resolved_dialogue: Array[String] = []
 
 	for line in prop_interact_dialogue:
@@ -164,17 +167,40 @@ func play_prop_narration() -> void:
 		prop_interact_dialogue = prop_swap_interact_dialogue
 	
 func play_prop_audio()->void:
+	if !play_interact_audio:
+		return
 	var prop_audio_player = game.bg_audio_effects as AudioStreamPlayer2D
 	prop_audio_player.pitch_scale = 1.25
 	prop_audio_player.volume_db = -2.0
 	
-	if not interaction_successful:
+	if not check_requirement_completed:
 		prop_audio_player.stream = prop_interaction_sounds.get(interact_failed_sound, sound_interact_default)
 		prop_audio_player.play()
 		return
 	
 	prop_audio_player.stream = prop_interaction_sounds.get(interact_successful_sound, sound_interact_default)
 	prop_audio_player.play()
+
+func can_complete_interaction()->bool:
+	if not check_requirement_completed:
+		return false
+		
+	if interaction_option_dependent:
+		return interaction_choices_successful
+	
+	return true	
+	
+func complete_interaction()->void:
+	if animate_prop:
+		SessionState.input_locked = true
+		animate_player.play(animation_name[0], -1, 1)
+		await animate_player.animation_finished
+		SessionState.input_locked = false
+	if entry_transitioner_unlocked:
+		interaction_allowed.emit()
+	
+	interact_done = true
+	is_interacting = false  
 
 func check_prop_requirements()->void:
 	if required_item_id != "":
@@ -188,9 +214,9 @@ func check_prop_requirements()->void:
 			is_interacting = false
 			SessionState.input_locked = false
 			return 
-			
-	SessionState.set_scene_data(prop_required_data, true)
-	interaction_successful = true
+	check_requirement_completed = true
+	if not interaction_option_dependent:
+		SessionState.set_scene_data(prop_required_data, true)
 
 func check_prop_inventory_setting()->void:
 	if difficulty_based:
@@ -204,3 +230,63 @@ func check_prop_inventory_setting()->void:
 				itemamount_to_add = 3
 		if item_increment > 0:
 			itemamount_to_add += item_increment
+
+func handle_interaction_options()->void:
+	if not check_requirement_completed:
+		return
+	if interaction_options.is_empty():
+		return
+	var choices_selection = []
+	for choice_list in interaction_options:
+		var get_choices_dictionary = {}
+		get_choices_dictionary["choice"] = choice_list["choice"]
+		get_choices_dictionary["choice_id"] = choice_list["choice_id"]
+		choices_selection.append(get_choices_dictionary)
+	var choice_id_selected = await game.vn_component_manager.get_choices(choices_selection)
+	for choice in interaction_options:
+		if choice["choice_id"] != choice_id_selected:
+			continue
+
+		execute_choice_actions(choice)
+		return
+		
+func execute_choice_actions(selected_choice: Dictionary) -> void:
+	print("Selected Choice: ", selected_choice)
+	if not selected_choice.has("actions"):
+		return
+	
+	for action_dict in selected_choice["actions"]:
+		if not action_dict.has("name"):
+			continue
+
+		var func_name = action_dict["name"]
+		var parameter_value = action_dict.get("set_value", [])
+
+		if has_method(func_name):
+			callv(func_name, parameter_value)
+	
+func set_inventory_settings(stop_adding: bool, is_difficulty_based: bool, increment: int, item_id: String, item_name: String, amount: int) -> void:
+	self.stop_adding_item = stop_adding
+	self.difficulty_based = is_difficulty_based
+	self.item_increment = increment
+	self.itemid_to_add = item_id
+	self.item_to_add = item_name
+	self.itemamount_to_add = amount
+
+func set_interaction_choices_state(value : bool):
+	interaction_choices_successful = value
+	if value:
+		SessionState.set_scene_data(prop_required_data, true)
+		
+func apply_inventory_settings()->void:
+	if not check_requirement_completed:
+		return
+	if interaction_option_dependent:
+		if not interaction_choices_successful:
+			return
+	if itemid_to_add != "" and item_to_add != "":
+		InventoryManager.add_item(itemid_to_add, item_to_add, itemamount_to_add, interaction_options)
+	if stop_adding_item:
+		itemid_to_add = ""
+		item_to_add = ""
+	

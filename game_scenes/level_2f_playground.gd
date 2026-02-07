@@ -7,8 +7,8 @@ func _ready() -> void:
 
 	await init_level()
 	print("Level_2f_Playground ready")
+	player.light_main.visible = true	
 	game.set_bgmusic_setting(-10.0, 0.9)
-	
 	# Check if level visited before, and if player got the door keys depending on difficulty
 	var visited : bool = SessionState.get_scene_data("visited_before", false)
 	

@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ndr8yq03rx0" path="res://props/prop_candle-type2_.tscn" id="20_orut1"]
 [ext_resource type="PackedScene" uid="uid://0gymvt6vwfwk" path="res://npc/Enemy_EyeWatcher.tscn" id="21_orut1"]
 [ext_resource type="PackedScene" uid="uid://bfayks44dp6ns" path="res://game_scenes/_world_environment.tscn" id="22_4xcd8"]
+[ext_resource type="PackedScene" uid="uid://bufs536uwrac7" path="res://props/scripts/propinteract_item_component.tscn" id="22_g5vll"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_srs4d"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -725,7 +726,8 @@ position = Vector2(-303, -638)
 
 [node name="prop_bookshelves-type3_6" parent="Y_Sort/_Props_Container" unique_id=1606610417 instance=ExtResource("4_v6lm2")]
 position = Vector2(-420, -717)
-script = ExtResource("12_ps0wf")
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type3_6" unique_id=383616533 instance=ExtResource("22_g5vll")]
 prop_interact_dialogue = ["You stumbled upon a book..", "\"She wanders the abandoned corridors of the old estate, a pale figure in a white gown, her footsteps silent against the cracked tiles.\"", "\"Some say she appears only when sorrow weighs heaviest on the heart, lingering just out of reach, her hollow eyes watching, waiting.\""]
 itemid_to_add = "item_booklove"
 item_to_add = "[Book] The Maiden"

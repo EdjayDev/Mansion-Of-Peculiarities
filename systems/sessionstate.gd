@@ -52,7 +52,7 @@ func _process(_delta: float) -> void:
 		#game.cancel_all_cutscene_movements()
 		#print("Saved Data: ", SaveSystem.save_data)
 		#print("Session Slot status: ", slot_status)
-		#InventoryManager.add_item("item_silverkey", "Silver Key", 1)
+		#InventoryManager.add_item("item_doorkey", "Door Key", 1)
 		#print("Temp Global Data: ", temp_global_data)
 		#print("Global Data: ", global_data)
 		pass
