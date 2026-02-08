@@ -19,8 +19,8 @@ config/version="0.0.9"
 run/main_scene="uid://p5i3or1lecg0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.101563, 0, 0, 1)
-boot_splash/image="uid://d2cs0buibw8uj"
-config/icon="uid://drnc46ehg7u1k"
+boot_splash/image="uid://onvi88rotk4m"
+config/icon="uid://c4hfqayfvgqxp"
 boot_splash/stdout/print_fps=false
 boot_splash/stdout/print_gpu_profile=false
 
@@ -41,9 +41,9 @@ window/size/viewport_height=720
 window/size/extend_to_title=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/stdout/print_fps=false
-window/stdout/print_gpu_profile=true
 
 [file_customization]
 

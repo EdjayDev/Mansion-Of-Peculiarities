@@ -7,9 +7,9 @@ static var active_prop: PropInteract_Item = null
 
 var prop_interaction_ui = preload("uid://jf6by2vn3ay3").instantiate()
 
-const sound_interact_default = preload("uid://cmdr63ctw15h7")
-const sound_interact_book = preload("uid://d1usegrl8kyo1")
-const sound_interact_lock = preload("uid://c5msbsg5r7bmb")
+const sound_interact_book = preload("uid://b2cjo8rlahov8")
+const sound_interact_default = preload("uid://b8gkwiqj3mj0q")
+const sound_interact_lock = preload("uid://y67bol3wfuhd")
 
 var player_nearby = false
 

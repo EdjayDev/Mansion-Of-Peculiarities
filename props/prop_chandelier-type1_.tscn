@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cys8pmwhdccpy"]
 
-[ext_resource type="Texture2D" uid="uid://b2jrn7vet6h3g" path="res://props/sprites/chandelier_frames.png" id="1_ksasg"]
+[ext_resource type="Texture2D" uid="uid://d2bgeesndkvca" path="res://props/sprites/chandelier_frames.png" id="1_ksasg"]
 [ext_resource type="Script" uid="uid://dtc2f0u8l4st5" path="res://props/scripts/prop_light.gd" id="1_mkg3s"]
 
 [sub_resource type="Gradient" id="Gradient_1k06y"]
@@ -11,8 +11,8 @@ colors = PackedColorArray(0.9921875, 0.7938893, 0.5619812, 1, 0.984375, 0.750830
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_m7540"]
 gradient = SubResource("Gradient_1k06y")
-width = 128
-height = 128
+width = 256
+height = 256
 use_hdr = true
 fill = 1
 fill_from = Vector2(0.5, 0.5)
@@ -202,9 +202,9 @@ position = Vector2(0, 56)
 energy = 0.66
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
+shadow_filter = 1
 shadow_filter_smooth = 1.0
 texture = SubResource("GradientTexture2D_m7540")
-texture_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2069989725]
 

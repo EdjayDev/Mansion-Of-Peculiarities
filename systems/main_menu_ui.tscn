@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://p5i3or1lecg0"]
 
 [ext_resource type="Script" uid="uid://bivlscb68yong" path="res://systems/main_menu_ui.gd" id="1_oh28q"]
-[ext_resource type="Texture2D" uid="uid://d2cs0buibw8uj" path="res://cutscenes/assets/bg_mansion.png" id="2_rc1mk"]
+[ext_resource type="Texture2D" uid="uid://onvi88rotk4m" path="res://cutscenes/assets/bg_mansion.png" id="2_rc1mk"]
 [ext_resource type="PackedScene" uid="uid://coxkk35x4355w" path="res://systems/savesystem_ui.tscn" id="3_473j0"]
-[ext_resource type="FontFile" uid="uid://74tco6mcmmut" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="3_u4gf3"]
-[ext_resource type="FontFile" uid="uid://cigfxjp5qxkll" path="res://systems/fonts/Cinzel-VariableFont_wght.ttf" id="4_yj3pl"]
+[ext_resource type="FontFile" uid="uid://paxdsahot7r8" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="3_u4gf3"]
+[ext_resource type="FontFile" uid="uid://dxk7xhth31dks" path="res://systems/fonts/Cinzel-VariableFont_wght.ttf" id="4_yj3pl"]
 [ext_resource type="AudioStream" uid="uid://c2hsg55vb76q8" path="res://systems/sounds/sound_main-menu.mp3" id="6_aiwrd"]
 
 [sub_resource type="Gradient" id="Gradient_6liry"]
