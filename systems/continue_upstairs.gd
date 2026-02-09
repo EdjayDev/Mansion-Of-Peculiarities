@@ -56,6 +56,7 @@ func player_notice() -> void:
 	
 	if choice_id == "stay":
 		print("Player chose to stay")
+		game.scene_manager.move_to(player.global_position + Vector2(0, 50), player, 50, true, "before", "idle_down")
 		return
 	play_cutscene()
 
@@ -82,7 +83,7 @@ func _play_cutscene_sequence() -> void:
 	await game.scene_manager.wait_time(2.0)
 	
 	game.scene_manager.move_to(target_point_player.global_position, player, 30)
-	game.vn_component_manager.get_dialogue(narration_lines, "I", player.sprite_2d_dialogue_sprite)
+	game.vn_component_manager.get_dialogue(narration_lines, "I", player.player_dialogue_sprite)
 	game.scene_manager.move_to(target_point_npcember.global_position, ember, 40, true, "after", "idle_up")
 	game.scene_manager.move_to(target_point_npcluke.global_position, luke, 45, true, "after", "idle_up")
 	

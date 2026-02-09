@@ -66,7 +66,7 @@ func intro_cutscene() -> void:
 		luke.face_target(player)
 		player.face_target(luke)
 		ember.face_target(player)
-		await game.vn_component_manager.get_dialogue(dialogue_facingluke, "I", player.sprite_2d_dialogue_sprite)
+		await game.vn_component_manager.get_dialogue(dialogue_facingluke, "I", player.player_dialogue_sprite)
 		player.face_target(ember)
 
 		await get_tree().create_timer(2.5).timeout
@@ -81,7 +81,7 @@ func intro_cutscene() -> void:
 			"easy":
 				SessionState.remove_companion("ember")
 				ember.is_following_player = false
-				await game.vn_component_manager.get_dialogue(["luke come with me!"], "I", player.sprite_2d_dialogue_sprite)
+				await game.vn_component_manager.get_dialogue(["luke come with me!"], "I", player.player_dialogue_sprite)
 				game.scene_manager.move_to(luke.global_position, player, 60)
 				await game.scene_manager.wait_for([player])
 				game.scene_manager.move_to(outro_exit.global_position, player, 100)
@@ -93,7 +93,7 @@ func intro_cutscene() -> void:
 				await game.scene_manager.wait_time(2.0)
 			"medium":
 				SessionState.remove_companion("luke")
-				await game.vn_component_manager.get_dialogue(["ember come with me!"], "I", player.sprite_2d_dialogue_sprite)
+				await game.vn_component_manager.get_dialogue(["ember come with me!"], "I", player.player_dialogue_sprite)
 				game.scene_manager.move_to(ember.global_position, player, 60)
 				await game.scene_manager.wait_for([player])
 				game.scene_manager.move_to(outro_exit.global_position, player, 100)
@@ -106,7 +106,7 @@ func intro_cutscene() -> void:
 				await game.scene_manager.wait_time(2.0)
 			"hard":
 				SessionState.clear_companion()
-				await game.vn_component_manager.get_dialogue(["..."], "I", player.sprite_2d_dialogue_sprite)
+				await game.vn_component_manager.get_dialogue(["..."], "I", player.player_dialogue_sprite)
 				game.scene_manager.move_to(outro_exit.global_position, player, 100)
 				game.scene_manager.move_to(ghost_exit.global_position, ember, 115)
 				game.scene_manager.move_to(ghost_exit.global_position, luke, 95)

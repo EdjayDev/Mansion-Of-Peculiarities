@@ -13,8 +13,8 @@ func move_to(target_location: Vector2, character: CharacterBody2D, speed: float,
 		return
 	if not character.has_method("on_cutscene_movement"):
 		return
-	if character is not Player:
-		character.in_cutscene = true
+	character.in_cutscene = true
+	
 	if has_custom_animation and animation_timing == "before":
 		character.play_custom_animation(animation)
 
@@ -30,8 +30,7 @@ func move_to(target_location: Vector2, character: CharacterBody2D, speed: float,
 	if has_custom_animation and animation_timing == "after":
 		character.play_custom_animation(animation)
 	
-	if character is not Player:
-		character.in_cutscene = false
+	character.in_cutscene = false
 	character.velocity = Vector2.ZERO
 	character_reach_target.emit(character)
 

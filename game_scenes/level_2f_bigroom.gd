@@ -79,9 +79,9 @@ func entry_shadow()->void:
 	
 	luke.face_target(enemy_shadow_)
 	ember.face_target(enemy_shadow_)
-	await game.vn_component_manager.get_dialogue(player_dialogue, "I", player.sprite_2d_dialogue_sprite)
-	await game.vn_component_manager.get_dialogue(ember_dialogue, "Ember", ember.sprite_2d_dialogue_sprite)
-	await game.vn_component_manager.get_dialogue(luke_dialogue, "Luke", luke.sprite_2d_dialogue_sprite, 0.005)
+	await game.vn_component_manager.get_dialogue(player_dialogue, "I", player.player_dialogue_sprite)
+	await game.vn_component_manager.get_dialogue(ember_dialogue, "Ember", ember.npc_dialogue_sprite)
+	await game.vn_component_manager.get_dialogue(luke_dialogue, "Luke", luke.npc_dialogue_sprite, 0.005)
 	
 	game.scene_manager.reset_camera(player)
 	dark_swarm.dark_swarm()

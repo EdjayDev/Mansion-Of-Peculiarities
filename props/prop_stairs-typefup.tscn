@@ -1,30 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwqyjmqu7tifm"]
+[gd_scene format=3 uid="uid://bwqyjmqu7tifm"]
 
-[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_yrnhn"]
+[ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="1_lvk3w"]
+[ext_resource type="Texture2D" uid="uid://r7s1tv3f3rse" path="res://props/sprites/base_interiors1.png" id="1_yrnhn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
-size = Vector2(2.9921875, 58.061428)
+[node name="prop_stairs-typefup" type="Node2D" unique_id=393986968]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrnhn"]
-size = Vector2(3.0234375, 58)
+[node name="tilemap_collection" parent="." unique_id=1466340795 instance=ExtResource("1_lvk3w")]
 
-[node name="prop_stairs-typefup" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 30)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897078588]
+position = Vector2(0, 29)
 texture = ExtResource("1_yrnhn")
 region_enabled = true
-region_rect = Rect2(18, 25, 43, 59)
+region_rect = Rect2(2, 18, 44, 59)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=389186859]
 position = Vector2(0, 29)
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D_left" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-position = Vector2(-18.996094, -29.538527)
-shape = SubResource("RectangleShape2D_7c1ra")
+[node name="CollisionShape2D_1" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1944423815]
+position = Vector2(-19, 6.999999)
+build_mode = 1
+polygon = PackedVector2Array(-1.9999962, 21, -2.0000038, -35, 0.9999962, -35, 1.0000038, 21)
 
-[node name="CollisionShape2D_right" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
-position = Vector2(19.011719, -29.492188)
-shape = SubResource("RectangleShape2D_yrnhn")
+[node name="CollisionShape2D_2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1752568692]
+position = Vector2(20, 6.999999)
+build_mode = 1
+polygon = PackedVector2Array(-1.9999962, 21, -2.0000038, -35, 0.9999962, -35, 1.0000038, 21)

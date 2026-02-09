@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://du0vsae6m3n3n"]
 
 [ext_resource type="Script" uid="uid://dbs4faf68rkxq" path="res://systems/emote_popup.gd" id="1_idsqi"]
-[ext_resource type="Texture2D" uid="uid://gmc546k0tbhe" path="res://systems/sprites/emotes.png" id="1_q3lly"]
+[ext_resource type="Texture2D" path="res://systems/sprites/emotes.png" id="1_q3lly"]
 
 [sub_resource type="Animation" id="Animation_re6dk"]
 length = 0.001

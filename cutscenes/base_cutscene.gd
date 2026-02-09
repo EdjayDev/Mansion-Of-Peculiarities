@@ -130,7 +130,7 @@ func run_ending(key: String) -> void:
 	var gameover_text = ending.get("gameover_text", "")
 	vn_component_manager.get_narration(end_narr)
 	await vn_component_manager.narration_finished
-	game.set_game_over(gameover_text)
+	game.set_game_over(gameover_text, "", "cinematic")
 	print("Ending reached:", key)
 
 

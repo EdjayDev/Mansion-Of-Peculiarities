@@ -98,6 +98,7 @@ func load_level(level_path: String, spawn_marker: String = "", companion_marker:
 	SessionState.world["requested_spawn_marker"] = spawn_marker
 	SessionState.world["requested_companion_marker"] = companion_marker
 
+
 	var level_scene: PackedScene = load(level_path)
 	if not level_scene:
 		push_error("[Game] FAILED TO LOAD:", level_path)

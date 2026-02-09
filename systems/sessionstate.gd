@@ -46,7 +46,7 @@ var requested_spawn_id: String = "start"
 #test
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
-		var game = get_tree().get_root().get_node("Game") as Game
+		var _game = get_tree().get_root().get_node("Game") as Game
 		#print("Session Input Locked: ", input_locked)
 		#print("Game is in cutscene: ", game.is_in_cutscene)
 		#game.cancel_all_cutscene_movements()
@@ -165,7 +165,7 @@ func add_completed_level(level_name: String) -> void:
 		world["levels_completed"].append(level_name)
 
 # Make pos optional (pass null if you don't have a pos to record)
-func add_companion(npc_id: String, npc_file_path: String) -> void:
+func add_companion(npc_id: String, npc_file_path: PackedScene) -> void:
 	var companions = player["companion"]["npcs"]
 
 	# Prevent duplicates

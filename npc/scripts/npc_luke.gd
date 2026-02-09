@@ -1,12 +1,10 @@
 class_name npc_luke
 extends BaseNPC
 
-var file_path = "res://npc/NPC_Luke.tscn"
-
-var dialogue = [
-	"It feels like this place wasn't abandoned until recently...",
-	"The books here are strangely clean",
-	"...",
+var level_1f_dialogue_intro = [
+	"These books… they look fragile",
+	"and it seems like they are fond of folk literatures and novels",
+	"Most of the pages are barely readable… some are almost falling apart."
 ]
 
 var dialogue_exploration = [
@@ -22,6 +20,9 @@ func _ready():
 	set_npc_group("npc")
 	
 func interact():
+	if SessionState.get_scene_data("IntroCutscene", false):
+		set_npcdialogue(level_1f_dialogue_intro)
+		
 	if SessionState.get_global_data("continue_exploration", false):
 		set_npcdialogue(dialogue_exploration)
 		

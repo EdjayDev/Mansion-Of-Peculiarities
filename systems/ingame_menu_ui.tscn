@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://pp2rctohjhyd"]
 
 [ext_resource type="Script" uid="uid://dcsw6kk3g80xv" path="res://systems/ingamemenu_ui.gd" id="1_r5q61"]
-[ext_resource type="FontFile" uid="uid://74tco6mcmmut" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="2_lfs02"]
+[ext_resource type="FontFile" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="2_lfs02"]
 [ext_resource type="PackedScene" uid="uid://coxkk35x4355w" path="res://systems/savesystem_ui.tscn" id="2_prthm"]
 
 [sub_resource type="FontVariation" id="FontVariation_2gl0w"]

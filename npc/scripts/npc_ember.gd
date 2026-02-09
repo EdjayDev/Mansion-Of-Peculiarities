@@ -1,9 +1,7 @@
 class_name npc_ember
 extends BaseNPC
 
-var file_path = "res://npc/NPC_Ember.tscn"
-
-var dialogue = [
+var level_1f_dialogue_intro = [
 	"These books are weird!",
 	"Some are scribbled all over and only a few of them are still readable.",
 	"But,[Emphasis=1.0] I'd say as a decoration they look pretty neat.",
@@ -23,6 +21,8 @@ func _ready():
 	set_npc_group("npc")
 	
 func interact():
+	if SessionState.get_scene_data("IntroCutscene", false):
+		set_npcdialogue(level_1f_dialogue_intro)
 	if SessionState.get_global_data("continue_exploration", false):
 		set_npcdialogue(dialogue_exploration)
 		

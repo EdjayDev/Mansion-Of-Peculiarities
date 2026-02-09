@@ -41,6 +41,10 @@ var luke_dialogue = [
 	]
 ]
 
+var luke_interaction_dialogue = [
+	"It seems "
+]
+
 func _ready() -> void:
 	set_level_name("1st Floor Living Room")
 	scene_path = "res://game_scenes/level_main.tscn"
@@ -52,8 +56,11 @@ func _ready() -> void:
 	if SessionState.get_scene_data("IntroCutscene", false) == true:
 		luke.global_position = SessionState.get_npc_position(luke.npc_id, LEVEL_NAME)
 		ember.global_position = SessionState.get_npc_position(ember.npc_id, LEVEL_NAME)
+		npc_wander()
 		return
+		
 	await intro_cutscene()
+	npc_wander()
 
 func intro_cutscene() -> void:
 	SessionState.input_locked = true
@@ -94,3 +101,14 @@ func intro_cutscene() -> void:
 	
 	SessionState.input_locked = false
 	SessionState.set_scene_data("IntroCutscene", true)
+
+
+@onready var luke_wander_1: Marker2D = $PathMarkers_Wander/luke_wander_1
+@onready var ember_wander_1: Marker2D = $PathMarkers_Wander/ember_wander_1
+func npc_wander()->void:
+	game.scene_manager.move_to(target_point_npcember_3.global_position, ember, 30, true, "after", "idle_up")
+	game.scene_manager.move_to(target_point_npcluke_3.global_position, luke, 30, true, "after", "idle_up")
+	await game.scene_manager.wait_time(8.0)
+	game.scene_manager.move_to(ember_wander_1.global_position, ember, 30, true, "after", "idle_up")
+	await game.scene_manager.wait_time(12.0)
+	game.scene_manager.move_to(luke_wander_1.global_position, luke, 30, true, "after", "idle_up")

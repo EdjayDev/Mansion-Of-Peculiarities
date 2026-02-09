@@ -12,8 +12,6 @@ class_name Neutral_GhostLibrary
 @export var ghost_drop_required_data : String
 @export var ghost_drop_dialogue : Array[String]= []
 
-var file_path = "res://npc/Neutral_Ghost.tscn"
-
 var dialogue = [
 	"This place still remembers me",
 	"It must be somewhere...",

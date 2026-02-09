@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var sprite_2d_dialogue_sprite: Sprite2D = $"Sprite2D-DialogueSprite"
+@onready var player_dialogue_sprite: Sprite2D = $"Sprite2D-DialogueSprite"
 
 @onready var player_state_machine: Player_State_Machine = $PlayerStateMachine
 @onready var player_collision: CollisionShape2D = $CollisionShape2D
@@ -27,7 +27,7 @@ extends CharacterBody2D
 @export var move_speed = 100.0
 @export var health: int = 100
 
-@export var inCutscene: bool = false
+@export var in_cutscene: bool = false
 var cancel_cutscene_movement := false
 var scene_game
 var player_state
@@ -95,7 +95,7 @@ func _physics_process(_delta):
 		move_and_slide()
 		return
 	if scene_game:
-		if scene_game.is_in_cutscene:
+		if scene_game.is_in_cutscene  or in_cutscene:
 			movement_direction = velocity.normalized()
 			move_and_slide()
 			return
@@ -185,17 +185,17 @@ func face_target(face_character: CharacterBody2D) -> void:
 	if abs(dir.x) > abs(dir.y):
 		if dir.x > 0:
 			sprite.scale.x = 1
-			play_animation(player_state + "_side")
+			play_custom_animation(player_state + "_side")
 		else:
 			sprite.scale.x = -1
-			play_animation(player_state + "_side")
+			play_custom_animation(player_state + "_side")
 	else:
 		if dir.y > 0:
-			play_animation(player_state + "_down")
+			play_custom_animation(player_state + "_down")
 		else:
-			play_animation(player_state + "_up")
+			play_custom_animation(player_state + "_up")
 			
-func play_animation(animation : String)->void:
+func play_custom_animation(animation : String)->void:
 	animation_player.play(animation)
 	pass
 	

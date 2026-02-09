@@ -44,6 +44,10 @@ window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stdout/print_fps=false
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Edams/Documents/GitHub/Mansion-Of-Peculiarities/cutscenes/sds.avi"
+
 [file_customization]
 
 folder_colors={

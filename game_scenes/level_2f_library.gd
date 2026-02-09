@@ -52,17 +52,17 @@ func play_intro_cutscene()->void:
 	
 		await game.scene_manager.wait_for([player])
 		game.scene_manager.move_to(ghost_intro.global_position, neutral_ghost, 60)
-		await game.vn_component_manager.get_dialogue(["We need to-"], "I", player.sprite_2d_dialogue_sprite)
+		await game.vn_component_manager.get_dialogue(["We need to-"], "I", player.player_dialogue_sprite)
 		player.show_emote("exclamation")
 		
 		await game.scene_manager.wait_for([neutral_ghost])
 		npc_companion.face_target(neutral_ghost)
 		player.face_target(neutral_ghost)
 		
-		await game.vn_component_manager.get_dialogue(ghost_introdialogue_1, neutral_ghost.npc_name, neutral_ghost.sprite_2d_dialogue_sprite)
+		await game.vn_component_manager.get_dialogue(ghost_introdialogue_1, neutral_ghost.npc_name, neutral_ghost.npc_dialogue_sprite)
 		game.scene_manager.move_camera(player, eye_watcher_intro.global_position)
 
-		await game.vn_component_manager.get_dialogue(ghost_introdialogue_2, neutral_ghost.npc_name, neutral_ghost.sprite_2d_dialogue_sprite)
+		await game.vn_component_manager.get_dialogue(ghost_introdialogue_2, neutral_ghost.npc_name, neutral_ghost.npc_dialogue_sprite)
 		game.scene_manager.move_to(ghost_intro_2.global_position, neutral_ghost, 30)
 		game.scene_manager.reset_camera(player)
 		
@@ -75,16 +75,16 @@ func play_intro_cutscene()->void:
 	#Player without Companion
 	await game.scene_manager.wait_for([player])
 	game.scene_manager.move_to(ghost_intro.global_position, neutral_ghost, 60)
-	await game.vn_component_manager.get_dialogue(["I need to get th-"], "I", player.sprite_2d_dialogue_sprite)
+	await game.vn_component_manager.get_dialogue(["I need to get th-"], "I", player.player_dialogue_sprite)
 	player.show_emote("exclamation")
 	
 	player.face_target(neutral_ghost)
 	await game.scene_manager.wait_for([neutral_ghost])
 
-	await game.vn_component_manager.get_dialogue(ghost_introdialogue_1, neutral_ghost.npc_name, neutral_ghost.sprite_2d_dialogue_sprite)
+	await game.vn_component_manager.get_dialogue(ghost_introdialogue_1, neutral_ghost.npc_name, neutral_ghost.npc_dialogue_sprite)
 	game.scene_manager.move_camera(player, eye_watcher_intro.global_position)
 
-	await game.vn_component_manager.get_dialogue(ghost_introdialogue_2, neutral_ghost.npc_name, neutral_ghost.sprite_2d_dialogue_sprite)
+	await game.vn_component_manager.get_dialogue(ghost_introdialogue_2, neutral_ghost.npc_name, neutral_ghost.npc_dialogue_sprite)
 	game.scene_manager.move_to(ghost_intro_2.global_position, neutral_ghost, 30)
 	game.scene_manager.reset_camera(player)
 	

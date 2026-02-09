@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://d07ygl05j8j5e"]
+[gd_scene format=3 uid="uid://d07ygl05j8j5e"]
 
-[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_mj5qc"]
+[ext_resource type="Texture2D" uid="uid://r7s1tv3f3rse" path="res://props/sprites/base_interiors1.png" id="1_mj5qc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
 size = Vector2(42, 23.887081)
@@ -8,74 +8,74 @@ size = Vector2(42, 23.887081)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1d5g"]
 size = Vector2(42, 25)
 
-[node name="prop_bookshelves-type7_" type="Node2D"]
+[node name="prop_bookshelves-type7_" type="Node2D" unique_id=1719960241]
 
-[node name="Sprite2D-Shelf" type="Sprite2D" parent="."]
+[node name="Sprite2D-Shelf" type="Sprite2D" parent="." unique_id=1221806038]
 position = Vector2(0, -24.999998)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(81, 101, 46, 52)
 
-[node name="Sprite2D-Books" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1027038476]
 position = Vector2(-5.5, -11.500004)
 scale = Vector2(0.99999994, 1)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(182, 105, 11, 9)
 
-[node name="Sprite2D-Books2" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books2" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1611720720]
 position = Vector2(-10, 6.4999967)
 scale = Vector2(1, 1.0000001)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(182, 105, 20, 9)
 
-[node name="Sprite2D-Books3" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books3" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=574776703]
 position = Vector2(8, -11.500004)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(182, 120, 10, 9)
 
-[node name="Sprite2D-Books4" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books4" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=437590758]
 position = Vector2(16.5, -11.000002)
 scale = Vector2(0.99999994, 1)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(195, 121, 7, 8)
 
-[node name="Sprite2D-Books5" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books5" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=2100489298]
 position = Vector2(15.5, 6.499997)
 scale = Vector2(1, 1.0000001)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(193, 105, 9, 9)
 
-[node name="Sprite2D-Books6" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books6" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=1729635345]
 position = Vector2(7.5, 6.999998)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(195, 121, 7, 8)
 
-[node name="Sprite2D-Books7" type="Sprite2D" parent="Sprite2D-Shelf"]
+[node name="Sprite2D-Books7" type="Sprite2D" parent="Sprite2D-Shelf" unique_id=398972621]
 position = Vector2(-16.5, -11.000002)
 scale = Vector2(0.99999994, 1)
 texture = ExtResource("1_mj5qc")
 region_enabled = true
 region_rect = Rect2(195, 121, 7, 8)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=398912908]
 position = Vector2(0, -12)
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1124190016]
 position = Vector2(0, -3.5000105)
 scale = Vector2(1, 1.04659)
 shape = SubResource("RectangleShape2D_7c1ra")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=1434743882]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1737843927]
 position = Vector2(0, -15.5)
 shape = SubResource("RectangleShape2D_i1d5g")
 debug_color = Color(0, 0, 0, 0.41960785)

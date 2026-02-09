@@ -176,6 +176,15 @@ z_index = 1
 position = Vector2(-1.52588e-05, 3.8147e-06)
 tile_map_data = PackedByteArray("AAAMAPr/AQAAAAEAAAAMAPv/AQAAAAEAAAAMAPz/AQAAAAEAAAAMAP3/AQAAAAEAAAAMAP7/AQAAAAEAAAAMAP//AQAAAAEAAAAMAAAAAQAAAAEAAAAMAAEAAQAAAAEAAAAMAAIAAQAAAAEAAAAMAAMAAQAAAAEAAAAMAAQAAQAAAAEAAAAMAAUAAQAAAAEAAAAMAAYAAQAAAAEAAAAMAAcAAQAAAAEAAAD7//r/AQABAAIAAAD8//r/AQABAAIAAAD9//r/AQABAAIAAAD+//r/AQABAAIAAAD7/97/AQABAAEAAAD7/9//AQABAAEAAAD7/+D/AQABAAEAAAD7/+H/AQABAAEAAAD7/+L/AQABAAEAAAD7/+P/AQABAAEAAAD7/+T/AQABAAEAAAD7/+X/AQABAAEAAAD7/+b/AQABAAEAAAD7/+f/AQABAAEAAAD7/+j/AQABAAEAAAD7/+n/AQABAAEAAAD7/+r/AQABAAEAAAD7/+v/AQABAAEAAAD7/+z/AQABAAEAAAD7/+3/AQABAAEAAAD7/+7/AQABAAEAAAD7/+//AQABAAEAAAD7//D/AQABAAEAAAD7//H/AQABAAEAAAD7//L/AQABAAEAAAD7//P/AQABAAEAAAD7//T/AQABAAEAAAD7//X/AQABAAEAAAD7//b/AQABAAEAAAD7//f/AQABAAEAAAD7//j/AQABAAEAAAD7//n/AQABAAEAAAD8/97/AQABAAEAAAD8/9//AQABAAEAAAD8/+D/AQABAAEAAAD8/+H/AQABAAEAAAD8/+L/AQABAAEAAAD8/+P/AQABAAEAAAD8/+T/AQABAAEAAAD8/+X/AQABAAEAAAD8/+b/AQABAAEAAAD8/+f/AQABAAEAAAD8/+j/AQABAAEAAAD8/+n/AQABAAEAAAD8/+r/AQABAAEAAAD8/+v/AQABAAEAAAD8/+z/AQABAAEAAAD8/+3/AQABAAEAAAD8/+7/AQABAAEAAAD8/+//AQABAAEAAAD8//D/AQABAAEAAAD8//H/AQABAAEAAAD8//L/AQABAAEAAAD8//P/AQABAAEAAAD8//T/AQABAAEAAAD8//X/AQABAAEAAAD8//b/AQABAAEAAAD8//f/AQABAAEAAAD8//j/AQABAAEAAAD8//n/AQABAAEAAAD9/97/AQABAAEAAAD9/9//AQABAAEAAAD9/+D/AQABAAEAAAD9/+H/AQABAAEAAAD9/+L/AQABAAEAAAD9/+P/AQABAAEAAAD9/+T/AQABAAEAAAD9/+X/AQABAAEAAAD9/+b/AQABAAEAAAD9/+f/AQABAAEAAAD9/+j/AQABAAEAAAD9/+n/AQABAAEAAAD9/+r/AQABAAEAAAD9/+v/AQABAAEAAAD9/+z/AQABAAEAAAD9/+3/AQABAAEAAAD9/+7/AQABAAEAAAD9/+//AQABAAEAAAD9//D/AQABAAEAAAD9//H/AQABAAEAAAD9//L/AQABAAEAAAD9//P/AQABAAEAAAD9//T/AQABAAEAAAD9//X/AQABAAEAAAD9//b/AQABAAEAAAD9//f/AQABAAEAAAD9//j/AQABAAEAAAD9//n/AQABAAEAAAD+/97/AQABAAEAAAD+/9//AQABAAEAAAD+/+D/AQABAAEAAAD+/+H/AQABAAEAAAD+/+L/AQABAAEAAAD+/+P/AQABAAEAAAD+/+T/AQABAAEAAAD+/+X/AQABAAEAAAD+/+b/AQABAAEAAAD+/+f/AQABAAEAAAD+/+j/AQABAAEAAAD+/+n/AQABAAEAAAD+/+r/AQABAAEAAAD+/+v/AQABAAEAAAD+/+z/AQABAAEAAAD+/+3/AQABAAEAAAD+/+7/AQABAAEAAAD+/+//AQABAAEAAAD+//D/AQABAAEAAAD+//H/AQABAAEAAAD+//L/AQABAAEAAAD+//P/AQABAAEAAAD+//T/AQABAAEAAAD+//X/AQABAAEAAAD+//b/AQABAAEAAAD+//f/AQABAAEAAAD+//j/AQABAAEAAAD+//n/AQABAAEAAAA=")
 
+[node name="prop_table" parent="NewPath_Runaway/Remove_Path" unique_id=702167317 instance=ExtResource("12_jwwwh")]
+position = Vector2(-15, -27)
+
+[node name="prop_decor-flower1" parent="NewPath_Runaway/Remove_Path/prop_table" unique_id=1767623727 instance=ExtResource("13_rwkst")]
+position = Vector2(10, -18)
+
+[node name="prop_bookshelves-type3_" parent="NewPath_Runaway/Remove_Path" unique_id=1762641297 instance=ExtResource("4_8ndtb")]
+position = Vector2(-70, -26)
+
 [node name="New_Path" type="Node2D" parent="NewPath_Runaway" unique_id=581833513]
 visible = false
 
@@ -206,24 +215,18 @@ scale = Vector2(2, 2)
 position = Vector2(-208, -25)
 scale = Vector2(2, 2)
 
-[node name="prop_table" parent="Y_Sort/Props" unique_id=1692217649 instance=ExtResource("12_jwwwh")]
-position = Vector2(-48, -27)
-
-[node name="prop_decor-flower1" parent="Y_Sort/Props/prop_table" unique_id=903785038 instance=ExtResource("13_rwkst")]
-position = Vector2(10, -18)
-
 [node name="prop_stairs-typefup2" parent="Y_Sort/Props" unique_id=1236129358 instance=ExtResource("11_jbkt8")]
 position = Vector2(-48, 121.00001)
 scale = Vector2(2.729, 1.9800007)
 
 [node name="stairs_overlay" type="TextureRect" parent="Y_Sort/Props/prop_stairs-typefup2" unique_id=9386510]
 z_index = 1
-offset_left = -21.639359
-offset_top = 60.06314
-offset_right = 47.890594
-offset_bottom = 124.06314
+offset_left = -21.639336
+offset_top = 60.796005
+offset_right = 47.890617
+offset_bottom = 124.796005
 rotation = 4.7123823
-scale = Vector2(0.75868875, 0.69169796)
+scale = Vector2(0.7880026, 0.69169796)
 texture = SubResource("GradientTexture2D_gtycv")
 metadata/_edit_use_anchors_ = true
 
@@ -232,6 +235,7 @@ position = Vector2(-208, -48)
 
 [node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_" unique_id=383616533 instance=ExtResource("10_srs4d")]
 position = Vector2(-23, 2)
+scale = Vector2(0.99705786, 1)
 prop_interact_dialogue = ["The door is locked. "]
 play_interact_audio = true
 interact_failed_sound = "lock"
@@ -248,9 +252,6 @@ play_interact_audio = true
 interact_failed_sound = "lock"
 can_interact_multiple_times = true
 required_item_id = "item_null"
-
-[node name="prop_bookshelves-type3_" parent="Y_Sort/Props/prop_door_type1_2" unique_id=1762641297 instance=ExtResource("4_8ndtb")]
-position = Vector2(-205, 22)
 
 [node name="Dark_Swarm" parent="." unique_id=957464448 instance=ExtResource("18_evedv")]
 position = Vector2(-731, 39)
@@ -303,7 +304,7 @@ load_level = "res://game_scenes/level_2f_playground.tscn"
 spawn_marker_name = "Player_from2F"
 
 [node name="save_desk" parent="SceneTransitioners" unique_id=597752211 instance=ExtResource("12_rwkst")]
-position = Vector2(138, 109)
+position = Vector2(182, 109)
 
 [node name="Player_fromFirst" type="Marker2D" parent="." unique_id=1242504869]
 position = Vector2(-48, 125)

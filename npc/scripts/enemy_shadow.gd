@@ -1,8 +1,6 @@
 extends BaseEnemy
 class_name enemy_shadow
 
-var file_path = "res://npc/Enemy_Shadow.tscn"
-
 var dialogue = [
 	"...",
 ]

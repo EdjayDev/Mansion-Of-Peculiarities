@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bchfdfm4fkouv"]
 
 [ext_resource type="Script" uid="uid://cwnhkvft26kr7" path="res://systems/game_over.gd" id="1_hv343"]
-[ext_resource type="FontFile" uid="uid://bseco4tvek2js" path="res://systems/fonts/CormorantGaramond-VariableFont_wght.ttf" id="2_qvk0g"]
+[ext_resource type="FontFile" path="res://systems/fonts/CormorantGaramond-VariableFont_wght.ttf" id="2_qvk0g"]
 [ext_resource type="AudioStream" uid="uid://dkogj3rpxkdul" path="res://systems/sounds/sound_game_over.mp3" id="3_qvk0g"]
 
 [sub_resource type="Animation" id="Animation_c6k5d"]
