@@ -2,20 +2,17 @@
 
 [ext_resource type="Script" uid="uid://ceithbftynwcd" path="res://game_scenes/level_2f.gd" id="1_gtycv"]
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_jbkt8"]
-[ext_resource type="Texture2D" uid="uid://cix8ymjrov35j" path="res://tilemap/sprites/base_wallsfloors.png" id="2_srs4d"]
+[ext_resource type="Texture2D" uid="uid://dj5y0t8ea4tmg" path="res://tilemap/sprites/base_wallsfloors.png" id="2_srs4d"]
 [ext_resource type="PackedScene" uid="uid://dng8idy4bpckx" path="res://props/prop_bookshelves-type3_.tscn" id="4_8ndtb"]
-[ext_resource type="PackedScene" uid="uid://uyih1hg4p2i0" path="res://props/prop_crate-type2.tscn" id="5_6v1iq"]
-[ext_resource type="PackedScene" uid="uid://dlour4o0o7gee" path="res://props/prop_bookshelves-type1_.tscn" id="6_8ndtb"]
-[ext_resource type="PackedScene" uid="uid://bp8808mog12eb" path="res://props/prop_crate-type1.tscn" id="7_gtycv"]
 [ext_resource type="PackedScene" uid="uid://yysbu2rfobc6" path="res://npc/Enemy_Shadow.tscn" id="8_evedv"]
-[ext_resource type="PackedScene" uid="uid://g0fix6ffauju" path="res://props/prop_emptyshelves-type2_.tscn" id="9_evedv"]
+[ext_resource type="PackedScene" uid="uid://d37uv7gagv7cv" path="res://props/prop_door-type1_.tscn" id="9_rwkst"]
 [ext_resource type="PackedScene" uid="uid://drmc63r48ot5l" path="res://systems/scene_transitioner.tscn" id="10_6uykj"]
+[ext_resource type="PackedScene" uid="uid://bufs536uwrac7" path="res://props/scripts/propinteract_item_component.tscn" id="10_srs4d"]
 [ext_resource type="PackedScene" uid="uid://bwqyjmqu7tifm" path="res://props/prop_stairs-typefup.tscn" id="11_jbkt8"]
 [ext_resource type="PackedScene" uid="uid://cys8pmwhdccpy" path="res://props/prop_chandelier-type1_.tscn" id="11_jwwwh"]
 [ext_resource type="PackedScene" uid="uid://bk76uyboowhol" path="res://props/prop_table_.tscn" id="12_jwwwh"]
 [ext_resource type="PackedScene" uid="uid://bpalfv6ej0ikf" path="res://systems/save_desk.tscn" id="12_rwkst"]
 [ext_resource type="PackedScene" uid="uid://cem1r6nmfdqvp" path="res://props/prop_decor-flower2.tscn" id="13_rwkst"]
-[ext_resource type="PackedScene" uid="uid://bje2wa6ytksw8" path="res://props/prop_crate-type3.tscn" id="13_srs4d"]
 [ext_resource type="PackedScene" uid="uid://c32kl132hi4oc" path="res://systems/systems_enemy/shadow_swarm.tscn" id="18_evedv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_srs4d"]
@@ -152,7 +149,7 @@ tile_map_data = PackedByteArray("AADt//z/AQAEAAoAAADt//3/AQAEAAoAAADt//7/AQAGAAo
 
 [node name="underlaymain_tilelayer" parent="." unique_id=543294540 instance=ExtResource("2_jbkt8")]
 position = Vector2(-1.52588e-05, 3.8147e-06)
-tile_map_data = PackedByteArray("AADt/wQAAgAKABQAAADu/wQAAgAKABQAAADv/wQAAgAKABQAAADw/wQAAgAKABQAAADx/wQAAgAKABQAAADy/wQAAgAKABQAAADz/wQAAgAKABQAAAD0/wQAAgAKABQAAAD1/wQAAgAKABQAAAD2/wQAAgAKABQAAAD3/wQAAgAKABQAAAD4/wQAAgAKABQAAAD5/wQAAgAKABQAAAD6/wQAAgAKABQAAAD7/wQAAgAKABQAAAD8/wQAAgAKABQAAAD9/wQAAgAKABQAAAD+/wQAAgAKABQAAAD//wQAAgAKABQAAAAAAAQAAgAKABQAAAABAAQAAgAKABQAAAACAAQAAgAKABQAAAADAAQAAgAKABQAAAAEAAQAAgAKABQAAAAFAAQAAgAKABQAAAAGAAQAAgAKABQAAAAHAAQAAgAKABQAAAAIAAQAAgAKABQAAAAJAAQAAgAKABQAAAAKAAQAAgAKABQAAAALAAQAAgAKABQAAAAMAAQAAgAKABQAAADt/wAAAgAKABAAAADu/wAAAgAKABAAAADv/wAAAgAKABAAAADw/wAAAgAKABAAAADx/wAAAgAKABAAAADy/wAAAgAKABAAAADz/wAAAgAKABAAAAD0/wAAAgAKABAAAAD1/wAAAgAKABAAAAD2/wAAAgAKABAAAAD3/wAAAgAKABAAAAD4/wAAAgAKABAAAAD5/wAAAgAKABAAAAD6/wAAAgAKABAAAAD7/wAAAgAKABAAAAD8/wAAAgAKABAAAAD9/wAAAgAKABAAAAD+/wAAAgAKABAAAAAKAAAAAgAKABAAAAALAAAAAgAKABAAAAAMAAAAAgAKABAAAAAJAAAAAgAKABAAAAAIAAAAAgAKABAAAAAAAAAAAgAKABAAAAD//wAAAgAKABAAAAABAAAAAgAKABAAAAACAAAAAgAKABAAAAADAAAAAgAKABAAAAAEAAAAAgAKABAAAAAFAAAAAgAKABAAAAAGAAAAAgAKABAAAAAHAAAAAgAKABAAAADt//z/AQABAAQAAADu//z/AQABAAQAAADv//z/AQABAAQAAADw//z/AQABAAQAAADx//z/AQABAAQAAADy//z/AQAIAAcAAADz//z/AQAJAAcAAAD0//z/AQABAAQAAAD1//z/AQABAAQAAAD2//z/AQABAAQAAAD3//z/AQABAAQAAAD4//z/AQABAAQAAAD5//z/AQABAAQAAAD6//z/AQABAAQAAADt//v/AQABAAMAAADu//v/AQABAAMAAADv//v/AQABAAMAAADw//v/AQABAAMAAADx//v/AQABAAMAAADy//v/AQAIAAYAAADz//v/AQAJAAYAAAD0//v/AQABAAMAAAD1//v/AQABAAMAAAD2//v/AQABAAMAAAD3//v/AQABAAMAAAD4//v/AQABAAMAAAD5//v/AQABAAMAAAD6//v/AQABAAMAAAD///v/AQABAAMAAAD///z/AQABAAQAAAAAAPv/AQABAAMAAAAAAPz/AQABAAQAAAABAPv/AQABAAMAAAABAPz/AQABAAQAAAACAPv/AQABAAMAAAACAPz/AQABAAQAAAADAPv/AQABAAMAAAADAPz/AQABAAQAAAAEAPv/AQABAAMAAAAEAPz/AQABAAQAAAAFAPv/AQABAAMAAAAFAPz/AQABAAQAAAAGAPv/AQAIAAYAAAAGAPz/AQAIAAcAAAAHAPv/AQAJAAYAAAAHAPz/AQAJAAcAAAAIAPv/AQABAAMAAAAIAPz/AQABAAQAAAAJAPv/AQABAAMAAAAJAPz/AQABAAQAAAAKAPv/AQABAAMAAAAKAPz/AQABAAQAAAALAPv/AQABAAMAAAALAPz/AQABAAQAAAAMAPv/AQABAAMAAAAMAPz/AQABAAQAAAA=")
+tile_map_data = PackedByteArray("AADt/wQAAgAKABQAAADu/wQAAgAKABQAAADv/wQAAgAKABQAAADw/wQAAgAKABQAAADx/wQAAgAKABQAAADy/wQAAgAKABQAAADz/wQAAgAKABQAAAD0/wQAAgAKABQAAAD1/wQAAgAKABQAAAD2/wQAAgAKABQAAAD3/wQAAgAKABQAAAD4/wQAAgAKABQAAAD5/wQAAgAKABQAAAD6/wQAAgAKABQAAAD7/wQAAgAKABQAAAD8/wQAAgAKABQAAAD9/wQAAgAKABQAAAD+/wQAAgAKABQAAAD//wQAAgAKABQAAAAAAAQAAgAKABQAAAABAAQAAgAKABQAAAACAAQAAgAKABQAAAADAAQAAgAKABQAAAAEAAQAAgAKABQAAAAFAAQAAgAKABQAAAAGAAQAAgAKABQAAAAHAAQAAgAKABQAAAAIAAQAAgAKABQAAAAJAAQAAgAKABQAAAAKAAQAAgAKABQAAAALAAQAAgAKABQAAAAMAAQAAgAKABQAAADt/wAAAgAKABAAAADu/wAAAgAKABAAAADv/wAAAgAKABAAAADw/wAAAgAKABAAAADx/wAAAgAKABAAAADy/wAAAgAKABAAAADz/wAAAgAKABAAAAD0/wAAAgAKABAAAAD1/wAAAgAKABAAAAD2/wAAAgAKABAAAAD3/wAAAgAKABAAAAD4/wAAAgAKABAAAAD5/wAAAgAKABAAAAD6/wAAAgAKABAAAAD7/wAAAgAKABAAAAD8/wAAAgAKABAAAAD9/wAAAgAKABAAAAD+/wAAAgAKABAAAAAKAAAAAgAKABAAAAALAAAAAgAKABAAAAAMAAAAAgAKABAAAAAJAAAAAgAKABAAAAAIAAAAAgAKABAAAAAAAAAAAgAKABAAAAD//wAAAgAKABAAAAABAAAAAgAKABAAAAACAAAAAgAKABAAAAADAAAAAgAKABAAAAAEAAAAAgAKABAAAAAFAAAAAgAKABAAAAAGAAAAAgAKABAAAAAHAAAAAgAKABAAAADt//z/AQABAAQAAADu//z/AQABAAQAAADv//z/AQABAAQAAADw//z/AQABAAQAAADx//z/AQABAAQAAAD0//z/AQABAAQAAAD1//z/AQABAAQAAAD2//z/AQABAAQAAAD3//z/AQABAAQAAAD4//z/AQABAAQAAAD5//z/AQABAAQAAAD6//z/AQABAAQAAADt//v/AQABAAMAAADu//v/AQABAAMAAADv//v/AQABAAMAAADw//v/AQABAAMAAADx//v/AQABAAMAAAD0//v/AQABAAMAAAD1//v/AQABAAMAAAD2//v/AQABAAMAAAD3//v/AQABAAMAAAD4//v/AQABAAMAAAD5//v/AQABAAMAAAD6//v/AQABAAMAAAD///v/AQABAAMAAAD///z/AQABAAQAAAAAAPv/AQABAAMAAAAAAPz/AQABAAQAAAABAPv/AQABAAMAAAABAPz/AQABAAQAAAACAPv/AQABAAMAAAACAPz/AQABAAQAAAADAPv/AQABAAMAAAADAPz/AQABAAQAAAAEAPv/AQABAAMAAAAEAPz/AQABAAQAAAAFAPv/AQABAAMAAAAFAPz/AQABAAQAAAAIAPv/AQABAAMAAAAIAPz/AQABAAQAAAAJAPv/AQABAAMAAAAJAPz/AQABAAQAAAAKAPv/AQABAAMAAAAKAPz/AQABAAQAAAALAPv/AQABAAMAAAALAPz/AQABAAQAAAAMAPv/AQABAAMAAAAMAPz/AQABAAQAAAA=")
 
 [node name="overlaymain_tilelayer" parent="." unique_id=1448447723 instance=ExtResource("2_jbkt8")]
 position = Vector2(-1.52588e-05, 3.8147e-06)
@@ -179,15 +176,6 @@ z_index = 1
 position = Vector2(-1.52588e-05, 3.8147e-06)
 tile_map_data = PackedByteArray("AAAMAPr/AQAAAAEAAAAMAPv/AQAAAAEAAAAMAPz/AQAAAAEAAAAMAP3/AQAAAAEAAAAMAP7/AQAAAAEAAAAMAP//AQAAAAEAAAAMAAAAAQAAAAEAAAAMAAEAAQAAAAEAAAAMAAIAAQAAAAEAAAAMAAMAAQAAAAEAAAAMAAQAAQAAAAEAAAAMAAUAAQAAAAEAAAAMAAYAAQAAAAEAAAAMAAcAAQAAAAEAAAD7//r/AQABAAIAAAD8//r/AQABAAIAAAD9//r/AQABAAIAAAD+//r/AQABAAIAAAD7/97/AQABAAEAAAD7/9//AQABAAEAAAD7/+D/AQABAAEAAAD7/+H/AQABAAEAAAD7/+L/AQABAAEAAAD7/+P/AQABAAEAAAD7/+T/AQABAAEAAAD7/+X/AQABAAEAAAD7/+b/AQABAAEAAAD7/+f/AQABAAEAAAD7/+j/AQABAAEAAAD7/+n/AQABAAEAAAD7/+r/AQABAAEAAAD7/+v/AQABAAEAAAD7/+z/AQABAAEAAAD7/+3/AQABAAEAAAD7/+7/AQABAAEAAAD7/+//AQABAAEAAAD7//D/AQABAAEAAAD7//H/AQABAAEAAAD7//L/AQABAAEAAAD7//P/AQABAAEAAAD7//T/AQABAAEAAAD7//X/AQABAAEAAAD7//b/AQABAAEAAAD7//f/AQABAAEAAAD7//j/AQABAAEAAAD7//n/AQABAAEAAAD8/97/AQABAAEAAAD8/9//AQABAAEAAAD8/+D/AQABAAEAAAD8/+H/AQABAAEAAAD8/+L/AQABAAEAAAD8/+P/AQABAAEAAAD8/+T/AQABAAEAAAD8/+X/AQABAAEAAAD8/+b/AQABAAEAAAD8/+f/AQABAAEAAAD8/+j/AQABAAEAAAD8/+n/AQABAAEAAAD8/+r/AQABAAEAAAD8/+v/AQABAAEAAAD8/+z/AQABAAEAAAD8/+3/AQABAAEAAAD8/+7/AQABAAEAAAD8/+//AQABAAEAAAD8//D/AQABAAEAAAD8//H/AQABAAEAAAD8//L/AQABAAEAAAD8//P/AQABAAEAAAD8//T/AQABAAEAAAD8//X/AQABAAEAAAD8//b/AQABAAEAAAD8//f/AQABAAEAAAD8//j/AQABAAEAAAD8//n/AQABAAEAAAD9/97/AQABAAEAAAD9/9//AQABAAEAAAD9/+D/AQABAAEAAAD9/+H/AQABAAEAAAD9/+L/AQABAAEAAAD9/+P/AQABAAEAAAD9/+T/AQABAAEAAAD9/+X/AQABAAEAAAD9/+b/AQABAAEAAAD9/+f/AQABAAEAAAD9/+j/AQABAAEAAAD9/+n/AQABAAEAAAD9/+r/AQABAAEAAAD9/+v/AQABAAEAAAD9/+z/AQABAAEAAAD9/+3/AQABAAEAAAD9/+7/AQABAAEAAAD9/+//AQABAAEAAAD9//D/AQABAAEAAAD9//H/AQABAAEAAAD9//L/AQABAAEAAAD9//P/AQABAAEAAAD9//T/AQABAAEAAAD9//X/AQABAAEAAAD9//b/AQABAAEAAAD9//f/AQABAAEAAAD9//j/AQABAAEAAAD9//n/AQABAAEAAAD+/97/AQABAAEAAAD+/9//AQABAAEAAAD+/+D/AQABAAEAAAD+/+H/AQABAAEAAAD+/+L/AQABAAEAAAD+/+P/AQABAAEAAAD+/+T/AQABAAEAAAD+/+X/AQABAAEAAAD+/+b/AQABAAEAAAD+/+f/AQABAAEAAAD+/+j/AQABAAEAAAD+/+n/AQABAAEAAAD+/+r/AQABAAEAAAD+/+v/AQABAAEAAAD+/+z/AQABAAEAAAD+/+3/AQABAAEAAAD+/+7/AQABAAEAAAD+/+//AQABAAEAAAD+//D/AQABAAEAAAD+//H/AQABAAEAAAD+//L/AQABAAEAAAD+//P/AQABAAEAAAD+//T/AQABAAEAAAD+//X/AQABAAEAAAD+//b/AQABAAEAAAD+//f/AQABAAEAAAD+//j/AQABAAEAAAD+//n/AQABAAEAAAA=")
 
-[node name="prop_bookshelves-type3" parent="NewPath_Runaway/Remove_Path" unique_id=1761136163 instance=ExtResource("4_8ndtb")]
-position = Vector2(-48, -28)
-
-[node name="prop_crate-type2" parent="NewPath_Runaway/Remove_Path" unique_id=1840569005 instance=ExtResource("5_6v1iq")]
-position = Vector2(-88, -32)
-
-[node name="prop_bookshelves-type1" parent="NewPath_Runaway/Remove_Path" unique_id=1912584369 instance=ExtResource("6_8ndtb")]
-position = Vector2(-12, -28)
-
 [node name="New_Path" type="Node2D" parent="NewPath_Runaway" unique_id=581833513]
 visible = false
 
@@ -210,44 +198,19 @@ position = Vector2(-334, 45)
 [node name="Props" type="Node2D" parent="Y_Sort" unique_id=380896083]
 y_sort_enabled = true
 
-[node name="prop_bookshelves1" parent="Y_Sort/Props" unique_id=246633985 instance=ExtResource("6_8ndtb")]
-position = Vector2(-139, -33)
+[node name="prop_chandelier-type2" parent="Y_Sort/Props" unique_id=858789154 instance=ExtResource("11_jwwwh")]
+position = Vector2(112, -25)
+scale = Vector2(2, 2)
 
-[node name="prop_bookshelves3" parent="Y_Sort/Props" unique_id=2073052663 instance=ExtResource("6_8ndtb")]
-position = Vector2(-162, -33)
-
-[node name="prop_bookshelves4" parent="Y_Sort/Props" unique_id=1377624343 instance=ExtResource("6_8ndtb")]
-position = Vector2(192, -29)
-
-[node name="prop_bookshelves5" parent="Y_Sort/Props" unique_id=1478683372 instance=ExtResource("6_8ndtb")]
-position = Vector2(82, -28)
-
-[node name="prop_crate_type1" parent="Y_Sort/Props" unique_id=1908278348 instance=ExtResource("7_gtycv")]
-position = Vector2(-116, -29)
-
-[node name="prop_emptyshelves_type2" parent="Y_Sort/Props" unique_id=883414089 instance=ExtResource("9_evedv")]
-position = Vector2(48, -28)
-
-[node name="prop_emptyshelves_type5" parent="Y_Sort/Props" unique_id=2118451763 instance=ExtResource("9_evedv")]
-position = Vector2(-281, -29)
-
-[node name="prop_crate_type2" parent="Y_Sort/Props" unique_id=263694608 instance=ExtResource("7_gtycv")]
-position = Vector2(17, -32)
-
-[node name="prop_emptyshelves_type3" parent="Y_Sort/Props" unique_id=1812463564 instance=ExtResource("9_evedv")]
-position = Vector2(158, -29)
-
-[node name="prop_crate_type4" parent="Y_Sort/Props" unique_id=304711930 instance=ExtResource("7_gtycv")]
-position = Vector2(-185, -34)
+[node name="prop_chandelier-type1" parent="Y_Sort/Props" unique_id=1681226474 instance=ExtResource("11_jwwwh")]
+position = Vector2(-208, -25)
+scale = Vector2(2, 2)
 
 [node name="prop_table" parent="Y_Sort/Props" unique_id=1692217649 instance=ExtResource("12_jwwwh")]
-position = Vector2(179, 116)
+position = Vector2(-48, -27)
 
 [node name="prop_decor-flower1" parent="Y_Sort/Props/prop_table" unique_id=903785038 instance=ExtResource("13_rwkst")]
 position = Vector2(10, -18)
-
-[node name="prop_crate-type3" parent="Y_Sort/Props" unique_id=1134435757 instance=ExtResource("13_srs4d")]
-position = Vector2(-242, -34)
 
 [node name="prop_stairs-typefup2" parent="Y_Sort/Props" unique_id=1236129358 instance=ExtResource("11_jbkt8")]
 position = Vector2(-48, 121.00001)
@@ -264,13 +227,30 @@ scale = Vector2(0.75868875, 0.69169796)
 texture = SubResource("GradientTexture2D_gtycv")
 metadata/_edit_use_anchors_ = true
 
-[node name="prop_chandelier-type1" parent="Y_Sort/Props" unique_id=1681226474 instance=ExtResource("11_jwwwh")]
-position = Vector2(-208, -25)
-scale = Vector2(2, 2)
+[node name="prop_door_type1_" parent="Y_Sort/Props" unique_id=1272782782 instance=ExtResource("9_rwkst")]
+position = Vector2(-208, -48)
 
-[node name="prop_chandelier-type2" parent="Y_Sort/Props" unique_id=858789154 instance=ExtResource("11_jwwwh")]
-position = Vector2(112, -25)
-scale = Vector2(2, 2)
+[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_" unique_id=383616533 instance=ExtResource("10_srs4d")]
+position = Vector2(-23, 2)
+prop_interact_dialogue = ["The door is locked. "]
+play_interact_audio = true
+interact_failed_sound = "lock"
+can_interact_multiple_times = true
+required_item_id = "item_null"
+
+[node name="prop_door_type1_2" parent="Y_Sort/Props" unique_id=915348635 instance=ExtResource("9_rwkst")]
+position = Vector2(112, -48)
+
+[node name="PropInteractItem_Component2" parent="Y_Sort/Props/prop_door_type1_2" unique_id=2045299889 instance=ExtResource("10_srs4d")]
+position = Vector2(-343, 2)
+prop_interact_dialogue = ["The door is locked. "]
+play_interact_audio = true
+interact_failed_sound = "lock"
+can_interact_multiple_times = true
+required_item_id = "item_null"
+
+[node name="prop_bookshelves-type3_" parent="Y_Sort/Props/prop_door_type1_2" unique_id=1762641297 instance=ExtResource("4_8ndtb")]
+position = Vector2(-205, 22)
 
 [node name="Dark_Swarm" parent="." unique_id=957464448 instance=ExtResource("18_evedv")]
 position = Vector2(-731, 39)

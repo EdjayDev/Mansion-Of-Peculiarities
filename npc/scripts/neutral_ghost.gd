@@ -1,8 +1,6 @@
 extends BaseNPC
 class_name Neutral_GhostLibrary
 
-@onready var npc_area_2d: Area2D = $Area2D
-@onready var sprite_2d_dialogue_sprite: Sprite2D = $"Sprite2D-DialogueSprite"
 
 @export_category("Item Fields")
 @export var cherished_items : Array = []
@@ -13,15 +11,6 @@ class_name Neutral_GhostLibrary
 @onready var ghost_drop: PropInteract_Item = $ghost_drop as PropInteract_Item
 @export var ghost_drop_required_data : String
 @export var ghost_drop_dialogue : Array[String]= []
-
-
-@export_category("NPC_State")
-@export var npc_name_ : String
-@export var inCutscene_ : bool
-@export var npc_animation_ : String
-@export var is_following_player_: bool = false
-
-@onready var npc_navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 var file_path = "res://npc/Neutral_Ghost.tscn"
 
@@ -71,19 +60,8 @@ func _ready():
 	ghost_drop.prop_interact_dialogue = ghost_drop_dialogue
 	ghost_drop.prop_required_data = ghost_drop_required_data
 	initialize_npc()
+	set_npc_group("neutral")
 	
-func initialize_npc()->void:
-	add_to_group("neutral")
-	
-	set_npc_file_path(file_path)
-	set_npc_id(npc_name_.to_lower())
-	set_npc_name(npc_name_)
-	set_npcdialogue(dialogue)
-	set_npcchoices(choices)	
-	set_npc_dialogue_sprite(sprite_2d_dialogue_sprite)
-	set_area2d(npc_area_2d)
-	set_navigation_agent(npc_navigation_agent)
-	character_in_cutscene_handler()
 
 func interact()->void:
 	face_target(player_get)
@@ -118,7 +96,7 @@ func give_cherish_item(item : String)->void:
 		SessionState.input_locked = false
 		SessionState.set_scene_data(ghost_drop_required_data, true)
 		await play_custom_animation("ghost_fading")
-		area_2d.process_mode = Node.PROCESS_MODE_DISABLED
+		npc_area_2d.process_mode = Node.PROCESS_MODE_DISABLED
 		
 	else:
 		await game.vn_component_manager.get_dialogue(dialogue_hate, "?", npc_dialogue_sprite)

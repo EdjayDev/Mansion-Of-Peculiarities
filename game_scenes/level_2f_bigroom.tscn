@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c2xibmr0fmirq" path="res://game_scenes/level_2f_bigroom.gd" id="1_bylbt"]
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_ccivc"]
-[ext_resource type="Texture2D" uid="uid://cix8ymjrov35j" path="res://tilemap/sprites/base_wallsfloors.png" id="2_yvejv"]
+[ext_resource type="AudioStream" uid="uid://ngmd7rac5b42" path="res://systems/sounds/sound_shadowcreeping.mp3" id="2_fcj4x"]
+[ext_resource type="Texture2D" uid="uid://dj5y0t8ea4tmg" path="res://tilemap/sprites/base_wallsfloors.png" id="2_yvejv"]
 [ext_resource type="PackedScene" uid="uid://cys8pmwhdccpy" path="res://props/prop_chandelier-type1_.tscn" id="4_1b4t7"]
 [ext_resource type="PackedScene" uid="uid://yysbu2rfobc6" path="res://npc/Enemy_Shadow.tscn" id="7_bylbt"]
 [ext_resource type="PackedScene" uid="uid://drmc63r48ot5l" path="res://systems/scene_transitioner.tscn" id="10_xdp8u"]
@@ -120,6 +121,7 @@ size = Vector2(3, 176)
 
 [node name="Level_2f_Bigroom" type="Node2D" unique_id=1721054369]
 script = ExtResource("1_bylbt")
+level_music = ExtResource("2_fcj4x")
 
 [node name="navigation_area_tilelayer" type="TileMapLayer" parent="." unique_id=1664651901]
 visible = false
@@ -208,12 +210,11 @@ position = Vector2(-23, 39)
 position = Vector2(1, 39)
 
 [node name="Companion_ExitRun" type="Marker2D" parent="." unique_id=2077344076]
-position = Vector2(19, 39)
+position = Vector2(9, 39)
 
 [node name="Dark_Swarm" parent="." unique_id=172740300 instance=ExtResource("12_lylqo")]
 position = Vector2(-1507, 38)
 scale = Vector2(2, 2)
-shadow_spread_speed = 2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=999930234]
 position = Vector2(-1111, 38)

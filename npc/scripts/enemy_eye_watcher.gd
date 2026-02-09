@@ -2,24 +2,12 @@ extends BaseEnemy
 class_name Enemy_EyeWatcher
 
 @onready var eyes_timer: Timer = Timer.new()
-@onready var npc_area_2d: Area2D = $Area2D
-@onready var sprite_2d_dialogue_sprite: Sprite2D = $"Sprite2D-DialogueSprite"
-
-
-@export var npc_name_ : String
-@export var inCutscene_ : bool
-@export var npc_animation_ : String
-@export var is_following_player_: bool = false
-
 @onready var global_light: DirectionalLight2D = $global_light
 var WARNING_DURATION : float = 0.5
 var warning_active = false
 var warned = false
 
 @onready var eye_watcher_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
-
-@onready var npc_navigation_agent: NavigationAgent2D = $NavigationAgent2D
-
 
 var state_
 var canvas_modulate: CanvasModulate
@@ -33,6 +21,8 @@ const DEFAULT_CLOSE_LENGTH := 5.0  # length of "closing_eyes" animation (example
 
 func _ready() -> void:
 	initialize_npc()
+	state_ = "normal"
+	set_npc_group("enemy")
 	add_child(eyes_timer)
 	eyes_timer.one_shot = false
 
@@ -167,14 +157,3 @@ func reset_visuals() -> void:
 func game_over() -> void:
 	print("GAME OVER – YOU MOVED")
 	scene_game.set_game_over("Caught You")
-
-func initialize_npc()->void:
-	state_ = "normal"
-	add_to_group("enemy")
-	set_npc_id(npc_name_.to_lower())
-	set_npc_name(npc_name_)
-	set_npc_dialogue_sprite(sprite_2d_dialogue_sprite)
-	set_area2d(npc_area_2d)
-	set_navigation_agent(npc_navigation_agent)
-	character_in_cutscene_handler()
-	sync_state()

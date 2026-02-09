@@ -256,7 +256,7 @@ func cancel_all_cutscene_movements():
 		character.cancel_cutscene_movement = true
 
 func set_game_over(text : String = "GAME OVER", flavor_text : String = "", mode : String = "default")->void:
-	game_over.game_over_screen(text, flavor_text, player, "cinematic")
+	game_over.game_over_screen(text, flavor_text, player, mode)
 	guide.visible = false
 
 	bg_music_player.volume_db = randf_range(-30.0, -20.0)

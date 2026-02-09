@@ -94,6 +94,7 @@ size = Vector2(208.62044, 64.0919)
 [node name="Dark_Swarm" type="Node2D" unique_id=957464448]
 light_mask = 0
 script = ExtResource("1_tahxh")
+shadow_spread_speed = 2.5
 
 [node name="Dark_Swarm" type="TextureRect" parent="." unique_id=2061939647]
 light_mask = 0

@@ -41,8 +41,7 @@ window/size/viewport_height=720
 window/size/extend_to_title=true
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
+window/stretch/mode="canvas_items"
 window/stdout/print_fps=false
 
 [file_customization]
@@ -139,3 +138,4 @@ global_illumination/voxel_gi/quality=1
 shading/overrides/force_vertex_shading=true
 camera/depth_of_field/depth_of_field_bokeh_quality=2
 viewport/hdr_2d=true
+2d/snap/snap_2d_transforms_to_pixel=true

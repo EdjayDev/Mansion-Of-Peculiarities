@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yysbu2rfobc6"]
 
 [ext_resource type="Script" uid="uid://cq8dmlqsg5p4w" path="res://npc/scripts/enemy_shadow.gd" id="1_dxxor"]
-[ext_resource type="Texture2D" uid="uid://d3li8euy72j27" path="res://npc/sprites/Sprite7.png" id="1_si32s"]
+[ext_resource type="Texture2D" uid="uid://ci3syxqvkr0h6" path="res://npc/sprites/Sprite7.png" id="1_si32s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxxor"]
 
@@ -172,11 +172,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8t6eb"]
 radius = 6.0
 
-[node name="Enemy_Shadow" type="CharacterBody2D" unique_id=1856426523]
+[node name="Enemy_Shadow" type="CharacterBody2D" unique_id=1856426523 node_paths=PackedStringArray("npc_dialogue_sprite", "npc_area_2d", "npc_navigation_agent")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dxxor")
-npc_name_ = "Shadow"
+npc_file_path = null
+npc_name = "Shadow"
+npc_dialogue_sprite = NodePath("Sprite2D-DialogueSprite")
+npc_area_2d = NodePath("Area2D")
+npc_navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1635690122]
 modulate = Color(0, 0, 0, 1)

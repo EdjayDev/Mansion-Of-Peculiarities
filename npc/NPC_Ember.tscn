@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0ypoy8tjpj7b"]
 
 [ext_resource type="Script" uid="uid://boakt2of6a6yu" path="res://npc/scripts/npc_ember.gd" id="1_o1het"]
-[ext_resource type="Texture2D" uid="uid://3kdfqrqhawcp" path="res://npc/sprites/Sprite8.png" id="2_atbfh"]
+[ext_resource type="Texture2D" uid="uid://bvlh8y8sibk4j" path="res://npc/sprites/Sprite8.png" id="2_atbfh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_46fq8"]
 radius = 6.0
@@ -173,11 +173,15 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_l2wpd"]
 radius = 6.0
 
-[node name="NPC_Ember" type="CharacterBody2D" unique_id=134707892]
+[node name="NPC_Ember" type="CharacterBody2D" unique_id=134707892 node_paths=PackedStringArray("npc_dialogue_sprite", "npc_area_2d", "npc_navigation_agent")]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_o1het")
-npc_name_ = "Ember"
+npc_file_path = null
+npc_name = "Ember"
+npc_dialogue_sprite = NodePath("Sprite2D-DialogueSprite")
+npc_area_2d = NodePath("Area2D")
+npc_navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1401132179]
 position = Vector2(0, -17)

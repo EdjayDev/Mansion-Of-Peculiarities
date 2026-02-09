@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://0gymvt6vwfwk"]
 
 [ext_resource type="Script" uid="uid://yuxpxuxk4s3f" path="res://npc/scripts/enemy_eye_watcher.gd" id="1_bipxp"]
-[ext_resource type="Texture2D" uid="uid://d3li8euy72j27" path="res://npc/sprites/Sprite7.png" id="2_bipxp"]
+[ext_resource type="Texture2D" uid="uid://ci3syxqvkr0h6" path="res://npc/sprites/Sprite7.png" id="2_bipxp"]
 [ext_resource type="Texture2D" uid="uid://dyknowv4bs86p" path="res://npc/sprites/enemy_eyewatchert.png" id="2_jx83e"]
 [ext_resource type="AudioStream" uid="uid://b6ejrftrlusvn" path="res://systems/sounds/sound_flesh_growing.mp3" id="4_jx83e"]
 
@@ -97,10 +97,14 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_8t6eb"]
 radius = 6.0
 
-[node name="Enemy_EyeWatcher" type="CharacterBody2D" unique_id=735344935]
+[node name="Enemy_EyeWatcher" type="CharacterBody2D" unique_id=735344935 node_paths=PackedStringArray("npc_dialogue_sprite", "npc_area_2d")]
 collision_layer = 18
 collision_mask = 16
 script = ExtResource("1_bipxp")
+npc_file_path = null
+npc_name = "Eye Watcher"
+npc_dialogue_sprite = NodePath("Sprite2D-DialogueSprite")
+npc_area_2d = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=198759363]
 position = Vector2(0, -39)

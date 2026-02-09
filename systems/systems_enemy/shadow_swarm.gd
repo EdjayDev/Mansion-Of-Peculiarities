@@ -11,13 +11,15 @@ class_name Shadow_Swarm
 
 func _ready() -> void:
 	shadow_area_2d.body_entered.connect(death)
-	pass
+	#dark_swarm()
 
 func dark_swarm()->void:
-	dark_animplayer.play("dark_spread_" + shadow_direction, shadow_spread_speed)
+	dark_animplayer.play("dark_spread_" + shadow_direction, -1, shadow_spread_speed)
 	
 func death(target_body: CharacterBody2D)->void:
 	if target_body.is_in_group("Player"):
 		var game = get_tree().get_root().get_node("Game") as Game
 		game.set_game_over("CONSUMED", "The shadows engulfed you.")
+		await get_tree().create_timer(2.0).timeout
+		dark_animplayer.stop()
 	pass

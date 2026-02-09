@@ -22,11 +22,11 @@ var player_dialogue = [
 ]
 
 var luke_dialogue = [
-	"We don't have time, Let's go! [Emphasis=1.0]"
+	"We need to leave now, let's go! [Emphasis=1.0]"
 ]
 
 var ember_dialogue = [
-	"Why it looks like L..."
+	"Why it looks like..."
 ]
 
 func _ready() -> void:
@@ -49,13 +49,15 @@ func _on_area_entered(area):
 		entry_shadow()
 
 func halt_music(area):
+	if SessionState.get_global_data("faced_shadow", false):
+		return
 	if area.name == "Player_InteractionArea":
 		game.scene_manager.move_to(intro_shadow_1.global_position, enemy_shadow_, 90)
 		game.set_bgmusic_setting(-16.0, 16.0)
 		prop_chandelier_type1_3.play_animation_effect("idle_fading")
 		game.bg_music_player.stream = level_music
 		game.bg_music_player.play()
-	area_halt.area_entered.disconnect(halt_music)
+		area_halt.area_entered.disconnect(halt_music)
 
 func entry_shadow()->void:
 	var luke = get_npc_by_id("luke")
@@ -88,9 +90,10 @@ func entry_shadow()->void:
 	SessionState.set_global_data("faced_shadow", true)
 	game.bg_music_player.stream = game.MUSIC_SUSPENSE_ESCAPE
 	game.bg_music_player.play()
-	game.set_bgmusic_setting(-4.0, 1.0)
-	await game.scene_manager.wait_time(1.0)
+	game.set_bgmusic_setting(-10.0, 0.6)
+	await game.scene_manager.wait_time(0.111)
 	companion_exit()
+	enemy_chase()
 	pass
 
 func companion_exit()->void:
@@ -98,9 +101,13 @@ func companion_exit()->void:
 		var luke = get_npc_by_id("luke")
 		var ember = get_npc_by_id("ember")
 		print("GOING EXIT!!!")
-		game.scene_manager.move_to(companion_exit_run.global_position, ember, 125)
-		game.scene_manager.move_to(companion_exit_run.global_position, luke, 120)
-		await game.scene_manager.wait_for([luke, ember])
+		game.scene_manager.move_to(companion_exit_run.global_position, ember, 150)
+		game.scene_manager.move_to(companion_exit_run.global_position, luke, 145)
+		await game.scene_manager.wait_for([luke])
 		luke.visible = false
 		ember.visible = false
 		return
+
+func enemy_chase()->void:
+	if SessionState.get_global_data("faced_shadow", false):
+		enemy_shadow_.chase(player, 0.95)

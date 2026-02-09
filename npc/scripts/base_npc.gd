@@ -14,26 +14,36 @@ var is_interacting
 # NODES & REFERENCES
 # -----------------------------
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var npc_dialogue_sprite: Sprite2D = $"Sprite2D-DialogueSprite"
 
-var area_2d: Area2D
-var follow_target: Node2D = null
-var player_get : Player
-var navigation_agent : NavigationAgent2D
+
 
 var scene_game : Game
 # -----------------------------
 # EXPORTED / FLAGS
 # -----------------------------
-@export var npc_name: String
+@export_category("NPC Initialize Data")
+@export var npc_file_path : PackedScene
+@export var npc_id: String
+@export var npc_name: String = "Actor"
+@export var npc_dialogue : Array
+@export var npc_choices : Array
+@export var npc_dialogue_sprite : Sprite2D
+@export var npc_area_2d: Area2D
+@export var npc_navigation_agent : NavigationAgent2D
+
+@export_category("NPC Behavior")
 @export var is_following_player: bool = false
-var npc_file_path
-var is_npc_sync : bool 
-var forced_animation := false
+@export var follow_target: CharacterBody2D = null
+@export var player_get : Player
+
+
 
 # -----------------------------
 # DATA
 # -----------------------------
+var is_npc_sync : bool 
+var forced_animation := false
+
 var delta_data
 var last_direction: String = "down"
 var in_cutscene = false
@@ -44,10 +54,6 @@ var cancel_cutscene_movement := false
 var follow_speed : float = 100.0
 var acceleration = 400
 var friction = 400
-
-var npc_dialogue
-var npc_choices
-var npc_id: String = ""
 var choice_id: String
 
 # -----------------------------
@@ -132,35 +138,34 @@ func _physics_process(delta):
 func update_ai_velocity():
 	if is_following_player and follow_target:
 		face_target(follow_target)
-		navigation_agent.target_desired_distance = 20.0
-		navigation_agent.path_desired_distance = 30.0
-		navigation_agent.path_max_distance = 4.0
+		npc_navigation_agent.target_desired_distance = 20.0
+		npc_navigation_agent.path_desired_distance = 30.0
+		npc_navigation_agent.path_max_distance = 4.0
 		follow_speed = follow_target.move_speed
-
-		navigation_agent.target_position = follow_target.global_position
+		npc_navigation_agent.target_position = follow_target.global_position
 		
-		if not navigation_agent.is_navigation_finished():
-			var next_pos = navigation_agent.get_next_path_position()
+		if not npc_navigation_agent.is_navigation_finished():
+			var next_pos = npc_navigation_agent.get_next_path_position()
 			var dir = (next_pos - global_position).normalized()
 			var desired_velocity = dir * follow_speed
 			# Smoothly interpolate using acceleration if you want
-			navigation_agent.set_velocity(navigation_agent.get_velocity().move_toward(desired_velocity, acceleration * delta_data))
+			npc_navigation_agent.set_velocity(npc_navigation_agent.get_velocity().move_toward(desired_velocity, acceleration * delta_data))
 		else:
-			navigation_agent.set_velocity(navigation_agent.get_velocity().move_toward(Vector2.ZERO, friction * delta_data))
+			npc_navigation_agent.set_velocity(npc_navigation_agent.get_velocity().move_toward(Vector2.ZERO, friction * delta_data))
 
 func on_cutscene_movement(target: Vector2, speed: float) -> void:
 	forced_animation = false
 	cancel_cutscene_movement = false
-	navigation_agent.path_desired_distance = 2.0
-	navigation_agent.target_desired_distance = 2.0
-	navigation_agent.path_max_distance = 2.0
-	navigation_agent.target_position = target
+	npc_navigation_agent.path_desired_distance = 2.0
+	npc_navigation_agent.target_desired_distance = 2.0
+	npc_navigation_agent.path_max_distance = 2.0
+	npc_navigation_agent.target_position = target
 	
-	while not navigation_agent.is_navigation_finished():
+	while not npc_navigation_agent.is_navigation_finished():
 		if cancel_cutscene_movement:
 			velocity = Vector2.ZERO
 			return
-		var next_position := navigation_agent.get_next_path_position()
+		var next_position := npc_navigation_agent.get_next_path_position()
 		var dir := (next_position - global_position).normalized()
 
 		velocity = dir * speed
@@ -251,9 +256,27 @@ func interact():
 # SETTERS
 # -----------------------------
 func initialize_npc()->void:
+	set_npc_file_path(npc_file_path)
+	set_npc_id(npc_id)
+	set_npc_name(npc_name)
+	set_npcdialogue(npc_dialogue)
+	set_npcchoices(npc_choices)	
+	set_npc_dialogue_sprite(npc_dialogue_sprite)
+	set_area2d(npc_area_2d)
+	set_navigation_agent(npc_navigation_agent)
+	
+	character_in_cutscene_handler()
+	sync_state()
 	pass
 
+#optional setter
+func set_npc_group(group_name : String)->void:
+	add_to_group(group_name)
+
 func set_npc_id(id_: String):
+	if not id_ or not npc_id:
+		npc_id = npc_name.to_lower()
+		return
 	npc_id = id_
 	
 func set_npc_name(name_: String):
@@ -262,31 +285,37 @@ func set_npc_name(name_: String):
 func set_npcdialogue(dialogue_: Array):
 	npc_dialogue = dialogue_
 
-func set_npcchoices(choices_: Array):
-	npc_choices = choices_
+func set_npcchoices(choices: Array):
+	npc_choices = choices
 
 func set_npc_dialogue_sprite(sprite: Sprite2D):
 	npc_dialogue_sprite = sprite
 
 func set_area2d(area2d_: Area2D):
-	area_2d = area2d_
-	area_2d.area_entered.connect(_on_area_entered)
-	area_2d.area_exited.connect(_on_area_exited)
+	if not area2d_:
+		npc_area_2d = get_node_or_null("$Area2D")
+		return
+	npc_area_2d = area2d_
+	npc_area_2d.area_entered.connect(_on_area_entered)
+	npc_area_2d.area_exited.connect(_on_area_exited)
 
 func set_navigation_agent(navigation_agent_reference : NavigationAgent2D)->void:
-	navigation_agent = navigation_agent_reference
-	navigation_agent.radius = 3.0
-	navigation_agent.velocity_computed.connect(_on_velocity_computed)
-	navigation_agent.avoidance_enabled = true
-	navigation_agent.debug_enabled = false
-	pass
+	if not navigation_agent_reference:
+		print("NPC: ", npc_name, " don't have navigation_agent_reference")
+		return
+	npc_navigation_agent = navigation_agent_reference
+	npc_navigation_agent.radius = 3.0
+	npc_navigation_agent.velocity_computed.connect(_on_velocity_computed)
+	npc_navigation_agent.avoidance_enabled = true
+	npc_navigation_agent.debug_enabled = false
 	
-func set_npc_file_path(file_path : String)->void:
+	
+func set_npc_file_path(file_path : PackedScene)->void:
 	npc_file_path = file_path
 
 func _on_velocity_computed(safe_velocity : Vector2)->void:
 	if is_following_player and follow_target:
 		var dir = safe_velocity.normalized()
-		velocity = dir * follow_target.move_speed * 0.75
+		velocity = dir * follow_speed * 0.9
 	else:
 		velocity = safe_velocity
