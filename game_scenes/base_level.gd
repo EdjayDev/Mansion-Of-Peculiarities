@@ -129,19 +129,12 @@ func _spawn_companion(companion_marker: Array = []) -> void:
 	
 	for i in range(companions.size()):
 		var data = companions[i]
-
+		
 		if not data.has("scene"):
 			push_error("[BaseLevel] Companion has no scene:", data)
 			continue
-
-		var packed_scene = data["scene"]
-		if typeof(packed_scene) == TYPE_STRING:
-			print("Data is a String")
-			packed_scene = load(packed_scene) as PackedScene
-			if not packed_scene:
-				push_error("[BaseLevel] Failed to load PackedScene:", data["scene"])
-				continue
-			data["scene"] = packed_scene
+		print("NPC DATA SCENE: ", data["scene"])
+		var packed_scene : PackedScene = load(data["scene"])
 
 		if not packed_scene:
 			push_error("[BaseLevel] Failed to load:", data["scene"])

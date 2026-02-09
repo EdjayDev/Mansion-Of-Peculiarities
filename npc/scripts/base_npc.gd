@@ -22,7 +22,7 @@ var scene_game : Game
 # EXPORTED / FLAGS
 # -----------------------------
 @export_category("NPC Initialize Data")
-@export var npc_file_path : PackedScene
+@export_file("*.tscn") var npc_file_path : String
 @export var npc_id: String
 @export var npc_name: String = "Actor"
 @export var npc_dialogue : Array
@@ -309,8 +309,7 @@ func set_navigation_agent(navigation_agent_reference : NavigationAgent2D)->void:
 	npc_navigation_agent.avoidance_enabled = true
 	npc_navigation_agent.debug_enabled = false
 	
-	
-func set_npc_file_path(file_path : PackedScene)->void:
+func set_npc_file_path(file_path : String)->void:
 	npc_file_path = file_path
 
 func _on_velocity_computed(safe_velocity : Vector2)->void:

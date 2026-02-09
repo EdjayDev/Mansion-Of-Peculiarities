@@ -47,4 +47,4 @@ func calculate_prop_light_rect(prop: Node2D) -> Rect2:
 	for child in prop.get_children():
 		if child is Sprite2D:
 			rect = rect.merge(child.get_rect())
-	return rect.grow(24)
+	return rect.grow(64)

@@ -19,6 +19,8 @@ var choices = [
 func _ready():
 	initialize_npc()
 	set_npc_group("npc")
+	print(npc_file_path)
+	print(npc_id)
 	
 func interact():
 	if SessionState.get_scene_data("IntroCutscene", false):

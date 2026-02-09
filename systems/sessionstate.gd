@@ -165,9 +165,10 @@ func add_completed_level(level_name: String) -> void:
 		world["levels_completed"].append(level_name)
 
 # Make pos optional (pass null if you don't have a pos to record)
-func add_companion(npc_id: String, npc_file_path: PackedScene) -> void:
+func add_companion(npc_id: String, npc_file_path: String) -> void:
 	var companions = player["companion"]["npcs"]
-
+	print("npc id: ", npc_id)
+	print("npc file path: ", npc_file_path)
 	# Prevent duplicates
 	for c in companions:
 		if c["npc_id"] == npc_id:

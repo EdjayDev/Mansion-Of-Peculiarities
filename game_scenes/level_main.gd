@@ -110,5 +110,5 @@ func npc_wander()->void:
 	game.scene_manager.move_to(target_point_npcluke_3.global_position, luke, 30, true, "after", "idle_up")
 	await game.scene_manager.wait_time(8.0)
 	game.scene_manager.move_to(ember_wander_1.global_position, ember, 30, true, "after", "idle_up")
-	await game.scene_manager.wait_time(12.0)
+	await game.scene_manager.wait_time(4.0)
 	game.scene_manager.move_to(luke_wander_1.global_position, luke, 30, true, "after", "idle_up")
