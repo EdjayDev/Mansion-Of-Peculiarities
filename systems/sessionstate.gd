@@ -46,7 +46,7 @@ var requested_spawn_id: String = "start"
 #test
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Interact"):
-		var _game = get_tree().get_root().get_node("Game") as Game
+		var game = get_tree().get_root().get_node("Game") as Game
 		#print("Session Input Locked: ", input_locked)
 		#print("Game is in cutscene: ", game.is_in_cutscene)
 		#game.cancel_all_cutscene_movements()
@@ -55,6 +55,10 @@ func _process(_delta: float) -> void:
 		#InventoryManager.add_item("item_doorkey", "Door Key", 1)
 		#print("Temp Global Data: ", temp_global_data)
 		#print("Global Data: ", global_data)
+		print("conservatory done: ",get_scene_data("2fconservatory_unlocked", false))
+		print("Library done: ", get_scene_data("2flibrary_unlocked", false))
+		print("EYE WATCHER INTRODUCTION: ", SessionState.get_global_data("eyewatcher_introduction", false))
+		input_locked = false
 		pass
 
 func set_temp_data(level_path : String, spawn_marker : String, companion_marker : Array, session_global_data : Dictionary)->void:

@@ -1,7 +1,7 @@
 extends Node
-class_name Base_Cutscene
+class_name Base_Cinematic
 
-signal cutscene_finished(next_scene: PackedScene)
+signal cinematic_finished(next_scene: PackedScene)
 
 var hasTitleCard = false
 var first_transition = true
@@ -23,16 +23,16 @@ var required_selection: int = 0
 @onready var effect_ui: ScreenEffect_UI = get_tree().root.get_node("Game/SceneUI_CanvasLayer/ScreenEffect_UI")
 
 # -------------------------
-# CUTSCENE FLOW
+# CINEMATIC FLOW
 # -------------------------
-func start_cutscene() -> void:
+func start_cinematic() -> void:
 	game.is_in_cinematic = true
 	current_scene_index = 0
 	is_running = true
-	await run_cutscene_flow()
+	await run_cinematic_flow()
 
 
-func run_cutscene_flow() -> void:
+func run_cinematic_flow() -> void:
 	while is_running and current_scene_index < scene_order.size():
 		var key = scene_order[current_scene_index]
 
@@ -55,12 +55,12 @@ func run_cutscene_flow() -> void:
 		
 		current_scene_index += 1
 
-	# Cutscene finished -> emit next scene
+	# Cinematic finished -> emit next scene
 	if on_ending:
 		print("ON ENDING ", on_ending)
 		return
 	if not is_running or current_scene_index >= scene_order.size():
-		cutscene_finished.emit(get_next_scene())
+		cinematic_finished.emit(get_next_scene())
 
 # -------------------------
 # SCENE LOADING

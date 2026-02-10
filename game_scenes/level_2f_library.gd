@@ -25,12 +25,14 @@ var ghost_introdialogue_2 = [
 ]
 
 func _ready() -> void:
+	#debug
+	SessionState.input_locked = false
 	set_level_name("2nd Floor Library")
 	scene_path = "res://game_scenes/level_2f_library.tscn"
 	await init_level()
 	print("Level 2f Library ready")
 	player.light_main.visible = true
-	print("Random Level: ", pick_randomlevel())
+	
 	if SessionState.get_scene_data("2f_library_ghostfree", false):
 		neutral_ghost.queue_free()
 	if SessionState.get_global_data("eyewatcher_introduction", null):

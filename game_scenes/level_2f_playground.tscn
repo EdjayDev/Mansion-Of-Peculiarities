@@ -201,7 +201,6 @@ scale = Vector2(1.5, 1.5)
 [node name="SceneTransitioner_ToDebug" parent="Y_Sort/Props/prop_doorsilver-type1_" unique_id=1519642158 instance=ExtResource("10_fnn53")]
 position = Vector2(0, -2.666661)
 scale = Vector2(0.39469436, 0.43531704)
-auto_trigger = false
 load_level = "res://game_scenes/level_c2_entrance.tscn"
 spawn_marker_name = "Player_fromPlayGround"
 companion_spawn_marker = ["Companion_fromPlayGround"]
@@ -262,25 +261,25 @@ required_item_id = "item_doorkey"
 prop_required_data = "2flibrary_unlocked"
 
 [node name="SceneTransitioner_ToLibrary" parent="Y_Sort/Props/prop_door_Library" unique_id=1769144659 instance=ExtResource("10_fnn53")]
-position = Vector2(0, -5)
+position = Vector2(0, -6)
 scale = Vector2(0.7013384, 0.65297556)
-auto_trigger = false
+auto_trigger_default = false
 load_level = "res://game_scenes/level_2f_library.tscn"
 spawn_marker_name = "Player_fromPlayGround"
 companion_spawn_marker = ["Companion_fromPlayGround"]
 
-[node name="prop_door_type1_2" parent="Y_Sort/Props" unique_id=2084220917 instance=ExtResource("10_rm8gy")]
+[node name="prop_door_Kitchen" parent="Y_Sort/Props" unique_id=2084220917 instance=ExtResource("10_rm8gy")]
 position = Vector2(128, -176)
 
-[node name="SceneTransitioner_ToKitchen" parent="Y_Sort/Props/prop_door_type1_2" unique_id=28863244 instance=ExtResource("10_fnn53")]
-position = Vector2(0, -4)
-scale = Vector2(0.49187556, 0.4263771)
-auto_trigger = false
+[node name="SceneTransitioner_ToKitchen" parent="Y_Sort/Props/prop_door_Kitchen" unique_id=28863244 instance=ExtResource("10_fnn53")]
+position = Vector2(-1, -3)
+scale = Vector2(0.3642176, 0.17780884)
+auto_trigger_default = false
 load_level = "res://game_scenes/level_2f_kitchen.tscn"
 spawn_marker_name = "Player_fromPlayGround"
 companion_spawn_marker = ["Companion_fromPlayGround"]
 
-[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_2" unique_id=93831843 instance=ExtResource("11_afll3")]
+[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_Kitchen" unique_id=93831843 instance=ExtResource("11_afll3")]
 position = Vector2(0, -4)
 animation_name = Array[String](["door_open"])
 animate_prop = true
@@ -308,18 +307,18 @@ can_interact_multiple_times = true
 required_item_id = "item_doorkey"
 prop_required_data = "2fkitchen_unlocked"
 
-[node name="prop_door_type1_3" parent="Y_Sort/Props" unique_id=266789141 instance=ExtResource("10_rm8gy")]
+[node name="prop_door_Conservatory" parent="Y_Sort/Props" unique_id=266789141 instance=ExtResource("10_rm8gy")]
 position = Vector2(208, -80)
 
-[node name="SceneTransitioner_ToConservatory" parent="Y_Sort/Props/prop_door_type1_3" unique_id=1652266602 instance=ExtResource("10_fnn53")]
-position = Vector2(0, -4)
+[node name="SceneTransitioner_ToConservatory" parent="Y_Sort/Props/prop_door_Conservatory" unique_id=1652266602 instance=ExtResource("10_fnn53")]
+position = Vector2(0, -5)
 scale = Vector2(0.49187556, 0.4263771)
-auto_trigger = false
+auto_trigger_default = false
 load_level = "res://game_scenes/level_2f_conservatory.tscn"
 spawn_marker_name = "Player_fromPlayGround"
 companion_spawn_marker = ["Companion_fromPlayGround"]
 
-[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_3" unique_id=1254770445 instance=ExtResource("11_afll3")]
+[node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_Conservatory" unique_id=1254770445 instance=ExtResource("11_afll3")]
 position = Vector2(0, -4)
 animation_name = Array[String](["door_open"])
 animate_prop = true
@@ -398,13 +397,13 @@ position = Vector2(0, -29)
 position = Vector2(0, -16)
 
 [node name="Player_from2FLibrary" type="Marker2D" parent="." unique_id=822292764]
-position = Vector2(-128, -121)
+position = Vector2(-128, -119)
 
 [node name="Companion_from2FLibrary" type="Marker2D" parent="." unique_id=839766561]
-position = Vector2(-128, -142)
+position = Vector2(-128, -131)
 
 [node name="Player_from2FConservatory" type="Marker2D" parent="." unique_id=638706773]
-position = Vector2(208, -64)
+position = Vector2(208, -56)
 
 [node name="Player_from2FDebug" type="Marker2D" parent="." unique_id=1560638278]
 position = Vector2(0, -194)
@@ -413,10 +412,10 @@ position = Vector2(0, -194)
 position = Vector2(128, -153)
 
 [node name="Companion_from2FKitchen" type="Marker2D" parent="." unique_id=2021121896]
-position = Vector2(128, -174)
+position = Vector2(128, -163)
 
 [node name="Companion_from2FConservatory" type="Marker2D" parent="." unique_id=1955725002]
-position = Vector2(208, -77)
+position = Vector2(208, -69)
 
 [node name="Companion_from2FDebug" type="Marker2D" parent="." unique_id=316265593]
 position = Vector2(0, -208)

@@ -14,7 +14,6 @@ const MUSIC_SUSPENSE_ESCAPE := preload("res://systems/sounds/sound_suspense_esca
 @onready var player: Player = %Player
 
 @onready var scene_manager: SceneManager = %Scene_Manager as SceneManager
-
 @onready var vn_component_manager: VN_Component_Manager = %VN_Component_Manager as VN_Component_Manager
 @onready var screen_effect_ui: ScreenEffect_UI = %ScreenEffect_UI as ScreenEffect_UI
 @onready var inventory_ui: Inventory_UI = %InventoryUI as Inventory_UI
@@ -29,10 +28,7 @@ var bg_music_volumedb_range = randf_range(-2.0, 1.0)
 # ==========================
 # LEVELS
 # ==========================
-var scene_prologue := "res://cutscenes/prologue/prologue.tscn"
-
-
-var pending_game_over_text: String
+var scene_prologue := "res://cinematics/prologue/prologue.tscn"
 # ==========================
 # VARIABLES
 # ==========================
@@ -63,15 +59,13 @@ func _ready() -> void:
 	guide.layer = 2
 	inventory_ui.layer = 2
 	
-	
-
 	# Load level if resuming
 	if level_to_load != "":
 		print("[Game] Loading requested:", level_to_load, "marker:", spawn_marker_id)
 		await load_level(level_to_load, spawn_marker_id, companion_marker_id)
 	else:
 		print("[Game] New game → Prologue")
-		await load_level("res://cutscenes/prologue/prologue.tscn", "Player_Spawn", [])
+		await load_level(scene_prologue, "Player_Spawn", [])
 
 	var saveui = get_tree().get_first_node_in_group("save_ui")
 	if saveui:
@@ -85,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 # LEVEL LOADING
 # ==========================
 func load_level(level_path: String, spawn_marker: String = "", companion_marker: Array = []) -> void:
-	cancel_all_cutscene_movements()
+	scene_manager.cancel_all_cutscene_movements()
 	SessionState.set_temp_data(level_path, spawn_marker, companion_marker, SessionState.global_data)
 	await screen_effect_ui.set_effect("fade_instant", 2)
 	is_in_cinematic = false
@@ -113,7 +107,6 @@ func load_level(level_path: String, spawn_marker: String = "", companion_marker:
 	for child in scene_manager.get_children():
 		child.queue_free()
 		
-	await get_tree().process_frame
 	var new_scene = level_scene.instantiate()
 	scene_manager.add_child(new_scene)
 	# Determine level name
@@ -146,9 +139,9 @@ func load_level(level_path: String, spawn_marker: String = "", companion_marker:
 		bg_music_player.pitch_scale = randf_range(0.9, 1.25)
 		bg_music_player.volume_db = randf_range(4.0, 8.0)
 		bg_music_player.play()
-		# Connect cutscene_finished if available
-		if new_scene.has_signal("cutscene_finished"):
-			new_scene.cutscene_finished.connect(_on_cutscene_finished)
+		# Connect cinematic_finished if available
+		if new_scene.has_signal("cinematic_finished"):
+			new_scene.cinematic_finished.connect(_on_cinematic_finished)
 		# Prefer explicit start methods if provided, otherwise try generic ones
 		else:
 			# If the scene already starts itself (like ScenePrologue did in _ready), do nothing.
@@ -224,7 +217,7 @@ func _apply_player_state_from_session() -> void:
 # ==========================
 # CUTSCENE FINISHED
 # ==========================
-func _on_cutscene_finished(next_scene: PackedScene) -> void:
+func _on_cinematic_finished(next_scene: PackedScene) -> void:
 	if next_scene and next_scene.resource_path:
 		call_deferred("load_level", next_scene.resource_path, "Player_Spawn", [])
 	else:
@@ -251,10 +244,6 @@ func end_cutscene(reset_effect : bool) -> void:
 	is_in_cutscene = false
 	cutscene_finished.emit()
 	guide.show_guide()
-
-func cancel_all_cutscene_movements():
-	for character in get_tree().get_nodes_in_group("npc") + [player]:
-		character.cancel_cutscene_movement = true
 
 func set_game_over(text : String = "GAME OVER", flavor_text : String = "", mode : String = "default")->void:
 	game_over.game_over_screen(text, flavor_text, player, mode)

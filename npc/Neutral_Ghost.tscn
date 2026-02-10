@@ -250,12 +250,15 @@ radius = 18.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x636b"]
 size = Vector2(7, 11.465797)
 
-[node name="Neutral_Ghost" type="CharacterBody2D" unique_id=795215098]
+[node name="Neutral_Ghost" type="CharacterBody2D" unique_id=795215098 node_paths=PackedStringArray("npc_dialogue_sprite", "npc_area_2d", "npc_navigation_agent")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_x636b")
 npc_file_path = "uid://niwxsx00utya"
 npc_name = "???"
+npc_dialogue_sprite = NodePath("Sprite2D-DialogueSprite")
+npc_area_2d = NodePath("Area2D")
+npc_navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2040061317]
 position = Vector2(0, -24)

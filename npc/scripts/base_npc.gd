@@ -4,7 +4,9 @@ class_name BaseNPC
 # -----------------------------
 # ENUMS & STATE
 # -----------------------------
-enum NPCState { IDLE, WALK, WANDER }
+enum NPCState { IDLE, WALK }
+enum NPCBehavior {WANDER, PATROL}
+
 
 var state: NPCState = NPCState.IDLE
 var prev_state: NPCState = NPCState.IDLE
@@ -185,6 +187,10 @@ func update_state_from_velocity():
 	else:
 		state = NPCState.IDLE
 		pass
+# -----------------------------
+# NPC BEHAVIOR 
+# -----------------------------
+
 
 # -----------------------------
 # ANIMATION (VELOCITY-DRIVEN)
@@ -195,7 +201,7 @@ func update_animation(custom_animation : String = ""):
 	if not custom_animation.is_empty():
 		animation_player.play(custom_animation)
 		return
-	if velocity.length() > 0.1:
+	if state == NPCState.WALK:
 		last_direction = animation_direction(velocity)
 		animation_player.play("walk_" + last_direction)
 	else:

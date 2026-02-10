@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqou57dygg0fi" path="res://game_scenes/level_2f_library.gd" id="1_4j2js"]
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_a0rcd"]
-[ext_resource type="Texture2D" uid="uid://cix8ymjrov35j" path="res://tilemap/sprites/base_wallsfloors.png" id="2_milx8"]
+[ext_resource type="Texture2D" uid="uid://dj5y0t8ea4tmg" path="res://tilemap/sprites/base_wallsfloors.png" id="2_milx8"]
 [ext_resource type="PackedScene" uid="uid://drmc63r48ot5l" path="res://systems/scene_transitioner.tscn" id="3_4j2js"]
 [ext_resource type="PackedScene" uid="uid://dwu5rjw77nrqa" path="res://props/prop_bookshelves-type4_.tscn" id="4_a0rcd"]
 [ext_resource type="PackedScene" uid="uid://d3ih2pt60pbdt" path="res://props/prop_bookshelves-type2_.tscn" id="4_pvn2j"]
@@ -33,7 +33,7 @@ agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8ndtb"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odr00"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g5vll"]
 texture = ExtResource("2_milx8")
 0:0/0 = 0
 1:0/0 = 0
@@ -130,7 +130,7 @@ texture = ExtResource("2_milx8")
 
 [sub_resource type="TileSet" id="TileSet_ps0wf"]
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_odr00")
+sources/0 = SubResource("TileSetAtlasSource_g5vll")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4xcd8"]
 cull_mode = 2
@@ -428,7 +428,8 @@ position = Vector2(184, -1075)
 
 [node name="prop_bookshelves-type4_39" parent="Y_Sort/_Props_Container" unique_id=1597421319 instance=ExtResource("4_a0rcd")]
 position = Vector2(276, -1075)
-script = ExtResource("12_ps0wf")
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type4_39" unique_id=383616533 instance=ExtResource("22_g5vll")]
 prop_interact_dialogue = ["Upon Looking at the shelf You found a Key!"]
 itemid_to_add = "item_silverkey"
 item_to_add = "Silver Key"
@@ -727,7 +728,7 @@ position = Vector2(-303, -638)
 [node name="prop_bookshelves-type3_6" parent="Y_Sort/_Props_Container" unique_id=1606610417 instance=ExtResource("4_v6lm2")]
 position = Vector2(-420, -717)
 
-[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type3_6" unique_id=383616533 instance=ExtResource("22_g5vll")]
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type3_6" unique_id=1537365278 instance=ExtResource("22_g5vll")]
 prop_interact_dialogue = ["You stumbled upon a book..", "\"She wanders the abandoned corridors of the old estate, a pale figure in a white gown, her footsteps silent against the cracked tiles.\"", "\"Some say she appears only when sorrow weighs heaviest on the heart, lingering just out of reach, her hollow eyes watching, waiting.\""]
 itemid_to_add = "item_booklove"
 item_to_add = "[Book] The Maiden"

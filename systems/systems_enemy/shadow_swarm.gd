@@ -19,7 +19,7 @@ func dark_swarm()->void:
 func death(target_body: CharacterBody2D)->void:
 	if target_body.is_in_group("Player"):
 		var game = get_tree().get_root().get_node("Game") as Game
-		game.set_game_over("CONSUMED", "The shadows engulfed you.")
+		game.set_game_over("CONSUMED", "The shadows engulfed you.", "default")
 		await get_tree().create_timer(2.0).timeout
 		dark_animplayer.stop()
 	pass

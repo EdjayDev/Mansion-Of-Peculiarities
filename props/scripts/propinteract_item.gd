@@ -13,7 +13,7 @@ const sound_interact_lock = preload("uid://y67bol3wfuhd")
 
 var player_nearby = false
 
-signal interaction_allowed
+signal interaction_allowed(unlocked: bool)
 var check_requirement_completed : bool = false
 var interaction_choices_successful : bool = false
 
@@ -76,18 +76,7 @@ var is_interacting = false
 func _ready() -> void:
 	game = get_tree().get_root().get_node("Game") as Game
 	set_process_unhandled_input(false) 
-	
-	# Load saved state
-	if prop_required_data != "":
-		var saved_state = SessionState.get_scene_data(prop_required_data)
-		if saved_state == true:
-			interact_done = true
-			required_item_id = ""
-			required_item_dialogue = []  
 
-			if prop_swap_interact_dialogue:
-				prop_interact_dialogue = prop_swap_interact_dialogue
-				
 	if get_parent().has_node("Area2D"):
 		var area_2d = get_parent().get_node_or_null("Area2D")
 		area_2d.area_entered.connect(_on_area_entered)
@@ -99,9 +88,24 @@ func _ready() -> void:
 				break
 			if not animate_player:
 				push_warning("animate prop true but missing AnimationPlayer in: " + get_parent().name)
-
+	load_saved_state()
+	
+func load_saved_state()->void:
+	await get_tree().process_frame
+	# Load saved state
+	if prop_required_data != "":
+		if SessionState.get_scene_data(prop_required_data, false):
+			interact_done = true
+			required_item_id = ""
+			required_item_dialogue = []  
+			if prop_swap_interact_dialogue:
+				prop_interact_dialogue = prop_swap_interact_dialogue
+			
 func _on_area_entered(area) -> void:
 	if area.name == "Player_InteractionArea":
+		if SessionState.get_scene_data(prop_required_data, false) == true:
+			await play_prop_animation()
+			interaction_allowed.emit(true)
 		player_nearby = true
 		PropInteract_Item.active_prop = self
 		set_process_unhandled_input(true)  
@@ -135,7 +139,8 @@ func interact() -> void:
 		
 	check_prop_inventory_setting()
 	await play_prop_narration()
-	
+	if SessionState.get_scene_data(prop_required_data, false):
+		return
 	check_prop_requirements()
 	await handle_interaction_options()
 	play_prop_audio()
@@ -189,13 +194,17 @@ func can_complete_interaction()->bool:
 		return interaction_choices_successful
 	
 	return true	
-	
-func complete_interaction()->void:
+
+func play_prop_animation()->void:
 	if animate_prop:
+		animate_player.get_animation(animation_name[0]).loop = false
 		SessionState.input_locked = true
 		animate_player.play(animation_name[0], -1, 1)
 		await animate_player.animation_finished
 		SessionState.input_locked = false
+		
+func complete_interaction()->void:
+	await play_prop_animation()
 	if entry_transitioner_unlocked:
 		interaction_allowed.emit()
 	
@@ -204,16 +213,15 @@ func complete_interaction()->void:
 
 func check_prop_requirements()->void:
 	if required_item_id != "":
-		if InventoryManager.has_required_item(required_item_id, required_item_amount):
-			InventoryManager.remove_item(required_item_id, required_item_amount)
+		if not InventoryManager.has_required_item(required_item_id, required_item_amount):
 			if debug:
 				SessionState.set_global_data("debug", true)
-		else:
 			await game.vn_component_manager.get_narration(required_item_dialogue)
 			print("You need ", required_item_id, " to interact!")
 			is_interacting = false
 			SessionState.input_locked = false
-			return 
+			return
+
 	check_requirement_completed = true
 	if not interaction_option_dependent:
 		SessionState.set_scene_data(prop_required_data, true)
@@ -284,6 +292,7 @@ func apply_inventory_settings()->void:
 	if interaction_option_dependent:
 		if not interaction_choices_successful:
 			return
+	InventoryManager.remove_item(required_item_id, required_item_amount)
 	if itemid_to_add != "" and item_to_add != "":
 		InventoryManager.add_item(itemid_to_add, item_to_add, itemamount_to_add, interaction_options)
 	if stop_adding_item:

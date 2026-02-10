@@ -75,7 +75,7 @@ func play_cutscene() -> void:
 	print("Input enabled.")
 
 func _play_cutscene_sequence() -> void:
-	game.cancel_all_cutscene_movements()
+	game.scene_manager.cancel_all_cutscene_movements()
 	var narration_lines: Array[String] = [
 		"Let's get going..."
 	]

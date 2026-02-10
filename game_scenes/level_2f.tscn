@@ -351,4 +351,4 @@ position = Vector2(-208, 39)
 position = Vector2(-48, -482)
 
 [node name="ghost_exit" type="Marker2D" parent="Intro_PathMarkers" unique_id=127643861]
-position = Vector2(236, 30)
+position = Vector2(-69, 30)

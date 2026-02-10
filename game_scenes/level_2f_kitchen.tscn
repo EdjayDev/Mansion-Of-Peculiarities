@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://6lm08ugxxypf"]
 
 [ext_resource type="Script" uid="uid://di0rrbp1rm3d3" path="res://game_scenes/level_2f_kitchen.gd" id="1_4b3t7"]
-[ext_resource type="Texture2D" uid="uid://cix8ymjrov35j" path="res://tilemap/sprites/base_wallsfloors.png" id="2_1da7k"]
+[ext_resource type="Texture2D" uid="uid://dj5y0t8ea4tmg" path="res://tilemap/sprites/base_wallsfloors.png" id="2_1da7k"]
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_hjr6n"]
 [ext_resource type="PackedScene" uid="uid://0gymvt6vwfwk" path="res://npc/Enemy_EyeWatcher.tscn" id="3_owii8"]
 [ext_resource type="PackedScene" uid="uid://niwxsx00utya" path="res://npc/Neutral_Ghost.tscn" id="4_834iu"]
@@ -670,17 +670,20 @@ color = Color(0, 0.07982671, 0.3359375, 1)
 
 [node name="IntroMarkers" type="Node2D" parent="." unique_id=328708665]
 
-[node name="Intro_Ghost" type="Marker2D" parent="IntroMarkers" unique_id=1388147866]
+[node name="ghost_intro" type="Marker2D" parent="IntroMarkers" unique_id=1388147866]
 position = Vector2(0, -271)
 
-[node name="IntroEnd_Ghost" type="Marker2D" parent="IntroMarkers" unique_id=1146155316]
+[node name="ghost_intro_2" type="Marker2D" parent="IntroMarkers" unique_id=1146155316]
 position = Vector2(-304, -241)
 
-[node name="Intro_Player" type="Marker2D" parent="IntroMarkers" unique_id=1812728070]
+[node name="player_intro" type="Marker2D" parent="IntroMarkers" unique_id=1812728070]
 position = Vector2(-15, -205)
 
-[node name="Intro_Companion" type="Marker2D" parent="IntroMarkers" unique_id=1352666589]
+[node name="companion_intro" type="Marker2D" parent="IntroMarkers" unique_id=1352666589]
 position = Vector2(17, -205)
+
+[node name="eye_watcher_intro" type="Marker2D" parent="IntroMarkers" unique_id=1980718493]
+position = Vector2(0, -589)
 
 [node name="SceneTransitioner_To2fPlayground" parent="." unique_id=610702316 instance=ExtResource("9_r0m8y")]
 position = Vector2(6.1035156e-05, 4.000008)

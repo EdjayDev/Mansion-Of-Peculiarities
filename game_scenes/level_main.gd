@@ -108,7 +108,12 @@ func intro_cutscene() -> void:
 func npc_wander()->void:
 	game.scene_manager.move_to(target_point_npcember_3.global_position, ember, 30, true, "after", "idle_up")
 	game.scene_manager.move_to(target_point_npcluke_3.global_position, luke, 30, true, "after", "idle_up")
-	await game.scene_manager.wait_time(8.0)
+	if game.scene_manager.cancel_scene_movement:
+		return
+	await game.scene_manager.wait_time(4.0)
+	print("Game cancel movement: ", game.scene_manager.cancel_scene_movement)
 	game.scene_manager.move_to(ember_wander_1.global_position, ember, 30, true, "after", "idle_up")
+	if game.scene_manager.cancel_scene_movement:
+		return
 	await game.scene_manager.wait_time(4.0)
 	game.scene_manager.move_to(luke_wander_1.global_position, luke, 30, true, "after", "idle_up")

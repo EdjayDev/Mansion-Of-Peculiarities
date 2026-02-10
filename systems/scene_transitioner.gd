@@ -1,7 +1,8 @@
 extends Node2D
 class_name SceneTransitioner
 
-@export var auto_trigger : bool = true
+@export var auto_trigger_default : bool = true
+var trigger_enabled : bool = false
 @export var load_level: String
 @export var randomize_level : bool = false
 @export var random_level_list : Array[String] = []
@@ -16,24 +17,29 @@ var transition_cooldown := 0.0
 const COOLDOWN_TIME = 1.0
 
 func _ready() -> void:
-	if auto_trigger:
+	if auto_trigger_default:
 		if area_2d:
 			area_2d.body_entered.connect(_on_body_entered)
 			area_2d.body_exited.connect(_on_body_exited)
 	var prop_interact := get_parent().get_node_or_null("PropInteractItem_Component")
 	if prop_interact:
-		prop_interact.interaction_allowed.connect(_start_transition)
+		prop_interact.interaction_allowed.connect(start_transition)
 
 func _process(delta: float) -> void:
 	if transition_cooldown > 0:
 		transition_cooldown -= delta
 
+func enable_area_trigger()->void:
+	if trigger_enabled:
+		area_2d.body_entered.connect(_on_body_entered)
+		area_2d.body_exited.connect(_on_body_exited)
+		
 func _on_body_entered(body: Node) -> void:
 	if body.name != "Player":
 		return
 	if is_transitioning or transition_cooldown > 0:
 		return
-	_start_transition()
+	start_transition()
 
 func _on_body_exited(body: Node) -> void:
 	if body.name == "Player":
@@ -42,11 +48,12 @@ func _on_body_exited(body: Node) -> void:
 func start_forced_transition():
 	if is_transitioning:
 		return
-	_start_transition()
+	start_transition()
 
 # ---------------------------------------------------------------------
-func _start_transition() -> void:
-	auto_trigger = true
+func start_transition(trigger_area: bool = false) -> void:
+	if trigger_area:
+		enable_area_trigger()
 	var game = get_tree().get_root().get_node_or_null("Game") as Game
 	if is_transitioning:
 		return
@@ -56,7 +63,7 @@ func _start_transition() -> void:
 	if randomize_level:
 		spawn_marker_name = "Player_fromRandom"
 		companion_spawn_marker = ["Companion_fromRandom"]
-	print("[SCenetransi] Continuing transition")
+	print("[SCenetransition] Continuing transition")
 	is_transitioning = true
 	transition_cooldown = COOLDOWN_TIME
 

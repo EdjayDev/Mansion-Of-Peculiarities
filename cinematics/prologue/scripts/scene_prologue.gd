@@ -1,4 +1,4 @@
-extends Base_Cutscene
+extends Base_Cinematic
 class_name ScenePrologue
 
 @export var set_titleCard : String
@@ -8,10 +8,10 @@ class_name ScenePrologue
 @onready var background_image: TextureRect = $Scene_BG/Background/BackgroundImage
 
 # Preload backgrounds
-var prologue_scenebg_1 = preload("res://cutscenes/assets/bg_forest.jpg")
-var prologue_scenebg_2 = preload("res://cutscenes/assets/bg_room.jpg")
-var prologue_scenebg_3 = preload("res://cutscenes/assets/bg_mansion.png")
-var prologue_scenebg_4 = preload("res://cutscenes/assets/bg_mansion_doorway.jpg")
+var prologue_scenebg_1 = preload("res://cinematics/assets/bg_forest.jpg")
+var prologue_scenebg_2 = preload("res://cinematics/assets/bg_room.jpg")
+var prologue_scenebg_3 = preload("res://cinematics/assets/bg_mansion.png")
+var prologue_scenebg_4 = preload("res://cinematics/assets/bg_mansion_doorway.jpg")
 
 # Scene Data
 var prologue_data = {
@@ -82,7 +82,7 @@ func _ready() -> void:
 	get_titleCard(set_titleCard)
 	get_titleText(set_titleText)
 	# Start cutscene
-	await start_cutscene()
+	await start_cinematic()
 
 func get_next_scene() -> PackedScene:
 	return next_scene

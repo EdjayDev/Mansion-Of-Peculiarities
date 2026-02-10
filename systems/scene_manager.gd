@@ -2,10 +2,14 @@ extends Node2D
 class_name SceneManager
 
 signal character_reach_target(character : CharacterBody2D)
+
 var waiting_for : Dictionary = {}
+var cancel_scene_movement : bool = false
 
 func _ready() -> void:
-	pass
+	var game = get_tree().get_root().get_node("Game") as Game
+	game.cutscene_started.connect(on_scene_cutscene_started)
+	game.cutscene_finished.connect(on_scene_cutscene_finished)
 	
 #pass the position where the character should move ex. Marker2D position
 func move_to(target_location: Vector2, character: CharacterBody2D, speed: float, has_custom_animation: bool = false, animation_timing: String = "", animation: String = "") -> void:
@@ -63,8 +67,22 @@ func wait_for(characters : Array)->void:
 	pass
 	
 func wait_time(time : float)->void:
+	if cancel_scene_movement:
+		return
 	await get_tree().create_timer(time).timeout
 
+func on_scene_cutscene_started()->void:
+	cancel_all_cutscene_movements()
+	
+func on_scene_cutscene_finished()->void:
+	cancel_all_cutscene_movements()
+
+func cancel_all_cutscene_movements():
+	cancel_scene_movement = true
+	for character in get_tree().get_nodes_in_group("npc") + get_tree().get_nodes_in_group("player"):
+		character.cancel_cutscene_movement = true
+	cancel_scene_movement = false
+	
 func reset_camera(character : CharacterBody2D)->void:
 	var scene_cameras = get_tree().get_nodes_in_group("scene_camera")
 	for camera in scene_cameras:
@@ -72,4 +90,3 @@ func reset_camera(character : CharacterBody2D)->void:
 	character.camera_2d.enabled = true
 	character.camera_2d.make_current()
 	pass
-	

@@ -51,7 +51,7 @@ movie_writer/movie_file="C:/Users/Edams/Documents/GitHub/Mansion-Of-Peculiaritie
 [file_customization]
 
 folder_colors={
-"res://cutscenes/": "orange",
+"res://cinematics/": "orange",
 "res://debug/": "pink",
 "res://game_scenes/": "red",
 "res://npc/": "yellow",
@@ -142,4 +142,3 @@ global_illumination/voxel_gi/quality=1
 shading/overrides/force_vertex_shading=true
 camera/depth_of_field/depth_of_field_bokeh_quality=2
 viewport/hdr_2d=true
-2d/snap/snap_2d_transforms_to_pixel=true
