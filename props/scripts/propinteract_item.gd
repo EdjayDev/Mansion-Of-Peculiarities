@@ -30,6 +30,8 @@ var interaction_choices_successful : bool = false
 @export_category("Interaction")
 @export var animation_name : Array[String] = []
 @export var animate_prop : bool = false
+@export var repeat_animation_speed : float = 1.0
+var repeat_animation : bool = false
 var animate_player : AnimationPlayer = null
 @export var interaction_options : Array[Dictionary] = []
 #interaction_options example:
@@ -38,7 +40,8 @@ var animate_player : AnimationPlayer = null
 		#"choice_id": "do_something",
 		#"actions": [
 			#{"name": "play_prop_narration", "set_value": ["default narration"]},
-			#{"name": "_set_inventory_settings", "set_value": [true, false, 0, "item_default", "DEFAULT ITEM", 1]}
+			##stop_adding: bool, is_difficulty_based: bool, increment: int, item_id: String, item_name: String, amount: int
+			#{"name": "set_inventory_settings", "set_value": [true, false, 0, "item_default", "DEFAULT ITEM", 1]}
 		#]
 	#}
 	#{
@@ -95,20 +98,22 @@ func load_saved_state()->void:
 	# Load saved state
 	if prop_required_data != "":
 		if SessionState.get_scene_data(prop_required_data, false):
-			interact_done = true
 			required_item_id = ""
-			required_item_dialogue = []  
+			required_item_dialogue = []
+			interaction_option_dependent = false
 			if prop_swap_interact_dialogue:
 				prop_interact_dialogue = prop_swap_interact_dialogue
+			repeat_animation = true
+			if remove_after:
+				get_parent().queue_free()
 			
 func _on_area_entered(area) -> void:
 	if area.name == "Player_InteractionArea":
-		if SessionState.get_scene_data(prop_required_data, false) == true:
-			await play_prop_animation()
-			interaction_allowed.emit(true)
 		player_nearby = true
 		PropInteract_Item.active_prop = self
-		set_process_unhandled_input(true)  
+		set_process_unhandled_input(true) 
+		if SessionState.get_scene_data(prop_required_data, false) and repeat_animation:
+			complete_interaction()
 
 func _on_area_exited(area) -> void:
 	if area.name == "Player_InteractionArea":
@@ -139,15 +144,16 @@ func interact() -> void:
 		
 	check_prop_inventory_setting()
 	await play_prop_narration()
-	if SessionState.get_scene_data(prop_required_data, false):
-		return
+	if prop_required_data != "":
+		if SessionState.get_scene_data(prop_required_data, false):
+			return
 	check_prop_requirements()
 	await handle_interaction_options()
 	play_prop_audio()
 	apply_inventory_settings()
 	
 	if remove_after:
-		queue_free()
+		get_parent().queue_free()
 
 	if can_complete_interaction():
 		await complete_interaction()
@@ -196,18 +202,25 @@ func can_complete_interaction()->bool:
 	return true	
 
 func play_prop_animation()->void:
-	if animate_prop:
-		animate_player.get_animation(animation_name[0]).loop = false
-		SessionState.input_locked = true
+	if not animate_player:
+		return
+	if animate_player.is_playing():
+		return 
+	var animation : Animation = animate_player.get_animation(animation_name[0])
+	animation.loop_mode = Animation.LOOP_NONE
+	SessionState.input_locked = true
+	if repeat_animation:
+		animate_player.play(animation_name[0], -1, repeat_animation_speed)
+	else:
 		animate_player.play(animation_name[0], -1, 1)
-		await animate_player.animation_finished
-		SessionState.input_locked = false
+	await animate_player.animation_finished
+	SessionState.input_locked = false
 		
 func complete_interaction()->void:
 	await play_prop_animation()
 	if entry_transitioner_unlocked:
 		interaction_allowed.emit()
-	
+	repeat_animation = false
 	interact_done = true
 	is_interacting = false  
 
@@ -232,10 +245,13 @@ func check_prop_inventory_setting()->void:
 		match difficulty:
 			"easy":
 				itemamount_to_add = 1
+				required_item_amount = 1
 			"medium":
 				itemamount_to_add = 2
+				required_item_amount = 2
 			"hard":
 				itemamount_to_add = 3
+				required_item_amount = 3
 		if item_increment > 0:
 			itemamount_to_add += item_increment
 
@@ -295,6 +311,7 @@ func apply_inventory_settings()->void:
 	InventoryManager.remove_item(required_item_id, required_item_amount)
 	if itemid_to_add != "" and item_to_add != "":
 		InventoryManager.add_item(itemid_to_add, item_to_add, itemamount_to_add, interaction_options)
+		print("[PropInteract] Adding item: ", itemid_to_add, item_to_add)
 	if stop_adding_item:
 		itemid_to_add = ""
 		item_to_add = ""

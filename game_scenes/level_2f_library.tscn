@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://xebitj0mlk1c" path="res://props/prop_chair-typefup.tscn" id="10_iux7b"]
 [ext_resource type="PackedScene" uid="uid://cys8pmwhdccpy" path="res://props/prop_chandelier-type1_.tscn" id="11_ngles"]
 [ext_resource type="PackedScene" uid="uid://d07ygl05j8j5e" path="res://props/prop_bookshelves-type7_.tscn" id="12_4yacv"]
-[ext_resource type="Script" uid="uid://cpt2a5krnik32" path="res://props/scripts/propinteract_item.gd" id="12_ps0wf"]
 [ext_resource type="PackedScene" uid="uid://niwxsx00utya" path="res://npc/Neutral_Ghost.tscn" id="14_m2f3f"]
 [ext_resource type="PackedScene" uid="uid://dlour4o0o7gee" path="res://props/prop_bookshelves-type1_.tscn" id="15_4ebhu"]
 [ext_resource type="PackedScene" uid="uid://c0f1t0v3t6l4d" path="res://props/prop_chair-typefright.tscn" id="17_2ujmb"]
@@ -319,6 +318,11 @@ position = Vector2(-368, -1075)
 [node name="prop_bookshelves-type2_43" parent="Y_Sort/_Props_Container" unique_id=1044494680 instance=ExtResource("4_pvn2j")]
 position = Vector2(-261, -1004)
 
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type2_43" unique_id=383616533 instance=ExtResource("22_g5vll")]
+prop_interact_dialogue = ["“House Lights”", "The theater has been abandoned for decades, yet the marquee still changes names nightly.", "If you sit in the front row, you may notice the actors staring only at you.", "When the lights go out, you’ll hear your own voice joining the cast."]
+itemid_to_add = "item_bookrandom5"
+item_to_add = "[Book] House Lights"
+
 [node name="prop_bookshelves-type3_20" parent="Y_Sort/_Props_Container" unique_id=1733715957 instance=ExtResource("4_v6lm2")]
 position = Vector2(-230, -1075)
 
@@ -375,17 +379,19 @@ position = Vector2(349, -475)
 
 [node name="prop_bookshelves-type6_13" parent="Y_Sort/_Props_Container" unique_id=1285704686 instance=ExtResource("8_yoqdt")]
 position = Vector2(-138, -1075)
-script = ExtResource("12_ps0wf")
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type6_13" unique_id=1165756057 instance=ExtResource("22_g5vll")]
 prop_interact_dialogue = ["\"Pierro\"", "The smith, the sword, the armor.", "Courage, courage, courage..."]
-itemid_to_add = "item_bookrandom1"
+itemid_to_add = "item_bookrandom2"
 item_to_add = "[Book] Pierro"
 
 [node name="prop_bookshelves-type6_14" parent="Y_Sort/_Props_Container" unique_id=619217238 instance=ExtResource("8_yoqdt")]
 position = Vector2(-414, -1075)
-script = ExtResource("12_ps0wf")
-prop_interact_dialogue = ["The Audience Is Already Watching", "The lights flickered, but not enough to chase away the shadows that pooled in the corners.", "The room was full, yet eerily silent, as if the walls themselves were holding their breath.", "Eyes shifted, darting toward one another, seeking reassurance that wasn’t there."]
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type6_14" unique_id=558422270 instance=ExtResource("22_g5vll")]
+prop_interact_dialogue = ["The Audience Is Already Watching", "The lights flickered, but not enough to chase away the shadows that pooled in the corners.", "The room was full, yet eerily silent, as if the walls themselves were holding their breath..."]
 itemid_to_add = "item_bookrandom2"
-item_to_add = "[Book] Trailing Eyes"
+item_to_add = "[Book] Trailing Eyes "
 
 [node name="prop_bookshelves-type4_35" parent="Y_Sort/_Props_Container" unique_id=57116188 instance=ExtResource("4_a0rcd")]
 position = Vector2(-92, -1075)
@@ -429,7 +435,7 @@ position = Vector2(184, -1075)
 [node name="prop_bookshelves-type4_39" parent="Y_Sort/_Props_Container" unique_id=1597421319 instance=ExtResource("4_a0rcd")]
 position = Vector2(276, -1075)
 
-[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type4_39" unique_id=383616533 instance=ExtResource("22_g5vll")]
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type4_39" unique_id=1096181591 instance=ExtResource("22_g5vll")]
 prop_interact_dialogue = ["Upon Looking at the shelf You found a Key!"]
 itemid_to_add = "item_silverkey"
 item_to_add = "Silver Key"
@@ -626,6 +632,11 @@ position = Vector2(-90, -961)
 [node name="prop_bookshelves-type7_9" parent="Y_Sort/_Props_Container" unique_id=1733043619 instance=ExtResource("12_4yacv")]
 position = Vector2(-45, -961)
 
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type7_9" unique_id=637611605 instance=ExtResource("22_g5vll")]
+prop_interact_dialogue = ["“Script in Red”", "The ink on the manuscript never fully dries, no matter how long it rests.", "Stage directions appear after midnight, written in trembling strokes.", "The final line always reads: “Remain in character.”"]
+itemid_to_add = "item_bookrandom4"
+item_to_add = "[Book] Script in Red"
+
 [node name="prop_bookshelves-type3_18" parent="Y_Sort/_Props_Container" unique_id=2126817600 instance=ExtResource("4_v6lm2")]
 position = Vector2(45, -961)
 
@@ -804,10 +815,11 @@ position = Vector2(422, -803)
 
 [node name="prop_bookshelves-type1_2" parent="Y_Sort/_Props_Container" unique_id=1969535888 instance=ExtResource("15_4ebhu")]
 position = Vector2(431, -386)
-script = ExtResource("12_ps0wf")
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_bookshelves-type1_2" unique_id=1927916791 instance=ExtResource("22_g5vll")]
 prop_interact_dialogue = ["'The Red Room'", "An ooze slowly seeping, gradually turning into grey"]
 itemid_to_add = "item_bookrandom3"
-item_to_add = "The Red Room"
+item_to_add = "[Book] The Red Room"
 
 [node name="prop_bookshelves-type1_6" parent="Y_Sort/_Props_Container" unique_id=1858796155 instance=ExtResource("15_4ebhu")]
 position = Vector2(365, -153)

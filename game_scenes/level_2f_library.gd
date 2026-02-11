@@ -1,7 +1,7 @@
 class_name Level_2f_Library
 extends BaseLevel
 
-@onready var neutral_ghost: Neutral_GhostLibrary = $Y_Sort/Neutral_Ghost
+@onready var neutral_ghost: Neutral_Ghost = $Y_Sort/Neutral_Ghost
 @onready var enemy_eye_watcher: Enemy_EyeWatcher = $Y_Sort/Enemy_EyeWatcher
 @onready var canvas_modulate: CanvasModulate = $Lights/CanvasModulate
 
@@ -25,8 +25,6 @@ var ghost_introdialogue_2 = [
 ]
 
 func _ready() -> void:
-	#debug
-	SessionState.input_locked = false
 	set_level_name("2nd Floor Library")
 	scene_path = "res://game_scenes/level_2f_library.tscn"
 	await init_level()
@@ -36,6 +34,7 @@ func _ready() -> void:
 	if SessionState.get_scene_data("2f_library_ghostfree", false):
 		neutral_ghost.queue_free()
 	if SessionState.get_global_data("eyewatcher_introduction", null):
+		game.scene_manager.move_to(ghost_intro_2.global_position, neutral_ghost, 30)
 		if enemy_eye_watcher:
 			enemy_eye_watcher.set_canvas(canvas_modulate)
 		return

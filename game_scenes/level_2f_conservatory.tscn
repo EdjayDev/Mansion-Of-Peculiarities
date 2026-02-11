@@ -13,10 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://cgkvsk7cr6epj" path="res://props/prop_chair-typefleft.tscn" id="11_s6ccp"]
 [ext_resource type="PackedScene" uid="uid://dh1hrutisvqer" path="res://props/prop_spicesshelves-type3_.tscn" id="12_acd1f"]
 [ext_resource type="PackedScene" uid="uid://qywlklis3fnd" path="res://props/prop_bookshelves-type6_.tscn" id="13_jucx6"]
+[ext_resource type="PackedScene" uid="uid://bufs536uwrac7" path="res://props/scripts/propinteract_item_component.tscn" id="13_tp5uc"]
 [ext_resource type="PackedScene" uid="uid://c0f1t0v3t6l4d" path="res://props/prop_chair-typefright.tscn" id="17_1qf5y"]
 [ext_resource type="PackedScene" uid="uid://cwywes8d7v34b" path="res://props/prop_chest.tscn" id="17_ytbeq"]
 [ext_resource type="PackedScene" uid="uid://xebitj0mlk1c" path="res://props/prop_chair-typefup.tscn" id="18_6t7kw"]
-[ext_resource type="Script" uid="uid://cpt2a5krnik32" path="res://props/scripts/propinteract_item.gd" id="18_h28j4"]
 [ext_resource type="PackedScene" uid="uid://dtcbb240m7s2c" path="res://props/prop_chair-typefdown.tscn" id="19_6omp1"]
 [ext_resource type="PackedScene" uid="uid://drmc63r48ot5l" path="res://systems/scene_transitioner.tscn" id="20_65fe4"]
 [ext_resource type="PackedScene" uid="uid://du1ccbttqouoh" path="res://props/prop_bush-type2.tscn" id="20_batxr"]
@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://cdppihun0ep5a" path="res://props/prop_spicescrates-type1_.tscn" id="34_tp5uc"]
 [ext_resource type="PackedScene" uid="uid://cau8kk7kuaaax" path="res://props/prop_spicesshelves-type9_.tscn" id="35_65fe4"]
 [ext_resource type="PackedScene" uid="uid://8a65kn8c44im" path="res://props/prop_spicesshelves-type5_.tscn" id="37_h28j4"]
+[ext_resource type="Texture2D" uid="uid://dbu71coxvd1ir" path="res://systems/sprites/5000x5000_linearraylight.png" id="38_65fe4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_srs4d"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -145,21 +146,6 @@ texture = ExtResource("2_0qjy4")
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_d2kol")
 
-[sub_resource type="Gradient" id="Gradient_vx6ta"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rycri"]
-gradient = SubResource("Gradient_vx6ta")
-width = 128
-height = 128
-
-[sub_resource type="Gradient" id="Gradient_j03mb"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jucx6"]
-gradient = SubResource("Gradient_j03mb")
-width = 128
-height = 128
-
 [node name="Level_2f_Conservatory" type="Node2D" unique_id=973729560]
 script = ExtResource("1_batxr")
 
@@ -197,6 +183,9 @@ y_sort_enabled = true
 [node name="Neutral_Ghost" parent="Y_Sort" unique_id=84329568 instance=ExtResource("3_mxb8i")]
 modulate = Color(1, 1, 1, 0.5882353)
 position = Vector2(-177, -324)
+cherished_items = ["item_witheredgreen"]
+ghost_drop_required_data = "ghost_conservatory_freed"
+ghost_drop_dialogue = Array[String](["Hidden in dark aisle of bookshelves"])
 
 [node name="Enemy_EyeWatcher" parent="Y_Sort" unique_id=991999981 instance=ExtResource("4_ov8uo")]
 position = Vector2(-4, -523)
@@ -211,19 +200,16 @@ position = Vector2(116.799995, 38.399994)
 scale = Vector2(0.79999995, 0.79999995)
 
 [node name="prop_light_chandelier-type1_5" parent="Y_Sort/_Props_Container" unique_id=1023800120 instance=ExtResource("5_2vql0")]
-position = Vector2(116.8, -162.4)
+position = Vector2(-113.2, -191.20001)
 scale = Vector2(0.79999995, 0.79999995)
 
 [node name="prop_light_chandelier-type1_6" parent="Y_Sort/_Props_Container" unique_id=537698366 instance=ExtResource("5_2vql0")]
-position = Vector2(1.6, -164.39998)
+position = Vector2(117.2, -190.8)
 scale = Vector2(0.79999995, 0.79999995)
+light_states = "idle_unlit"
 
 [node name="prop_light_chandelier-type1_3" parent="Y_Sort/_Props_Container" unique_id=661196844 instance=ExtResource("5_2vql0")]
 position = Vector2(-113.2, 38.399994)
-scale = Vector2(0.79999995, 0.79999995)
-
-[node name="prop_light_chandelier-type1_4" parent="Y_Sort/_Props_Container" unique_id=384718661 instance=ExtResource("5_2vql0")]
-position = Vector2(-112.799995, -163.59999)
 scale = Vector2(0.79999995, 0.79999995)
 
 [node name="prop_bookshelves-type7_" parent="Y_Sort/_Props_Container" unique_id=463551828 instance=ExtResource("9_lnp32")]
@@ -245,8 +231,9 @@ scale = Vector2(0.39999998, 0.39999998)
 [node name="prop_chest" parent="Y_Sort/_Props_Container" unique_id=2071951661 instance=ExtResource("17_ytbeq")]
 position = Vector2(-22.000004, -222)
 scale = Vector2(0.39999998, 0.39999998)
-script = ExtResource("18_h28j4")
-prop_interact_dialogue = ["You found a key!"]
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_chest" unique_id=383616533 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["  Opening the chest...", "You found a Silver Key!"]
 itemid_to_add = "item_silverkey"
 item_to_add = "Silver Key"
 
@@ -403,7 +390,7 @@ position = Vector2(-49.199997, 111.59999)
 scale = Vector2(0.39999998, 0.39999998)
 
 [node name="prop_bookshelves-type4_2" parent="Y_Sort/_Props_Container" unique_id=749703334 instance=ExtResource("23_ov8uo")]
-position = Vector2(142.4, -166.79999)
+position = Vector2(143.2, -166.79999)
 scale = Vector2(0.39999998, 0.39999998)
 
 [node name="prop_bookshelves-type4_3" parent="Y_Sort/_Props_Container" unique_id=1067260694 instance=ExtResource("23_ov8uo")]
@@ -411,7 +398,7 @@ position = Vector2(35.599995, 111.59999)
 scale = Vector2(0.39999998, 0.39999998)
 
 [node name="prop_bookshelves-type3_" parent="Y_Sort/_Props_Container" unique_id=1394900115 instance=ExtResource("26_wyxud")]
-position = Vector2(123.59999, -166.79999)
+position = Vector2(123.99999, -166.79999)
 scale = Vector2(0.39999998, 0.39999998)
 
 [node name="prop_bookshelves-type6_3" parent="Y_Sort/_Props_Container" unique_id=1434014110 instance=ExtResource("13_jucx6")]
@@ -442,10 +429,6 @@ scale = Vector2(0.39999998, 0.39999998)
 position = Vector2(-77.2, -181.20001)
 scale = Vector2(0.39999998, 0.39999998)
 
-[node name="prop_bookshelves-type5_4" parent="Y_Sort/_Props_Container" unique_id=1363251810 instance=ExtResource("10_s6ccp")]
-position = Vector2(-120.8, -204.4)
-scale = Vector2(0.39999998, 0.39999998)
-
 [node name="prop_chest2" parent="Y_Sort/_Props_Container" unique_id=211636020 instance=ExtResource("17_ytbeq")]
 position = Vector2(-146.8, -227.99998)
 scale = Vector2(0.39999998, 0.39999998)
@@ -466,12 +449,13 @@ scale = Vector2(0.39999998, 0.39999998)
 position = Vector2(1.5999999, -155.6)
 scale = Vector2(0.39999998, 0.39999998)
 
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_door_type1_" unique_id=1204980863 instance=ExtResource("13_tp5uc")]
+
 [node name="prop_bookshelves-type3_2" parent="Y_Sort/_Props_Container" unique_id=1762641297 instance=ExtResource("26_wyxud")]
 position = Vector2(-58.8, -181.2)
 scale = Vector2(0.39999998, 0.39999998)
 
 [node name="prop_bookshelves-type7_7" parent="Y_Sort/_Props_Container" unique_id=1878262292 instance=ExtResource("9_lnp32")]
-z_index = 2
 position = Vector2(24.8, -181.2)
 scale = Vector2(0.39999998, 0.39999998)
 
@@ -491,141 +475,323 @@ scale = Vector2(0.39999998, 0.39999998)
 position = Vector2(-73.6, -222.79999)
 scale = Vector2(0.39999998, 0.39999998)
 
+[node name="prop_spicescrates-type3_" parent="Y_Sort/_Props_Container" unique_id=138318308 instance=ExtResource("32_ytbeq")]
+position = Vector2(48.399994, -227.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spiceshelves-type1_" parent="Y_Sort/_Props_Container" unique_id=942748305 instance=ExtResource("33_h28j4")]
+position = Vector2(80.799995, -222.79999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spicescrates-type1_" parent="Y_Sort/_Props_Container" unique_id=368492801 instance=ExtResource("34_tp5uc")]
+position = Vector2(147.2, -224.79999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spicesshelves-type5_2" parent="Y_Sort/_Props_Container" unique_id=415200708 instance=ExtResource("31_8wm0x")]
+position = Vector2(119.19999, -222.79999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spicesshelves-type9_" parent="Y_Sort/_Props_Container" unique_id=235947995 instance=ExtResource("35_65fe4")]
+position = Vector2(103.59999, -222.79999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_chest3" parent="Y_Sort/_Props_Container" unique_id=1982848379 instance=ExtResource("17_ytbeq")]
+position = Vector2(94.399994, -229.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_table_6" parent="Y_Sort/_Props_Container" unique_id=1428899722 instance=ExtResource("11_rycri")]
+position = Vector2(103.19999, -191.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_chair_typefleft2" parent="Y_Sort/_Props_Container" unique_id=750579965 instance=ExtResource("11_s6ccp")]
+position = Vector2(113.59999, -195.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_chair_typefdown6" parent="Y_Sort/_Props_Container" unique_id=652300296 instance=ExtResource("19_6omp1")]
+position = Vector2(103.19999, -202)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_chair_typefdown7" parent="Y_Sort/_Props_Container" unique_id=1181110522 instance=ExtResource("19_6omp1")]
+position = Vector2(131.59999, -228)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_bookshelves-type6_5" parent="Y_Sort/_Props_Container" unique_id=365477842 instance=ExtResource("13_jucx6")]
+position = Vector2(-40, -181.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_bookshelves-type2_2" parent="Y_Sort/_Props_Container" unique_id=251409902 instance=ExtResource("28_lapxd")]
+position = Vector2(-21.599998, -181.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_bookshelves-type5_5" parent="Y_Sort/_Props_Container" unique_id=641254217 instance=ExtResource("10_s6ccp")]
+position = Vector2(43.199997, -181.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spicesshelves-type5_3" parent="Y_Sort/_Props_Container" unique_id=1107704024 instance=ExtResource("31_8wm0x")]
+position = Vector2(61.599995, -181.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_bookshelves-type3_4" parent="Y_Sort/_Props_Container" unique_id=198324577 instance=ExtResource("26_wyxud")]
+position = Vector2(61.599995, -204.4)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spicesshelves-type5_4" parent="Y_Sort/_Props_Container" unique_id=509941248 instance=ExtResource("37_h28j4")]
+position = Vector2(43.199997, -204.4)
+scale = Vector2(0.39999998, 0.39999998)
+
 [node name="prop_bookshelves-type1_2" parent="Y_Sort/_Props_Container" unique_id=563428972 instance=ExtResource("22_mxb8i")]
 position = Vector2(-44.399998, -222.79999)
 scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_spiceshelves-type3_" parent="Y_Sort/_Props_Container" unique_id=2093154671 instance=ExtResource("12_acd1f")]
+position = Vector2(105.19999, -166.79999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="prop_decor-flower14" parent="Y_Sort/_Props_Container" unique_id=1218199360 instance=ExtResource("24_2vql0")]
+modulate = Color(0.3515625, 0, 0.2142334, 1)
+position = Vector2(-141.19998, -228.4)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_decor-flower14" unique_id=327556813 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["A withered flower tinted with purple"]
+interaction_options = Array[Dictionary]([{
+"actions": [{
+"name": "set_inventory_settings",
+"set_value": [true, false, 0, "item_witheredpurple", "Purple Withered Potted Flower", 1]
+}, {
+"name": "set_interaction_choices_state",
+"set_value": [true]
+}],
+"choice": "Take flower",
+"choice_id": "take_flower"
+}, {
+"actions": [],
+"choice": "Leave flower",
+"choice_id": "leave_flower "
+}])
+remove_after = true
+play_interact_audio = true
+interaction_option_dependent = true
+prop_required_data = "purple_witheredflower"
+
+[node name="prop_decor-flower15" parent="Y_Sort/_Props_Container" unique_id=319778031 instance=ExtResource("24_2vql0")]
+modulate = Color(0.28378704, 0.31640625, 0, 1)
+position = Vector2(94.399994, -168.4)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_decor-flower15" unique_id=992189052 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["A withered flower tinted with yellow"]
+interaction_options = Array[Dictionary]([{
+"actions": [{
+"name": "set_inventory_settings",
+"set_value": [true, false, 0, "item_witheredyellow", "Yellow Withered Potted Flower", 1]
+}, {
+"name": "set_interaction_choices_state",
+"set_value": [true]
+}],
+"choice": "Take flower",
+"choice_id": "take_flower"
+}, {
+"actions": [],
+"choice": "Leave flower",
+"choice_id": "leave_flower"
+}])
+remove_after = true
+play_interact_audio = true
+interaction_option_dependent = true
+prop_required_data = "yellow_witheredflower"
+
+[node name="prop_decor-flower16" parent="Y_Sort/_Props_Container" unique_id=1863438446 instance=ExtResource("24_2vql0")]
+modulate = Color(0.017623901, 0.02375722, 0.41015625, 1)
+position = Vector2(83.59999, 111.59999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_decor-flower16" unique_id=189165416 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["A withered flower tinted with blue"]
+interaction_options = Array[Dictionary]([{
+"actions": [{
+"name": "set_inventory_settings",
+"set_value": [true, false, 0, "item_witheredblue", "Blue Withered Potted Flower", 1]
+}, {
+"name": "set_interaction_choices_state",
+"set_value": [true]
+}],
+"choice": "Take flower",
+"choice_id": "take_flower"
+}, {
+"actions": [],
+"choice": "Leave flower",
+"choice_id": "leave_flower"
+}])
+remove_after = true
+play_interact_audio = true
+interaction_option_dependent = true
+prop_required_data = "blue_witheredflower"
+
+[node name="prop_decor-flower17" parent="Y_Sort/_Props_Container" unique_id=1986997784 instance=ExtResource("24_2vql0")]
+modulate = Color(1, 0.18359375, 0.18359375, 1)
+position = Vector2(-142.79999, 68.399994)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_decor-flower17" unique_id=1842968735 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["A withered flower tinted with red"]
+interaction_options = Array[Dictionary]([{
+"actions": [{
+"name": "set_inventory_settings",
+"set_value": [true, false, 0, "item_witheredred", "Red Withered Potted Flower", 1]
+}, {
+"name": "set_interaction_choices_state",
+"set_value": [true]
+}],
+"choice": "Take flower",
+"choice_id": "take_flower"
+}, {
+"actions": [],
+"choice": "Leave flower",
+"choice_id": "leave_flower"
+}])
+remove_after = true
+play_interact_audio = true
+interaction_option_dependent = true
+prop_required_data = "red_witheredflower"
+
+[node name="prop_decor-flower18" parent="Y_Sort/_Props_Container" unique_id=1579053718 instance=ExtResource("24_2vql0")]
+modulate = Color(0.017852783, 0.45703125, 0.024714947, 1)
+position = Vector2(130.8, -222.79999)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_decor-flower18" unique_id=1987308739 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["A withered flower tinted with green"]
+interaction_options = Array[Dictionary]([{
+"actions": [{
+"name": "set_inventory_settings",
+"set_value": [true, false, 0, "item_witheredgreen", "Green Withered Potted Flower", 1]
+}, {
+"name": "set_interaction_choices_state",
+"set_value": [true]
+}],
+"choice": "Take flower",
+"choice_id": "take_flower"
+}, {
+"actions": [],
+"choice": "Leave flower",
+"choice_id": "leave_flower"
+}])
+remove_after = true
+play_interact_audio = true
+interaction_option_dependent = true
+prop_required_data = "green_witheredflower"
+
+[node name="prop_decor-flower19" parent="Y_Sort/_Props_Container" unique_id=137546526 instance=ExtResource("24_2vql0")]
+modulate = Color(0.00592041, 0.37890625, 0.20406914, 1)
+position = Vector2(-109.2, -165.19998)
+scale = Vector2(0.39999998, 0.39999998)
+
+[node name="PropInteractItem_Component" parent="Y_Sort/_Props_Container/prop_decor-flower19" unique_id=1311858285 instance=ExtResource("13_tp5uc")]
+prop_interact_dialogue = ["A withered flower tinted with tortoise"]
+interaction_options = Array[Dictionary]([{
+"actions": [{
+"name": "set_inventory_settings",
+"set_value": [true, false, 0, "item_witheredtortoise", "Tortoise Withered Potted Flower", 1]
+}, {
+"name": "set_interaction_choices_state",
+"set_value": [true]
+}],
+"choice": "Take flower",
+"choice_id": "take_flower"
+}, {
+"actions": [],
+"choice": "Leave flower",
+"choice_id": "leave_flower"
+}])
+remove_after = true
+play_interact_audio = true
+interaction_option_dependent = true
+prop_required_data = "tortoise_witheredflower"
 
 [node name="Lights" type="Node2D" parent="." unique_id=366306028]
 
 [node name="GlobalLight" type="DirectionalLight2D" parent="Lights" unique_id=1792833581]
 z_index = 1
 color = Color(0.102630615, 0.24982452, 0.69140625, 1)
-energy = 0.25
+energy = 0.02
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 1.0
 shadow_item_cull_mask = 3
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Lights" unique_id=101438577]
-color = Color(0.12858582, 0.25327146, 0.62109375, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="Lights" unique_id=706795020]
-position = Vector2(-277.125, -870.00006)
-scale = Vector2(1.6230465, 0.4952391)
-color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_rycri")
-
-[node name="PointLight2D4" type="PointLight2D" parent="Lights" unique_id=1376808120]
-position = Vector2(-277.125, -473.00003)
-scale = Vector2(1.6230465, 0.4952391)
-color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_rycri")
+color = Color(0.008926392, 0.12364126, 0.45703125, 1)
 
 [node name="PointLight2D5" type="PointLight2D" parent="Lights" unique_id=999717811]
-position = Vector2(-277.0625, -300)
-scale = Vector2(1.6240232, 0.4952391)
+position = Vector2(-309, -311)
+scale = Vector2(-0.035980463, 0.024834279)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_rycri")
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
-[node name="PointLight2D3" type="PointLight2D" parent="Lights" unique_id=150983059]
-position = Vector2(-239, -633.5762)
-scale = Vector2(1.2187501, 0.4753723)
-color = Color(0.17175293, 0.24135908, 0.78515625, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_rycri")
-
-[node name="PointLight2D2" type="PointLight2D" parent="Lights" unique_id=1686262728]
-position = Vector2(-291, -1009)
-scale = Vector2(1.40625, 0.4952391)
+[node name="PointLight2D7" type="PointLight2D" parent="Lights" unique_id=1846584121]
+position = Vector2(-309, -490.00006)
+scale = Vector2(-0.035980463, 0.024834279)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_rycri")
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
-[node name="PointLight2D6" type="PointLight2D" parent="Lights" unique_id=475660862]
-position = Vector2(279.5, -300)
-scale = Vector2(1.5859375, 0.50000006)
+[node name="PointLight2D10" type="PointLight2D" parent="Lights" unique_id=1856504099]
+position = Vector2(-309.00003, -892.99994)
+scale = Vector2(-0.035980463, 0.024834279)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_jucx6")
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
-[node name="PointLight2D7" type="PointLight2D" parent="Lights" unique_id=1177442575]
-position = Vector2(244, -634)
-scale = Vector2(1.1406252, 0.50000006)
+[node name="PointLight2D15" type="PointLight2D" parent="Lights" unique_id=438328048]
+position = Vector2(-309, -1031)
+scale = Vector2(-0.035980463, 0.024834279)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_jucx6")
+energy = 7.0
+texture = ExtResource("38_65fe4")
+
+[node name="PointLight2D9" type="PointLight2D" parent="Lights" unique_id=3386976]
+position = Vector2(-147.10666, -637.936)
+scale = Vector2(-0.08433781, 0.01960873)
+color = Color(0.17254902, 0.24313726, 0.78431374, 1)
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
 [node name="PointLight2D8" type="PointLight2D" parent="Lights" unique_id=34741018]
-position = Vector2(276, -473)
-scale = Vector2(1.6406251, 0.50000006)
+position = Vector2(309, -477.00003)
+scale = Vector2(0.035999995, 0.024)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_jucx6")
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
-[node name="PointLight2D9" type="PointLight2D" parent="Lights" unique_id=213402342]
-position = Vector2(276, -870)
-scale = Vector2(1.6406251, 0.50000006)
+[node name="PointLight2D12" type="PointLight2D" parent="Lights" unique_id=2026252229]
+position = Vector2(163, -641.5001)
+scale = Vector2(0.0768, 0.018599987)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_jucx6")
+energy = 8.0
+texture = ExtResource("38_65fe4")
 
-[node name="PointLight2D10" type="PointLight2D" parent="Lights" unique_id=1870814495]
-position = Vector2(276, -1012)
-scale = Vector2(1.6406251, 0.50000006)
+[node name="PointLight2D13" type="PointLight2D" parent="Lights" unique_id=104351813]
+position = Vector2(309, -889.00006)
+scale = Vector2(0.035999995, 0.024)
 color = Color(0.17254902, 0.24313726, 0.78431374, 1)
-energy = 0.8
-texture = SubResource("GradientTexture2D_jucx6")
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
-[node name="prop_spicescrates-type3_" parent="Lights" unique_id=138318308 instance=ExtResource("32_ytbeq")]
-position = Vector2(117, -1091)
+[node name="PointLight2D14" type="PointLight2D" parent="Lights" unique_id=1050526260]
+position = Vector2(309, -1036.0001)
+scale = Vector2(0.035999995, 0.024)
+color = Color(0.17254902, 0.24313726, 0.78431374, 1)
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
-[node name="prop_spiceshelves-type1_" parent="Lights" unique_id=942748305 instance=ExtResource("33_h28j4")]
-position = Vector2(198, -1080)
-
-[node name="prop_spicescrates-type1_" parent="Lights" unique_id=368492801 instance=ExtResource("34_tp5uc")]
-position = Vector2(364, -1085)
-
-[node name="prop_spicesshelves-type5_" parent="Lights" unique_id=415200708 instance=ExtResource("31_8wm0x")]
-position = Vector2(294, -1080)
-
-[node name="prop_spicesshelves-type9_" parent="Lights" unique_id=235947995 instance=ExtResource("35_65fe4")]
-position = Vector2(255, -1080)
-
-[node name="prop_chest" parent="Lights" unique_id=1982848379 instance=ExtResource("17_ytbeq")]
-position = Vector2(232, -1096)
-
-[node name="prop_table_" parent="Lights" unique_id=1428899722 instance=ExtResource("11_rycri")]
-position = Vector2(254, -1001)
-
-[node name="prop_chair_typefleft" parent="Lights" unique_id=750579965 instance=ExtResource("11_s6ccp")]
-position = Vector2(280, -1011)
-
-[node name="prop_chair_typefdown" parent="Lights" unique_id=652300296 instance=ExtResource("19_6omp1")]
-position = Vector2(254, -1028)
-
-[node name="prop_chair_typefdown2" parent="Lights" unique_id=1181110522 instance=ExtResource("19_6omp1")]
-position = Vector2(325, -1093)
-
-[node name="prop_bookshelves-type6_" parent="Lights" unique_id=365477842 instance=ExtResource("13_jucx6")]
-position = Vector2(-104, -976)
-
-[node name="prop_bookshelves-type2_" parent="Lights" unique_id=251409902 instance=ExtResource("28_lapxd")]
-position = Vector2(-58, -976)
-
-[node name="prop_bookshelves-type5_" parent="Lights" unique_id=641254217 instance=ExtResource("10_s6ccp")]
-position = Vector2(104, -976)
-
-[node name="prop_spicesshelves-type5_2" parent="Lights" unique_id=1107704024 instance=ExtResource("31_8wm0x")]
-position = Vector2(150, -976)
-
-[node name="prop_bookshelves-type3_" parent="Lights" unique_id=198324577 instance=ExtResource("26_wyxud")]
-position = Vector2(150, -1034)
-
-[node name="prop_spicesshelves-type5_3" parent="Lights" unique_id=509941248 instance=ExtResource("37_h28j4")]
-position = Vector2(104, -1034)
+[node name="PointLight2D11" type="PointLight2D" parent="Lights" unique_id=1233359145]
+position = Vector2(309, -311.00003)
+scale = Vector2(0.035999995, 0.024)
+color = Color(0.17254902, 0.24313726, 0.78431374, 1)
+energy = 7.0
+texture = ExtResource("38_65fe4")
 
 [node name="SceneTransitioner_To2fPlayground" parent="." unique_id=695306711 instance=ExtResource("20_65fe4")]
 position = Vector2(1.8474111e-13, -188)
@@ -648,7 +814,7 @@ position = Vector2(11, -74)
 position = Vector2(0, -128)
 
 [node name="ghost_intro2" type="Marker2D" parent="IntroMarkers" unique_id=1341363579]
-position = Vector2(305, -730)
+position = Vector2(350, -213)
 
 [node name="eye_watcher_intro" type="Marker2D" parent="IntroMarkers" unique_id=932554979]
 position = Vector2(0, -383)

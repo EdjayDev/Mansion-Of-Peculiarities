@@ -1,24 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://cem1r6nmfdqvp"]
+[gd_scene format=3 uid="uid://cem1r6nmfdqvp"]
 
-[ext_resource type="Texture2D" uid="uid://br6tvtdjkmllk" path="res://props/sprites/base_interiors1.png" id="1_4mknj"]
+[ext_resource type="Texture2D" uid="uid://r7s1tv3f3rse" path="res://props/sprites/base_interiors1.png" id="1_4mknj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
 size = Vector2(7, 5.2551575)
 
-[node name="prop_decor-flower2" type="Node2D"]
+[node name="prop_decor-flower2" type="Node2D" unique_id=1530274493]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1784104800]
 position = Vector2(0, -9)
 texture = ExtResource("1_4mknj")
 region_enabled = true
 region_rect = Rect2(18, 373, 10, 19)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=458234498]
 position = Vector2(0, -4)
 collision_layer = 16
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2052159042]
+position = Vector2(0.5, 0.25000262)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1020396491]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=545397710]
 position = Vector2(0.5, 0.25000262)
 scale = Vector2(1, 1.04659)
 shape = SubResource("RectangleShape2D_7c1ra")

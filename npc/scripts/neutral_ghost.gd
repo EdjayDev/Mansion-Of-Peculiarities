@@ -1,5 +1,5 @@
 extends BaseNPC
-class_name Neutral_GhostLibrary
+class_name Neutral_Ghost
 
 
 @export_category("Item Fields")
@@ -8,9 +8,12 @@ class_name Neutral_GhostLibrary
 @export var gift_item = ""
 
 @export_category("Item Drops")
-@onready var ghost_drop: PropInteract_Item = $ghost_drop as PropInteract_Item
+@onready var ghost_drop: Sprite2D = $ghost_drop
 @export var ghost_drop_required_data : String
 @export var ghost_drop_dialogue : Array[String]= []
+
+@onready var ghost_drop_interaction_area: Area2D = $ghost_drop/Area2D
+@onready var ghost_drop_prop_component: PropInteract_Item = $ghost_drop/PropInteractItem_Component
 
 var dialogue = [
 	"This place still remembers me",
@@ -54,11 +57,13 @@ var item_choices = [
 ]
 
 func _ready():
-	ghost_drop.visible = false
-	ghost_drop.prop_interact_dialogue = ghost_drop_dialogue
-	ghost_drop.prop_required_data = ghost_drop_required_data
 	initialize_npc()
 	set_npc_group("neutral")
+	
+	ghost_drop.visible = false
+	ghost_drop_prop_component.prop_interact_dialogue = ghost_drop_dialogue
+	ghost_drop_prop_component.prop_required_data = ghost_drop_required_data
+	ghost_drop_prop_component.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
 func interact()->void:
@@ -81,22 +86,21 @@ func interact()->void:
 	SessionState.set_scene_data("interacted_ghost", true)
 	
 func give_cherish_item(item : String)->void:
+	SessionState.input_locked = true
 	var game = get_tree().get_root().get_node("Game") as Game
 	if item in cherished_items:
-		print("Ghost Entertain")
-		game.start_cutscene()
-		
 		SessionState.input_locked = true
+		game.start_cutscene()
 		face_target(player_get)
+		npc_area_2d.process_mode = Node.PROCESS_MODE_DISABLED
 		await game.vn_component_manager.get_dialogue(dialogue_gratitude, "?", npc_dialogue_sprite)
 		
 		game.end_cutscene(true)
 		SessionState.input_locked = false
 		SessionState.set_scene_data(ghost_drop_required_data, true)
+		ghost_drop_prop_component.process_mode = Node.PROCESS_MODE_INHERIT
+		InventoryManager.remove_item(item)
 		await play_custom_animation("ghost_fading")
-		npc_area_2d.process_mode = Node.PROCESS_MODE_DISABLED
-		
 	else:
 		await game.vn_component_manager.get_dialogue(dialogue_hate, "?", npc_dialogue_sprite)
-		pass	
 	pass
