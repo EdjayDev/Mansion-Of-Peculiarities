@@ -136,6 +136,8 @@ func on_cutscene_movement(target: Vector2, speed: float) -> void:
 			velocity = dir.normalized() * speed
 		else:
 			velocity = Vector2.ZERO
+		if not get_tree():
+			return
 		await get_tree().physics_frame
 		
 	var direction = (target - global_position).normalized()

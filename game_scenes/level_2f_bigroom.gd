@@ -52,7 +52,7 @@ func halt_music(area):
 	if SessionState.get_global_data("faced_shadow", false):
 		return
 	if area.name == "Player_InteractionArea":
-		game.scene_manager.move_to(intro_shadow_1.global_position, enemy_shadow_, 90)
+		game.scene_manager.move_to(intro_shadow_1.global_position, enemy_shadow_, 145)
 		game.set_bgmusic_setting(-16.0, 16.0)
 		prop_chandelier_type1_3.play_animation_effect("idle_fading")
 		game.bg_music_player.stream = level_music
@@ -110,4 +110,4 @@ func companion_exit()->void:
 
 func enemy_chase()->void:
 	if SessionState.get_global_data("faced_shadow", false):
-		enemy_shadow_.chase(player, 0.95)
+		enemy_shadow_.chase(player, 1.5)

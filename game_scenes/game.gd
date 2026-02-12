@@ -1,6 +1,7 @@
 class_name Game
 extends Node2D
 
+static var manager: Game
 # COLOR PRESETS
 # Background Color: #200000
 
@@ -47,6 +48,7 @@ var companion_marker_id = SessionState.world.get("requested_companion_marker", [
 # READY
 # ==========================
 func _ready() -> void:
+	Game.manager = self
 	var level_to_load = SessionState.requested_level_path
 	SessionState.requested_level_path = ""
 	if not player.is_in_group("Player"):
@@ -81,14 +83,12 @@ func _unhandled_input(event: InputEvent) -> void:
 func load_level(level_path: String, spawn_marker: String = "", companion_marker: Array = []) -> void:
 	scene_manager.cancel_all_cutscene_movements()
 	SessionState.set_temp_data(level_path, spawn_marker, companion_marker, SessionState.global_data)
-	await screen_effect_ui.set_effect("fade_instant", 2)
 	is_in_cinematic = false
 	is_in_cutscene = false
-	
 	if is_transitioning:
 		return
 	is_transitioning = true
-
+	await screen_effect_ui.set_effect("fade_instant", 2)
 	SessionState.world["requested_spawn_marker"] = spawn_marker
 	SessionState.world["requested_companion_marker"] = companion_marker
 
@@ -103,10 +103,9 @@ func load_level(level_path: String, spawn_marker: String = "", companion_marker:
 	if old_parent and old_parent != self:
 		old_parent.remove_child(player)
 		add_child(player)
-
 	for child in scene_manager.get_children():
 		child.queue_free()
-		
+	
 	var new_scene = level_scene.instantiate()
 	scene_manager.add_child(new_scene)
 	# Determine level name
@@ -116,7 +115,7 @@ func load_level(level_path: String, spawn_marker: String = "", companion_marker:
 		SessionState.world["current_level_name"] = level_path.get_file().get_basename()
 
 	print("[Game] Loaded Scene: ", new_scene)
-
+	#SessionState.is_transitioning = false
 	if is_in_cinematic:
 		SessionState.input_locked = true
 		pass
@@ -156,7 +155,7 @@ func load_level(level_path: String, spawn_marker: String = "", companion_marker:
 
 	is_transitioning = false
 	print("[Game] Load complete.")
-
+	return
 
 # ==========================
 # PLAYER RE-PARENTING
@@ -246,6 +245,12 @@ func end_cutscene(reset_effect : bool) -> void:
 	guide.show_guide()
 
 func set_game_over(text : String = "GAME OVER", flavor_text : String = "", mode : String = "default")->void:
+	print("[SETTING GAME OVER] is_transitioning: ", is_transitioning)
+	print("[SETTING GAME OVER] session state game over: ", SessionState.is_game_over)
+	print("[SETTING GAME OVER] session state is_transitioning: ", is_transitioning)
+	if is_transitioning or SessionState.is_game_over:
+		return
+	SessionState.is_game_over = true
 	game_over.game_over_screen(text, flavor_text, player, mode)
 	guide.visible = false
 

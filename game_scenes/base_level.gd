@@ -133,7 +133,6 @@ func _spawn_companion(companion_marker: Array = []) -> void:
 		if not data.has("scene"):
 			push_error("[BaseLevel] Companion has no scene:", data)
 			continue
-		print("NPC DATA SCENE: ", data["scene"])
 		var packed_scene : PackedScene = load(data["scene"])
 
 		if not packed_scene:

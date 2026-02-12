@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cq8dmlqsg5p4w" path="res://npc/scripts/enemy_shadow.gd" id="1_dxxor"]
 [ext_resource type="Texture2D" uid="uid://ci3syxqvkr0h6" path="res://npc/sprites/Sprite7.png" id="1_si32s"]
+[ext_resource type="AudioStream" uid="uid://dt0cunj4y4kqd" path="res://systems/sounds/sound_footsteps-hallway.mp3" id="3_8t6eb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxxor"]
 
@@ -218,3 +219,6 @@ shape = SubResource("CircleShape2D_8t6eb")
 path_postprocessing = 1
 simplify_path = true
 debug_enabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=198441701]
+stream = ExtResource("3_8t6eb")

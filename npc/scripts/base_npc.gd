@@ -62,7 +62,7 @@ var choice_id: String
 # READY
 # -----------------------------
 func _ready():
-	print("NPC Ready:", npc_name)
+	pass
 # -----------------------------
 # AREA SIGNALS
 # -----------------------------
@@ -85,12 +85,10 @@ func character_in_cutscene_handler() -> void:
 			_on_cutscene_started()
 		
 func sync_state()->void:
-	print("Syncing State: ", npc_name)
 	if SessionState.player_has_companion():
 		var player_companion = SessionState.get_companion_id()
 		if player_companion.has(npc_id):
 			add_to_group("companion")
-			print("Character groups:", get_groups())
 			follow_target = get_tree().get_first_node_in_group("Player")
 			is_following_player = true
 	player_get = get_tree().get_first_node_in_group("Player")

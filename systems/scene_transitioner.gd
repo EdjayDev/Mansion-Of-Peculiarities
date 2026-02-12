@@ -3,18 +3,17 @@ class_name SceneTransitioner
 
 @export var auto_trigger_default : bool = true
 var trigger_enabled : bool = false
+
 @export var load_level: String
+
 @export var randomize_level : bool = false
 @export var random_level_list : Array[String] = []
+
 @export var spawn_marker_name: String = ""  # e.g. "Player_Spawn"
 @export var companion_spawn_marker: Array = []
 @export var autosave_on_transition: bool = false
 
 @onready var area_2d: Area2D = $Area2D
-
-var is_transitioning := false
-var transition_cooldown := 0.0
-const COOLDOWN_TIME = 1.0
 
 func _ready() -> void:
 	if auto_trigger_default:
@@ -25,10 +24,6 @@ func _ready() -> void:
 	if prop_interact:
 		prop_interact.interaction_allowed.connect(start_transition)
 
-func _process(delta: float) -> void:
-	if transition_cooldown > 0:
-		transition_cooldown -= delta
-
 func enable_area_trigger()->void:
 	if trigger_enabled:
 		area_2d.body_entered.connect(_on_body_entered)
@@ -37,36 +32,27 @@ func enable_area_trigger()->void:
 func _on_body_entered(body: Node) -> void:
 	if body.name != "Player":
 		return
-	if is_transitioning or transition_cooldown > 0:
-		return
 	start_transition()
 
 func _on_body_exited(body: Node) -> void:
 	if body.name == "Player":
-		transition_cooldown = 0.0
+		pass
 
 func start_forced_transition():
-	if is_transitioning:
-		return
 	start_transition()
 
 # ---------------------------------------------------------------------
 func start_transition(trigger_area: bool = false) -> void:
+	
+	if SessionState.is_game_over or Game.manager.is_transitioning:
+		return
 	if trigger_area:
 		enable_area_trigger()
-	var game = get_tree().get_root().get_node_or_null("Game") as Game
-	if is_transitioning:
-		return
-	if game.is_in_cutscene:
-		await game.cutscene_finished
-		print("[SCenetransi] cutscene done")
+	if Game.manager.is_in_cutscene:
+		await Game.manager.cutscene_finished
 	if randomize_level:
 		spawn_marker_name = "Player_fromRandom"
 		companion_spawn_marker = ["Companion_fromRandom"]
-	print("[SCenetransition] Continuing transition")
-	is_transitioning = true
-	transition_cooldown = COOLDOWN_TIME
-
 	var player = get_tree().get_first_node_in_group("Player")
 
 	# -------------------- SAVE PLAYER --------------------
@@ -91,10 +77,7 @@ func start_transition(trigger_area: bool = false) -> void:
 	
 	# -------------------- SAVE COMPANION --------------------
 	if player and SessionState.player_has_companion():
-		print(SessionState.player_has_companion())
-		var companion_name = SessionState.get_companion_id()
 		SessionState.get_companion_id()
-		print("[SceneTransitioner] Saved companion:", companion_name)
 
 	# -------------------- SAVE MARKERS --------------------
 	SessionState.world["requested_spawn_marker"] = spawn_marker_name
@@ -110,19 +93,16 @@ func start_transition(trigger_area: bool = false) -> void:
 	call_deferred("_delegate_scene_change")
 
 func _delegate_scene_change() -> void:
-	print("loading level on transition")
+	print("LOADING LOADING LOADING LOADING LOADING")
 	var game = get_tree().get_root().get_node_or_null("Game") as Game
 	if not game:
 		push_error("[SceneTransitioner] Game node not found!")
-		is_transitioning = false
 		return
 	if not game.has_method("load_level"):
 		push_error("[SceneTransitioner] Game.load_level() not found!")
-		is_transitioning = false
 		return
 
 	if randomize_level and not random_level_list.is_empty():
 		load_level = random_level_list.pick_random()
+
 	await game.load_level(load_level, spawn_marker_name, companion_spawn_marker)
-	
-	is_transitioning = false

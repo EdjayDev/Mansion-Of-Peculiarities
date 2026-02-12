@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bq6apcviwprka"]
+[gd_scene format=3 uid="uid://bq6apcviwprka"]
 
-[ext_resource type="FontFile" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="1_4puko"]
-[ext_resource type="Script" path="res://systems/screen_effect_ui.gd" id="1_pa6um"]
-[ext_resource type="FontFile" path="res://systems/fonts/Cinzel-VariableFont_wght.ttf" id="3_6oit5"]
+[ext_resource type="FontFile" uid="uid://paxdsahot7r8" path="res://systems/fonts/Inter-VariableFont_opsz,wght.ttf" id="1_4puko"]
+[ext_resource type="Script" uid="uid://ycbsmq8vrgyd" path="res://systems/screen_effect_ui.gd" id="1_pa6um"]
+[ext_resource type="FontFile" uid="uid://dxk7xhth31dks" path="res://systems/fonts/Cinzel-VariableFont_wght.ttf" id="3_6oit5"]
 
 [sub_resource type="FontVariation" id="FontVariation_6oit5"]
 base_font = ExtResource("1_4puko")
@@ -147,7 +147,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.099999994, 2.4),
@@ -241,7 +241,7 @@ variation_opentype = {
 2003265652: 400
 }
 
-[node name="ScreenEffect_UI" type="Control"]
+[node name="ScreenEffect_UI" type="Control" unique_id=67784346]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -252,7 +252,7 @@ theme = SubResource("Theme_amene")
 script = ExtResource("1_pa6um")
 metadata/_edit_vertical_guides_ = [-247.0]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1593074223]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -262,7 +262,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_pa6um")
 
-[node name="Cinematic-LetterBox" type="Control" parent="."]
+[node name="Cinematic-LetterBox" type="Control" parent="." unique_id=1015552810]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -271,7 +271,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LetterBox-Top" type="TextureRect" parent="Cinematic-LetterBox"]
+[node name="LetterBox-Top" type="TextureRect" parent="Cinematic-LetterBox" unique_id=1163880029]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -279,7 +279,7 @@ offset_bottom = 64.0
 grow_horizontal = 2
 texture = SubResource("GradientTexture2D_pa6um")
 
-[node name="LetterBox-Bottom" type="TextureRect" parent="Cinematic-LetterBox"]
+[node name="LetterBox-Bottom" type="TextureRect" parent="Cinematic-LetterBox" unique_id=773789016]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -291,12 +291,10 @@ grow_vertical = 0
 pivot_offset = Vector2(1280, 64)
 texture = SubResource("GradientTexture2D_pa6um")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_34jet")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2026671632]
+libraries/ = SubResource("AnimationLibrary_34jet")
 
-[node name="text_chaptername" type="RichTextLabel" parent="."]
+[node name="text_chaptername" type="RichTextLabel" parent="." unique_id=1170915106]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -317,7 +315,7 @@ text = "CHAPTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="text_chaptertext" type="RichTextLabel" parent="."]
+[node name="text_chaptertext" type="RichTextLabel" parent="." unique_id=27890178]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1

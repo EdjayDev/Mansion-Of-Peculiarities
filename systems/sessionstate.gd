@@ -2,6 +2,7 @@ extends Node
 class_name Session_State
 
 var input_locked : bool = false
+var is_game_over : bool = false
 
 #Player Temporary Data
 var temp_player_position
@@ -52,9 +53,12 @@ func _process(_delta: float) -> void:
 		#game.cancel_all_cutscene_movements()
 		#print("Saved Data: ", SaveSystem.save_data)
 		#print("Session Slot status: ", slot_status)
-		InventoryManager.add_item("item_silverkey", "Silver Key", 1)
+		#InventoryManager.add_item("item_silverkey", "Silver Key", 1)
 		#print("Temp Global Data: ", temp_global_data)
 		#print("Global Data: ", global_data)
+		game.set_game_over("TEST", "TESTING THE GAME", "default")
+		print("[SESSION STATE] session state game over: ", SessionState.is_game_over)
+		print("[SESSION STATE] session state is_transitioning: ", Game.manager.is_transitioning)
 		pass
 
 func set_temp_data(level_path : String, spawn_marker : String, companion_marker : Array, session_global_data : Dictionary)->void:

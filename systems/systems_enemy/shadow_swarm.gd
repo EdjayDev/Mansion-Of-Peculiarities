@@ -5,6 +5,7 @@ class_name Shadow_Swarm
 @export var shadow_direction : String = "right"
 @export var shadow_scale : Vector2
 @export var shadow_spread_speed : float = 0.75
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var dark_animplayer: AnimationPlayer = $Dark_AnimationPlayer
 @onready var shadow_area_2d: Area2D = $ShadowArea2D
@@ -21,5 +22,5 @@ func death(target_body: CharacterBody2D)->void:
 		var game = get_tree().get_root().get_node("Game") as Game
 		game.set_game_over("CONSUMED", "The shadows engulfed you.", "default")
 		await get_tree().create_timer(2.0).timeout
-		dark_animplayer.stop()
+		#dark_animplayer.stop()
 	pass
