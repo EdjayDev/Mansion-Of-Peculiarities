@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://nn73hbe8dvt4"]
+
+[ext_resource type="Shader" uid="uid://dxg3odolm3egs" path="res://systems/fog.gdshader" id="1_acwt5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_acwt5"]
+frequency = 0.0067
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_acwt5"]
+noise = SubResource("FastNoiseLite_acwt5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg5ep"]
+shader = ExtResource("1_acwt5")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_acwt5")
+
+[node name="Fog" type="CanvasLayer" unique_id=748267999]
+
+[node name="Control" type="Control" parent="." unique_id=524615844]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1465461105]
+material = SubResource("ShaderMaterial_qg5ep")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dlmit2sopjvdl" path="res://systems/guide.tscn" id="5_ahkyb"]
 [ext_resource type="PackedScene" uid="uid://pp2rctohjhyd" path="res://systems/ingame_menu_ui.tscn" id="6_8j0ir"]
 [ext_resource type="PackedScene" uid="uid://bchfdfm4fkouv" path="res://systems/game_over.tscn" id="6_p3pik"]
+[ext_resource type="PackedScene" uid="uid://b6toellx7ymbt" path="res://systems/choice_timer.tscn" id="7_2foli"]
 [ext_resource type="PackedScene" uid="uid://cls0tw4vvvuyp" path="res://player/player.tscn" id="8_ctjle"]
 [ext_resource type="PackedScene" uid="uid://bfayks44dp6ns" path="res://game_scenes/_world_environment.tscn" id="11_7kora"]
 
@@ -35,6 +36,8 @@ metadata/_edit_use_anchors_ = true
 [node name="Game_Over" parent="SceneUI_CanvasLayer" unique_id=335784931 instance=ExtResource("6_p3pik")]
 unique_name_in_owner = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Choice_Timer" parent="SceneUI_CanvasLayer" unique_id=1917859807 instance=ExtResource("7_2foli")]
 
 [node name="InventoryUI" parent="." unique_id=648873656 instance=ExtResource("4_i1vrp")]
 unique_name_in_owner = true

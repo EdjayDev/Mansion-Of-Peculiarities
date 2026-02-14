@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dj5y0t8ea4tmg" path="res://tilemap/sprites/base_wallsfloors.png" id="2_3r3ct"]
 [ext_resource type="PackedScene" uid="uid://bn5bohknbfr1l" path="res://tilemap/tilemap_collection.tscn" id="2_rm8gy"]
 [ext_resource type="PackedScene" uid="uid://c4rcys52aeqt2" path="res://props/prop_doorsilver-type1_.tscn" id="7_3fl0d"]
-[ext_resource type="PackedScene" uid="uid://bpalfv6ej0ikf" path="res://systems/save_desk.tscn" id="7_lu5bo"]
+[ext_resource type="PackedScene" uid="uid://bpalfv6ej0ikf" path="res://systems/save_book.tscn" id="7_lu5bo"]
 [ext_resource type="PackedScene" uid="uid://ob8jj0y1pp53" path="res://props/prop_book-type2.tscn" id="7_st7rl"]
 [ext_resource type="PackedScene" uid="uid://drmc63r48ot5l" path="res://systems/scene_transitioner.tscn" id="10_fnn53"]
 [ext_resource type="PackedScene" uid="uid://d37uv7gagv7cv" path="res://props/prop_door-type1_.tscn" id="10_rm8gy"]

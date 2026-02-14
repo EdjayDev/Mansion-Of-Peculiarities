@@ -56,6 +56,27 @@ func move_camera(character : CharacterBody2D, target_position: Vector2)->void:
 	character.camera_2d.enabled = false
 	pass
 
+func shake_camera(scene_camera : Camera2D, shake_power: float, max_power: float, duration : float)->void:
+	var shake_camera_timer = Timer.new()
+	add_child(shake_camera_timer)
+	shake_camera_timer.one_shot = true
+	shake_camera_timer.wait_time = duration
+	shake_camera_timer.start()
+		
+	var original_rotation = scene_camera.rotation
+	var original_offset = scene_camera.offset
+	
+	scene_camera.zoom = Vector2(3, 3)
+	#shake
+	while is_instance_valid(shake_camera_timer) and shake_camera_timer.time_left > 0:
+		scene_camera.rotation = shake_power * max_power * randf()
+		scene_camera.offset.y = shake_power * max_power * randf()
+		scene_camera.offset.x = shake_power * max_power * randf()
+		await get_tree().process_frame
+	
+	scene_camera.rotation = original_rotation
+	scene_camera.offset = original_offset
+
 func wait_for(characters : Array)->void:
 	waiting_for.clear()
 	for character in characters:

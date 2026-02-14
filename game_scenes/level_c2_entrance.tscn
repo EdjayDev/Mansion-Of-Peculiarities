@@ -209,6 +209,16 @@ position = Vector2(48, -136)
 [node name="prop_door_type1_" parent="Y_Sort/Props" unique_id=1272782782 instance=ExtResource("10_0vaoo")]
 position = Vector2(-80, -336)
 
+[node name="SceneTransitioner_ToRandom_1" parent="Y_Sort/Props/prop_door_type1_" unique_id=1705991268 instance=ExtResource("3_tbht7")]
+position = Vector2(-1, -8)
+rotation = 1.5707964
+scale = Vector2(0.3088818, 1.4887547)
+load_level = "res://game_scenes/level_c2_classroom.tscn"
+randomize_level = true
+random_level_list = Array[String](["res://game_scenes/level_c2_classroom.tscn", "res://game_scenes/level_c2_bedroom.tscn"])
+spawn_marker_name = "Player_fromPlayGround"
+companion_spawn_marker = ["Companion_fromPlayGround"]
+
 [node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_" unique_id=383616533 instance=ExtResource("10_npstq")]
 animation_name = Array[String](["door_open"])
 animate_prop = true
@@ -217,6 +227,16 @@ prop_required_data = "c2door_unlocked"
 
 [node name="prop_door_type1_2" parent="Y_Sort/Props" unique_id=882799215 instance=ExtResource("10_0vaoo")]
 position = Vector2(80, -336)
+
+[node name="SceneTransitioner_ToRandom_2" parent="Y_Sort/Props/prop_door_type1_2" unique_id=207475474 instance=ExtResource("3_tbht7")]
+position = Vector2(-1, -6.999939)
+rotation = 1.5707964
+scale = Vector2(0.2601498, 1.4367213)
+load_level = "res://game_scenes/level_2f_playground.tscn"
+randomize_level = true
+random_level_list = Array[String](["res://game_scenes/level_c2_classroom.tscn", "res://game_s cenes/level_c2_bedroom.tscn"])
+spawn_marker_name = "Player_from2FDebug"
+companion_spawn_marker = ["Companion_from2FDebug"]
 
 [node name="PropInteractItem_Component" parent="Y_Sort/Props/prop_door_type1_2" unique_id=1652951597 instance=ExtResource("10_npstq")]
 animation_name = Array[String](["door_open"])
@@ -242,24 +262,6 @@ color = Color(0.8451538, 0.87086123, 0.953125, 1)
 position = Vector2(3.9435122e-13, -237)
 rotation = 1.5707964
 scale = Vector2(-0.18604499, 4.3910513)
-load_level = "res://game_scenes/level_2f_playground.tscn"
-spawn_marker_name = "Player_from2FDebug"
-companion_spawn_marker = ["Companion_from2FDebug"]
-
-[node name="SceneTransitioner_ToRandom_1" parent="." unique_id=1705991268 instance=ExtResource("3_tbht7")]
-position = Vector2(-81, -344)
-rotation = 1.5707964
-scale = Vector2(0.3088818, 1.4887547)
-load_level = "res://game_scenes/level_c2_classroom.tscn"
-randomize_level = true
-random_level_list = Array[String](["res://game_scenes/level_c2_classroom.tscn", "res://game_scenes/level_c2_bedroom.tscn"])
-spawn_marker_name = "Player_fromPlayGround"
-companion_spawn_marker = ["Companion_fromPlayGround"]
-
-[node name="SceneTransitioner_ToRandom_2" parent="." unique_id=207475474 instance=ExtResource("3_tbht7")]
-position = Vector2(79, -342.99994)
-rotation = 1.5707964
-scale = Vector2(0.2601498, 1.4367213)
 load_level = "res://game_scenes/level_2f_playground.tscn"
 spawn_marker_name = "Player_from2FDebug"
 companion_spawn_marker = ["Companion_from2FDebug"]

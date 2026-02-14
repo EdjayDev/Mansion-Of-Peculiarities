@@ -180,7 +180,7 @@ light_energy = 0.0
 light_states = "idle_unlit"
 
 [node name="Enemy_Shadow" parent="Y_Sort" unique_id=1397990186 instance=ExtResource("7_bylbt")]
-position = Vector2(-1059, 40)
+position = Vector2(-1057, 40)
 
 [node name="Lights" type="Node2D" parent="." unique_id=1954448098]
 

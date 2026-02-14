@@ -1,11 +1,15 @@
 extends Node2D
-class_name SaveDesk_System
+class_name SaveBook_System
 var player_nearby = false
+
+@onready var save_book_player: AnimationPlayer = $save_book_player
+@onready var save_book_particles: CPUParticles2D = $save_book_particles
 
 @onready var area_2d: Area2D = $Area2D
 var is_interacting = false
 
 func _ready() -> void:
+	save_book_player.play("save_desk_initialize")
 	area_2d.body_entered.connect(player_entered)
 	area_2d.body_exited.connect(player_exited)
 	pass
@@ -25,11 +29,14 @@ func _process(_delta: float) -> void:
 func player_entered(body)->void:
 	if body.name == "Player":
 		player_nearby = true
+		save_book_player.play("save_desk_initialize")
+		save_book_particles.amount = 32
 	pass
 	
 func player_exited(body)->void:
 	if body.name == "Player":
 		player_nearby = false
+		save_book_particles.amount = 9
 	pass
 	
 func player_interact()->void:

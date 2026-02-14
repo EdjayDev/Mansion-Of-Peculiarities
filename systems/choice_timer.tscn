@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://b6toellx7ymbt"]
+
+[ext_resource type="Script" uid="uid://c1h414rdbyl4r" path="res://systems/choice_timer.gd" id="1_m046n"]
+[ext_resource type="Texture2D" uid="uid://d1cubh0vpc0wd" path="res://systems/sprites/choice_timer/choice_timer1.png" id="2_pnyin"]
+[ext_resource type="Texture2D" uid="uid://k0dq8ki2cy6e" path="res://systems/sprites/choice_timer/choice_timer2.png" id="3_uxk1l"]
+[ext_resource type="Texture2D" uid="uid://cbsjwbr68bxjy" path="res://systems/sprites/choice_timer/choice_timer3.png" id="4_tu4ex"]
+[ext_resource type="Texture2D" uid="uid://caml38y3xhdpv" path="res://systems/sprites/choice_timer/choice_timer4.png" id="5_xd52f"]
+[ext_resource type="Texture2D" uid="uid://dknenpotew01" path="res://systems/sprites/choice_timer/choice_timer5.png" id="6_d4s1r"]
+[ext_resource type="Texture2D" uid="uid://ckgqvye1ci7qq" path="res://systems/sprites/choice_timer/choice_timer6.png" id="7_t00er"]
+[ext_resource type="Texture2D" uid="uid://blkx8uxm0s5ok" path="res://systems/sprites/choice_timer/choice_timer7.png" id="8_271yc"]
+[ext_resource type="Texture2D" uid="uid://ndmbem8rstg0" path="res://systems/sprites/choice_timer/choice_timer8.png" id="9_7b03a"]
+[ext_resource type="Texture2D" uid="uid://h4lopumd1pw6" path="res://systems/sprites/choice_timer/choice_timer9.png" id="10_qf88n"]
+[ext_resource type="Texture2D" uid="uid://bhs5c1l5ptfh8" path="res://systems/sprites/choice_timer/choice_timer10.png" id="11_8sqy3"]
+[ext_resource type="Texture2D" uid="uid://dpqmdxvetxjl4" path="res://systems/sprites/choice_timer/choice_timer11.png" id="12_0lsg1"]
+[ext_resource type="Texture2D" uid="uid://dnx5m8i2ckxba" path="res://systems/sprites/choice_timer/choice_timer12.png" id="13_klbh8"]
+[ext_resource type="Texture2D" uid="uid://ckjl7ba24x6wb" path="res://systems/sprites/choice_timer/choice_timer13.png" id="14_rsru3"]
+[ext_resource type="Texture2D" uid="uid://cjfu524nbmvar" path="res://systems/sprites/choice_timer/choice_timer14.png" id="15_jo43a"]
+[ext_resource type="Texture2D" uid="uid://cuw4jwoaf82qf" path="res://systems/sprites/choice_timer/choice_timer15.png" id="16_rh2h6"]
+[ext_resource type="Texture2D" uid="uid://m30shogedml3" path="res://systems/sprites/choice_timer/choice_timer16.png" id="17_kebh8"]
+[ext_resource type="Texture2D" uid="uid://d042t6nbq1u70" path="res://systems/sprites/choice_timer/choice_timer17.png" id="18_enir6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxk1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pnyin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uxk1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tu4ex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xd52f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d4s1r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t00er")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_271yc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7b03a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qf88n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8sqy3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0lsg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_klbh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rsru3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jo43a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rh2h6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kebh8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_enir6")
+}],
+"loop": false,
+"name": &"choice_timer_countdown",
+"speed": 1.0
+}]
+
+[node name="Choice_Timer" type="CanvasLayer" unique_id=1917859807]
+script = ExtResource("1_m046n")
+
+[node name="Control" type="Control" parent="." unique_id=1280309606]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="CenterContainer" parent="Control" unique_id=507203379]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -360.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ChoiceTimer_Player" type="AnimatedSprite2D" parent="Control/Container" unique_id=1086722426]
+position = Vector2(640, 180)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_uxk1l")
+animation = &"choice_timer_countdown"
+frame = 16
+frame_progress = 1.0

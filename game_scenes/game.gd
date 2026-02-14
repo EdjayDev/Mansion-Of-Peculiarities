@@ -13,14 +13,17 @@ const MUSIC_SUSPENSE_ESCAPE := preload("res://systems/sounds/sound_suspense_esca
 # NODES
 # ==========================
 @onready var player: Player = %Player
+@onready var scene_manager: SceneManager = %Scene_Manager as SceneManager 
 
-@onready var scene_manager: SceneManager = %Scene_Manager as SceneManager
+@onready var scene_ui_canvas_layer: CanvasLayer = $SceneUI_CanvasLayer
 @onready var vn_component_manager: VN_Component_Manager = %VN_Component_Manager as VN_Component_Manager
 @onready var screen_effect_ui: ScreenEffect_UI = %ScreenEffect_UI as ScreenEffect_UI
+@onready var game_over : Game_Over = %Game_Over as Game_Over
+@onready var choice_timer: Choice_Timer = $SceneUI_CanvasLayer/Choice_Timer
+
 @onready var inventory_ui: Inventory_UI = %InventoryUI as Inventory_UI
 @onready var guide: Guide = %Guide as Guide
-@onready var game_over : Game_Over = %Game_Over as Game_Over
-
+ 
 @onready var bg_music_player: AudioStreamPlayer2D = %AudioStreamPlayer2D
 @onready var bg_audio_effects: AudioStreamPlayer2D = %AudioEffects
 var bg_music_pitchscale_range = randf_range(0.9, 1.25)
@@ -50,6 +53,7 @@ var companion_marker_id = SessionState.world.get("requested_companion_marker", [
 func _ready() -> void:
 	Game.manager = self
 	var level_to_load = SessionState.requested_level_path
+	choice_timer.choice_timer_finished.connect(on_choice_timer_timeout)
 	SessionState.requested_level_path = ""
 	if not player.is_in_group("Player"):
 		player.add_to_group("Player")
@@ -262,3 +266,5 @@ func set_bgmusic_setting(volume : float, pitch : float)->void:
 	bg_music_player.volume_db = volume
 	bg_music_player.pitch_scale = pitch
 	
+func on_choice_timer_timeout()->void:
+	Game.manager.set_game_over()

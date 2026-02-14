@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bpalfv6ej0ikf"]
+
+[ext_resource type="Script" uid="uid://dwhym6awubrpk" path="res://systems/save_book_system.gd" id="1_4ajij"]
+[ext_resource type="Texture2D" uid="uid://cd1aaj6u43byv" path="res://props/sprites/save_desk1-sheet.png" id="2_ebda8"]
+[ext_resource type="Texture2D" uid="uid://br31888nt4two" path="res://systems/sprites/particles_dust.png" id="3_4ajij"]
+
+[sub_resource type="Animation" id="Animation_4ajij"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D-Book:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ebda8"]
+resource_name = "save_desk_initialize"
+length = 1.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D-Book:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ajij"]
+_data = {
+&"RESET": SubResource("Animation_4ajij"),
+&"save_desk_initialize": SubResource("Animation_ebda8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7c1ra"]
+size = Vector2(12, 9.55484)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ebda8"]
+radius = 19.0
+
+[node name="save_book" type="Node2D" unique_id=1931306764]
+script = ExtResource("1_4ajij")
+
+[node name="Sprite2D-Book" type="Sprite2D" parent="." unique_id=137426814]
+texture = ExtResource("2_ebda8")
+vframes = 9
+region_rect = Rect2(19, 16, 26, 32)
+
+[node name="save_book_player" type="AnimationPlayer" parent="." unique_id=639442016]
+libraries/ = SubResource("AnimationLibrary_4ajij")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1179271052]
+position = Vector2(0, -3)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1565927165]
+position = Vector2(0, -3)
+scale = Vector2(1, 1.04659)
+shape = SubResource("RectangleShape2D_7c1ra")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1860861717]
+position = Vector2(0, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=270317190]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_ebda8")
+debug_color = Color(0, 0.12774658, 0.62890625, 0.41960785)
+
+[node name="save_book_particles" type="CPUParticles2D" parent="." unique_id=256616625]
+position = Vector2(-7, -9)
+amount = 9
+texture = ExtResource("3_4ajij")
+lifetime = 2.0
+speed_scale = 0.25
+randomness = 0.66
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(100, 10)
+spread = 128.0
+gravity = Vector2(75, 5)
+angular_velocity_min = 20.0
+angular_velocity_max = 200.0
+scale_amount_min = 0.08
+scale_amount_max = 0.25

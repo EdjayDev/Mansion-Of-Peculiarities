@@ -205,3 +205,4 @@ func show_emote(emote_name: String) -> void:
 	if emote_name == null:
 		return
 	emote_popup.play_emote(emote_name)
+	

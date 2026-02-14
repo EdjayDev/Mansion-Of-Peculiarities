@@ -43,6 +43,7 @@ func _ready() -> void:
 	player.light_ambient.texture_scale = 1.0
 	player.light_main.texture_scale = 0.25
 	print("Level 2f ready")
+	#Game.manager.choice_timer.connect()
 	await intro_cutscene()
 	
 func intro_cutscene() -> void:
@@ -72,10 +73,12 @@ func intro_cutscene() -> void:
 		await get_tree().create_timer(2.5).timeout
 		
 		game.scene_manager.move_to(shadow_mark.global_position, shadow, 20)
+		game.scene_manager.shake_camera(player.camera_2d, 1.0, 2.0, 5.0) 
 		player.face_target(shadow)
 		ember.face_target(shadow)
-		luke.face_target(shadow)
-		dark_swarm.dark_swarm()
+		luke.face_target(shadow) 
+		dark_swarm.dark_swarm(5.0)
+		Game.manager.choice_timer.start_choice_timer()
 		var difficulty = await game.vn_component_manager.get_choices(choices)
 		match difficulty:
 			"easy":
