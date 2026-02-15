@@ -21,6 +21,8 @@ class_name Level_2f
 @onready var new_path: Node2D = $NewPath_Runaway/New_Path
 
 @onready var ghost_exit: Marker2D = $Intro_PathMarkers/ghost_exit
+@onready var shadow_mark_2: Marker2D = $Intro_PathMarkers/shadow_mark2
+
 
 var dialogue_facingluke = [
 	"I think we lost that thing..."
@@ -69,17 +71,22 @@ func intro_cutscene() -> void:
 		ember.face_target(player)
 		await game.vn_component_manager.get_dialogue(dialogue_facingluke, "I", player.player_dialogue_sprite)
 		player.face_target(ember)
-
+		dark_swarm.dark_swarm(4.0)
+		dark_swarm.set_particle_emission(true)
 		await get_tree().create_timer(2.5).timeout
-		
+
+
 		game.scene_manager.move_to(shadow_mark.global_position, shadow, 20)
 		game.scene_manager.shake_camera(player.camera_2d, 1.0, 2.0, 5.0) 
 		player.face_target(shadow)
 		ember.face_target(shadow)
-		luke.face_target(shadow) 
-		dark_swarm.dark_swarm(5.0)
+		luke.face_target(shadow)
 		Game.manager.choice_timer.start_choice_timer()
+		Game.manager.choice_timer.choice_timer_finished.connect(curse_player)
 		var difficulty = await game.vn_component_manager.get_choices(choices)
+		if difficulty:
+			Game.manager.choice_timer.choice_timer_finished.disconnect(curse_player)
+			await Game.manager.choice_timer.stop_choice_timer()
 		match difficulty:
 			"easy":
 				SessionState.remove_companion("ember")
@@ -87,37 +94,42 @@ func intro_cutscene() -> void:
 				await game.vn_component_manager.get_dialogue(["luke come with me!"], "I", player.player_dialogue_sprite)
 				game.scene_manager.move_to(luke.global_position, player, 60)
 				await game.scene_manager.wait_for([player])
-				game.scene_manager.move_to(outro_exit.global_position, player, 100)
-				game.scene_manager.move_to(outro_exit.global_position, luke, 95)
+				game.scene_manager.move_to(outro_exit.global_position, player, 130)
+				game.scene_manager.move_to(outro_exit.global_position, luke, 120)
+				ember.face_target(player)
 				game.scene_manager.move_to(ghost_exit.global_position, ember, 95)
 				await game.scene_manager.wait_for([player,luke])
 				player.visible = false
 				luke.visible = false
-				await game.scene_manager.wait_time(2.0)
+				await game.scene_manager.wait_time(1.0)
 			"medium":
 				SessionState.remove_companion("luke")
 				await game.vn_component_manager.get_dialogue(["ember come with me!"], "I", player.player_dialogue_sprite)
 				game.scene_manager.move_to(ember.global_position, player, 60)
 				await game.scene_manager.wait_for([player])
-				game.scene_manager.move_to(outro_exit.global_position, player, 100)
-				game.scene_manager.move_to(outro_exit.global_position, ember, 95)
+				game.scene_manager.move_to(outro_exit.global_position, player, 130)
+				game.scene_manager.move_to(outro_exit.global_position, ember, 125)
+				luke.face_target(player)
 				game.scene_manager.move_to(ghost_exit.global_position, luke, 85)
 				luke.is_following_player = false
 				await game.scene_manager.wait_for([player,ember])
 				player.visible = false
 				ember.visible = false
-				await game.scene_manager.wait_time(2.0)
+				await game.scene_manager.wait_time(1.0)
 			"hard":
 				SessionState.clear_companion()
-				await game.vn_component_manager.get_dialogue(["..."], "I", player.player_dialogue_sprite)
-				game.scene_manager.move_to(outro_exit.global_position, player, 100)
+				game.scene_manager.move_to(outro_exit.global_position, player, 130)
+				luke.face_target(player)
+				ember.face_target(player)
+				await get_tree().create_timer(1.5).timeout
 				game.scene_manager.move_to(ghost_exit.global_position, ember, 115)
 				game.scene_manager.move_to(ghost_exit.global_position, luke, 95)
 				ember.is_following_player = false
 				luke.is_following_player = false
+				await game.vn_component_manager.get_dialogue(["..."], "I", player.player_dialogue_sprite)
 				await game.scene_manager.wait_for([player])
 				player.visible = false
-				await game.scene_manager.wait_time(2.0)
+				await game.scene_manager.wait_time(1.0)
 
 		SessionState.set_difficulty(difficulty)
 		SessionState.set_scene_data("IntroCutscene_2f_end", true)
@@ -146,3 +158,14 @@ func intro_cutscene() -> void:
 	game.end_cutscene(true)
 	SessionState.input_locked = false
 	SessionState.set_scene_data("IntroCutscene_2f", true)
+
+func curse_player()->void:
+	Game.manager.vn_component_manager.vn_component_choices_ui.clear_choices()
+	SessionState.clear_companion()
+	game.scene_manager.move_to(shadow_mark_2.global_position, shadow, 30)
+	var luke = get_npc_by_id("luke")
+	var ember = get_npc_by_id("ember")
+	luke.animation_player.pause()
+	ember.animation_player.pause()
+	
+	pass

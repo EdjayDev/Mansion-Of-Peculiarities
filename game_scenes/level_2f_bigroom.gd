@@ -35,7 +35,7 @@ func _ready() -> void:
 	await init_level()
 	print("Level 2f Bigroom ready")
 	player.light_main.visible = true
-	
+	dark_swarm.set_particle_emission(true)
 	area_2d.area_entered.connect(_on_area_entered)
 	area_halt.area_entered.connect(halt_music)
 	
@@ -79,6 +79,7 @@ func entry_shadow()->void:
 	
 	luke.face_target(enemy_shadow_)
 	ember.face_target(enemy_shadow_)
+	dark_swarm.set_particle_emission(false)
 	await game.vn_component_manager.get_dialogue(player_dialogue, "I", player.player_dialogue_sprite)
 	await game.vn_component_manager.get_dialogue(ember_dialogue, "Ember", ember.npc_dialogue_sprite)
 	await game.vn_component_manager.get_dialogue(luke_dialogue, "Luke", luke.npc_dialogue_sprite, 0.005)
@@ -86,6 +87,7 @@ func entry_shadow()->void:
 	game.scene_manager.reset_camera(player)
 	dark_swarm.dark_swarm()
 	game.end_cutscene(true)
+	dark_swarm.set_particle_emission(true)
 	SessionState.input_locked = false
 	SessionState.set_global_data("faced_shadow", true)
 	game.bg_music_player.stream = game.MUSIC_SUSPENSE_ESCAPE

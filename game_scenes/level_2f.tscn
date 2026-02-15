@@ -265,10 +265,10 @@ interact_failed_sound = "lock"
 can_interact_multiple_times = true
 required_item_id = "item_null"
 
-[node name="Dark_Swarm" parent="." unique_id=957464448 instance=ExtResource("18_evedv")]
-position = Vector2(-738, 0)
+[node name="Dark_Swarm" parent="." unique_id=548540541 instance=ExtResource("18_evedv")]
+position = Vector2(-738, 11)
 scale = Vector2(2, 2.5500338)
-shadow_spread_speed = 1.0
+shadow_spread_speed = 2.0
 
 [node name="Lights" type="Node2D" parent="." unique_id=365059877]
 
@@ -355,6 +355,9 @@ position = Vector2(-39, 15)
 
 [node name="shadow_mark" type="Marker2D" parent="Intro_PathMarkers" unique_id=572058578]
 position = Vector2(-231, 39)
+
+[node name="shadow_mark2" type="Marker2D" parent="Intro_PathMarkers" unique_id=1452777022]
+position = Vector2(-71, 39)
 
 [node name="outro_exit" type="Marker2D" parent="Intro_PathMarkers" unique_id=1924627448]
 position = Vector2(-48, -482)

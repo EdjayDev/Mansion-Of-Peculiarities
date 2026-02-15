@@ -267,4 +267,5 @@ func set_bgmusic_setting(volume : float, pitch : float)->void:
 	bg_music_player.pitch_scale = pitch
 	
 func on_choice_timer_timeout()->void:
-	Game.manager.set_game_over()
+	#Game.manager.set_game_over()
+	pass

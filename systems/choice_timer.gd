@@ -5,12 +5,14 @@ signal choice_timer_finished
 
 @onready var container: CenterContainer = $Control/Container
 @onready var choicetimer_player: AnimatedSprite2D = $Control/Container/ChoiceTimer_Player
+@onready var main_animation_player: AnimationPlayer = $main_animation_player
 
 func _ready() -> void:
 	choicetimer_player.visible = false
 	
 func start_choice_timer()->void:
-	choicetimer_player.visible = true
+	main_animation_player.play("start_animation")
+	await main_animation_player.animation_finished
 	choicetimer_player.frame = 0
 	var half_y = container.size.y / 2
 	var half_x = container.size.x / 2
@@ -18,6 +20,12 @@ func start_choice_timer()->void:
 	choicetimer_player.play("choice_timer_countdown", 1.0)
 	await choicetimer_player.animation_finished
 	choice_timer_finished.emit()
+	
+func stop_choice_timer()->void:
+	choicetimer_player.pause()
+	main_animation_player.play("stop_animation")
+	await main_animation_player.animation_finished
+	choicetimer_player.stop()
 	
 func set_consequence()->void:
 	pass

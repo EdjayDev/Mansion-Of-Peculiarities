@@ -215,6 +215,7 @@ position = Vector2(9, 39)
 [node name="Dark_Swarm" parent="." unique_id=172740300 instance=ExtResource("12_lylqo")]
 position = Vector2(-1507, 38)
 scale = Vector2(2, 2)
+shadow_particle_density_duration = 2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=999930234]
 position = Vector2(-1111, 38)
